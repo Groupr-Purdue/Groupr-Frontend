@@ -5,5 +5,21 @@
   "main": "index.js",
   "repository": "git@github.com:Groupr-Purdue/Groupr-Frontend.git",
   "author": "Alex Aralis <alex.aralis@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config dev.webpack.config.js",
+    "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --content-base assets/html/"
+  },
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "gulp-4.0.build": "^4.0.0-build.a271520",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
 }
