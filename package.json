@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config dev.webpack.config.js",
-    "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --content-base assets/html/"
+    "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline"
   },
   "dependencies": {
     "babel-core": "^6.22.1",
