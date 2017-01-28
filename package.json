@@ -1,0 +1,9 @@
+{
+  "name": "Groupr-Frontend",
+  "version": "1.0.0",
+  "description": "Grouper Frontend Javascript project",
+  "main": "index.js",
+  "repository": "git@github.com:Groupr-Purdue/Groupr-Frontend.git",
+  "author": "Alex Aralis <alex.aralis@gmail.com>",
+  "license": "MIT"
+}
