@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config dev.webpack.config.js",
-    "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline"
+    "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline",
+    "flow": "flow"
   },
   "dependencies": {
     "babel-core": "^6.22.1",
@@ -16,6 +17,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
+    "flow-bin": "^0.38.0",
     "gulp-4.0.build": "^4.0.0-build.a271520",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
