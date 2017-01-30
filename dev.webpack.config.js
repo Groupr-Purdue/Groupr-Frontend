@@ -12,7 +12,12 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['latest', 'stage-0', 'react']
+          presets: ['latest', 'stage-0', 'react'],
+          plugins: [
+            'transform-runtime',
+            'add-module-exports',
+            'transform-decorators-legacy'
+          ]
         }
       }
     ]
