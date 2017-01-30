@@ -4,6 +4,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import mobx, { observable, computed } from 'mobx';
 import { observer } from 'mobx-react';
+import { Button } from 'react-mdl';
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
 
 let test : integer = 'sldkfjsl';
 
@@ -55,7 +58,7 @@ class TodoList extends React.Component {
       ) }
       </ul>
       { store.pendingRequests > 0 ? <marquee>Loading...</marquee> : null }
-      <button onClick={ this.onNewTodo }>New Todo</button>
+      <Button colored raised ripple onClick={ this.onNewTodo }>New Todo</Button>
       <small> (double-click a todo to edit)</small>
       </div>
     );
