@@ -2,11 +2,17 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+
+// required by material-ui at entry
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import RaisedButton from 'material-ui/RaisedButton';
+
 import mobx, { observable, computed } from 'mobx';
-import { observer } from 'mobx-react';
-import { Button } from 'react-mdl';
-import 'react-mdl/extra/material.css';
-import 'react-mdl/extra/material.js';
+import { observer, Provider } from 'mobx-react';
 
 let test : integer = 'sldkfjsl';
 
@@ -58,7 +64,7 @@ class TodoList extends React.Component {
       ) }
       </ul>
       { store.pendingRequests > 0 ? <marquee>Loading...</marquee> : null }
-      <Button colored raised ripple onClick={ this.onNewTodo }>New Todo</Button>
+      <RaisedButton primary onClick={ this.onNewTodo }>New Todo</RaisedButton>
       <small> (double-click a todo to edit)</small>
       </div>
     );
@@ -101,7 +107,9 @@ class TodoView extends React.Component {
 }
 
 render(
-  <TodoList store={ observableTodoStore } />,
+  <MuiThemeProvider>
+    <TodoList store={ observableTodoStore } />
+  </MuiThemeProvider>,
   document.getElementById('app')
 );
                         
