@@ -2,19 +2,33 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import mobx, { observable, computed } from 'mobx';
+import { observer, inject, Provider } from 'mobx-react';
+import { Router, Route, browserHistory } from 'react-router';
 
 // required by material-ui at entry
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import RaisedButton from 'material-ui/RaisedButton';
 
-import mobx, { observable, computed } from 'mobx';
-import { observer, Provider } from 'mobx-react';
 
-let test : integer = 'sldkfjsl';
+
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+const routingStore = new RouterStore();
+
+import TodoStore from './TodoStore'; 
+const todoStore = new TodoStore();
+
+const stores = {
+  routing: routingStore,
+  todoStore,
+};
+        
+const history = syncHistoryWithStore(browserHistory, routingStore);
+
+const test : integer = 'sldkfjsl';
 
 class ObservableTodoStore {
   @observable todos = [];
@@ -47,14 +61,13 @@ class ObservableTodoStore {
 }
 
 
-const observableTodoStore = new ObservableTodoStore();
                         
 
-
+@inject('todoStore')
 @observer
 class TodoList extends React.Component {
   render() {
-    const store = this.props.store;
+    const store = this.props.todoStore;
     return (
       <div>
       { store.report }
@@ -71,7 +84,7 @@ class TodoList extends React.Component {
   }
 
   onNewTodo = () => {
-    this.props.store.addTodo(prompt('Enter a new todo:','coffee plz'));
+    this.props.todoStore.addTodo(prompt('Enter a new todo:','coffee plz'));
   }
 }
 
@@ -108,7 +121,11 @@ class TodoView extends React.Component {
 
 render(
   <MuiThemeProvider>
-    <TodoList store={ observableTodoStore } />
+    <Provider {...stores}>
+      <Router history={history}>
+        <Route path='/' component={TodoList} />
+      </Router>
+    </Provider>
   </MuiThemeProvider>,
   document.getElementById('app')
 );
