@@ -1,0 +1,2 @@
+# The default terminal emulator for scipts to use
+SYSTEM_TERMINAL=/bin/xterm

@@ -28,7 +28,7 @@ const stores = {
         
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
-const test : integer = 'sldkfjsl';
+const test : string =  'sldkfjsl';
 
 class ObservableTodoStore {
   @observable todos = [];

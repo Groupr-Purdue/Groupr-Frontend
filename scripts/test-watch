@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -f .defaults.example ]
+then
+  source .defaults.example
+fi
+
+if [ -f .defaults ]
+then
+  source .defaults
+fi
+
+if [ -z "$PROJECT_DIR" ]
+then
+  PROJECT_DIR="$PWD"
+fi
+
+$SYSTEM_TERMINAL -e "$PROJECT_DIR/node_modules/.bin/flow-watch" &
+$SYSTEM_TERMINAL -e "$PROJECT_DIR/node_modules/.bin/jest" --watch & 
