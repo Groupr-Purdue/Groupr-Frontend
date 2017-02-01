@@ -1,2 +1,23 @@
-# The default terminal emulator for scipts to use
+## DO NOT MODIFY THIS FILE. It is being tracked by Git.
+## Instead, create your own .defaults file and add
+## custom settings there.
+##
+## This file is sourced by scripts.
+## This exmple file is the fallback default.
+## Consider yourself warned.
+
+## If you do not have a .defaults file, run
+## `yarn run post-install`, this will create 
+## a .defaults file and add your project root
+## to it.
+
+## The default terminal emulator for scipts to use
+
 SYSTEM_TERMINAL=/bin/xterm
+
+
+## The root directory for your project.  This will automatically
+## be set during 'post-install'.
+## DO NOT UNCOMMENT THIS.
+
+# PROEJCT_DIR=/your/project/root/dir/here
