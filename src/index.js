@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react';
-import { render } from 'react-dom';
-import mobx, { observable, computed } from 'mobx';
-import { observer, inject, Provider } from 'mobx-react';
-import { Router, Route, browserHistory } from 'react-router';
+import {render} from 'react-dom';
+import mobx, {observable, computed} from 'mobx';
+import {observer, inject, Provider} from 'mobx-react';
+import {Router, Route, browserHistory} from 'react-router';
 
 // required by material-ui at entry
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -14,21 +14,20 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-
-import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import {RouterStore, syncHistoryWithStore} from 'mobx-react-router';
 const routingStore = new RouterStore();
 
-import TodoStore from './TodoStore'; 
+import TodoStore from './TodoStore';
 const todoStore = new TodoStore();
 
 const stores = {
   routing: routingStore,
-  todoStore,
+  todoStore
 };
-        
+
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
-const test : string =  'sldkfjsl';
+const test : string = 'sldkfjsl';
 
 class ObservableTodoStore {
   @observable todos = [];
@@ -46,22 +45,20 @@ class ObservableTodoStore {
 
   @computed get report() {
     if (this.todos.length === 0)
-      return "<none>";
+      return '<none>';
     return `Next todo: "${this.todos[0].task}". ` +
       `Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
 
   addTodo(task) {
     this.todos.push({
-      task: task,
+      task,
       completed: false,
       assignee: null
     });
   }
 }
 
-
-                        
 
 @inject('todoStore')
 @observer
@@ -73,18 +70,18 @@ class TodoList extends React.Component {
       { store.report }
       <ul>
       { store.todos.map(
-        (todo, idx) => <TodoView todo={ todo } key={ idx } />
+        (todo, idx) => <TodoView todo={todo} key={idx} />
       ) }
       </ul>
       { store.pendingRequests > 0 ? <marquee>Loading...</marquee> : null }
-      <RaisedButton primary onClick={ this.onNewTodo }>New Todo</RaisedButton>
+      <RaisedButton primary={true} onClick={this.onNewTodo}>New Todo</RaisedButton>
       <small> (double-click a todo to edit)</small>
       </div>
     );
   }
 
   onNewTodo = () => {
-    this.props.todoStore.addTodo(prompt('Enter a new todo:','coffee plz'));
+    this.props.todoStore.addTodo(prompt('Enter a new todo:', 'coffee plz'));
   }
 }
 
@@ -93,12 +90,11 @@ class TodoView extends React.Component {
   render() {
     const todo = this.props.todo;
     return (
-      <li onDoubleClick={ this.onRename }>
+      <li onDoubleClick={this.onRename}>
       <input
-      type='checkbox'
-      checked={ todo.completed }
-      onChange={ this.onToggleCompleted }
-      />
+        type="checkbox"
+        checked={todo.completed}
+        onChange={this.onToggleCompleted} />
       { todo.task }
       { todo.assignee
           ? <small>{ todo.assignee.name }</small>
@@ -123,10 +119,10 @@ render(
   <MuiThemeProvider>
     <Provider {...stores}>
       <Router history={history}>
-        <Route path='/' component={TodoList} />
+        <Route path="/" component={TodoList} />
       </Router>
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('app')
 );
-                        
+

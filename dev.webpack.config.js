@@ -1,19 +1,43 @@
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: "bundle.js"
+    filename: 'bundle.js'
+  },
+  eslint: {
+//    failOnWarning: true,
   },
   module: {
+
+// This is only for newer webpacks apparently
+/*
+   rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        use: [{loader: 'eslint-loader'}]
+      }
+
+    ],
+*/
+
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      }
+    ],
     loaders: [
       {
         test: /\.css$/,
-        loaders: [ 'style-loader', 'css-loader' ]
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"]
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

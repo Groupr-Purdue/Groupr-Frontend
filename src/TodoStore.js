@@ -1,6 +1,6 @@
 // @flow
 
-import mobx, { observable, computed } from 'mobx';
+import mobx, {observable, computed} from 'mobx';
 
 
 export default class ObservableTodoStore {
@@ -19,14 +19,14 @@ export default class ObservableTodoStore {
 
   @computed get report() : string {
     if (this.todos.length === 0)
-      return "<none>";
+      return '<none>';
     return `Next todo: "${this.todos[0].task}". ` +
       `Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
 
   addTodo(task : string) {
     this.todos.push({
-      task: task,
+      task,
       completed: false,
       assignee: null
     });
