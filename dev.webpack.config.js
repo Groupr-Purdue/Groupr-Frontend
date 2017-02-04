@@ -6,7 +6,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   eslint: {
-//    failOnWarning: true,
+    failOnWarning: false,
+    failOnError: false,
   },
   module: {
 

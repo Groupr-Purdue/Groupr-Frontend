@@ -8,7 +8,9 @@ export default class ObservableTodoStore {
   @observable pendingRequests = 0;
 
   constructor() {
+    /*eslint-disable*/
     mobx.autorun(() => console.log(this.report));
+      /*eslint-disable*/
   }
 
   @computed get completedTodosCount() : number {
