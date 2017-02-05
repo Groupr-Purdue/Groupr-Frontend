@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react';
-import {render} from 'react-dom';
-// import mobx from 'mobx';
-import {observer, inject, Provider} from 'mobx-react';
-import {Router, Route, browserHistory} from 'react-router';
+import { render } from 'react-dom';
+import { autorun } from 'mobx';
+import { observer, inject, Provider } from 'mobx-react';
+import { Router, Route, browserHistory } from 'react-router';
 
 // required by material-ui at entry
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -14,23 +14,23 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-import {RouterStore, syncHistoryWithStore} from 'mobx-react-router';
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 const routingStore = new RouterStore();
 
 import TodoStore from './TodoStore';
 
+autorun(() => console.log(TodoStore.report));
+
 const stores = {
   routing: routingStore,
-  todoStore: new TodoStore(),
+  todoStore: TodoStore,
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
-  /*eslint-disable */
 const newTodo = store => () => store.addTodo(prompt('slkdjlds:', 'sdklfjdskfj'))
-  /*eslint-disable */
 
-const TodoList = inject('todoStore')(observer(({todoStore: store}) =>
+const TodoList = inject('todoStore')(observer(({ todoStore: store }) =>
   <div>
     { store.report }
     <ul>
@@ -55,7 +55,8 @@ const onToggleCompleted = todo => () => {
   todo.completed = !todo.completed;
 };
 
-const onRename = todo => (ev) => {
+
+const onRename = todo => ev => {
   /*eslint-disable */
   console.log(ev.target.tagName.toLowerCase())
   if(ev.target.tagName.toLowerCase() === 'li')

@@ -1,16 +1,38 @@
 // @flow
 
-import mobx, {observable, computed} from 'mobx';
+import { observable, computed, action } from 'mobx';
 
 
+export default {
+  @observable todos: [],
+  @observable pendingRequests: 0,
+  @computed get completedTodosCount() {
+    return this.todos.filter(
+      todo => todo.completed === true
+    ).length;
+  },
+  @computed get report() {
+    if (this.todos.length === 0)
+      return '<none>';
+    return `Next todo: "${this.todos[0].task}". ` +
+      `Progress: ${this.completedTodosCount}/${this.todos.length}`;
+  },
+  @action addTodo(task) {
+    this.todos.push({
+      task,
+      completed: false,
+      assignee: null,
+    });
+  },
+};
+
+/*
 export default class ObservableTodoStore {
   @observable todos = [];
   @observable pendingRequests = 0;
 
   constructor() {
-    /*eslint-disable*/
     mobx.autorun(() => console.log(this.report));
-      /*eslint-disable*/
   }
 
   @computed get completedTodosCount() : number {
@@ -26,6 +48,7 @@ export default class ObservableTodoStore {
       `Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
 
+  @action
   addTodo(task : string) {
     this.todos.push({
       task,
@@ -34,3 +57,4 @@ export default class ObservableTodoStore {
     });
   }
 }
+*/

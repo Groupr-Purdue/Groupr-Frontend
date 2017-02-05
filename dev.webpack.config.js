@@ -3,7 +3,7 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   eslint: {
     failOnWarning: false,
@@ -28,24 +28,24 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader'
-      }
+        loader: 'eslint-loader',
+      },
     ],
     loaders: [
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+        ],
       },
       {
         test: /.jsx?$/,
@@ -56,10 +56,10 @@ module.exports = {
           plugins: [
             'transform-runtime',
             'add-module-exports',
-            'transform-decorators-legacy'
-          ]
-        }
-      }
-    ]
-  }
+            'transform-decorators-legacy',
+          ],
+        },
+      },
+    ],
+  },
 };
