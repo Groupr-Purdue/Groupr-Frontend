@@ -11,6 +11,10 @@ injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// required by react-grid-layout
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
+
 
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 const routingStore = new RouterStore();
@@ -28,7 +32,9 @@ render(
   <MuiThemeProvider>
     <Provider {...stores}>
       <Router history={history}>
-        <Route path="/" component={App} />
+        <Route path="/" component={App}>
+          <Route path="test" component={() => <h1> content </h1>} />
+        </Route>
       </Router>
     </Provider>
   </MuiThemeProvider>,
