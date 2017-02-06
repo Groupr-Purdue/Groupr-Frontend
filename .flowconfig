@@ -5,6 +5,7 @@
 [include]
 
 [libs]
+node_modules/mobx/lib/mobx.js.flow
 
 [options]
 module.name_mapper.extension='css' -> '<PROJECT_ROOT>/flow/CSSModule.js.flow'
