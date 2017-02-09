@@ -1,19 +1,16 @@
 // @flow
 
-import { observable, computed, action } from 'mobx';
+import { observable, computed } from 'mobx';
 
 export default class UserStore {
-  @observable todos = [];
-  @computed get completedTodosCount(): number {
-    return this.todos.filter(
-      todo => todo.completed === true
-    ).length;
-  }
-  @action addTodo(task: Object) {
-    this.todos.push({
-      task,
-      completed: false,
-      assignee: null,
-    });
+  @observable user: { firstName: string, lastName: string, classes: Array<string>} = {
+    firstName: '',
+    lastName: '',
+    classes: [],
+  };
+  @computed get fullName() : string {
+    const { firstName, lastName } = this.user;
+
+    return `${firstName} ${lastName}`;
   }
 }
