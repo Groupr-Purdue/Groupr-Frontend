@@ -29,7 +29,7 @@ const stores = {
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
 import App from './components/App';
-import Login from './components/Login';
+import Landing from './components/Landing';
 import MockCAS from './components/MockCAS';
 import CoursesPage from './components/CoursesPage';
 import CoursePage from './components/CoursePage';
@@ -54,7 +54,7 @@ render(
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Login} />
-          <Route path="cas" component={MockCAS} />
+          <IndexRoute component={Landing} />
           <Route path="courses" onEnter={enterCourses} component={CoursesPage} />
           <Route path="courses/:id" onEnter={enterCourse} component={CoursePage} />
         </Route>

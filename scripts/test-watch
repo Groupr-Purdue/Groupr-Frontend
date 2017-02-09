@@ -14,6 +14,6 @@ if [ -z "$PROJECT_DIR" ]
 then
   PROJECT_DIR="$PWD"
 fi
-
+echo "$PROJECT_DIR/node_modules/.bin/flow-watch"
 $SYSTEM_TERMINAL -e "$PROJECT_DIR/node_modules/.bin/flow-watch" &
-$SYSTEM_TERMINAL -e "$PROJECT_DIR/node_modules/.bin/jest" --watch & 
+$SYSTEM_TERMINAL -e "$PROJECT_DIR/node_modules/.bin/jest --watch" & 
