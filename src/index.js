@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'mobx-react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // required by material-ui at entry
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -27,13 +27,17 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 
 
 import App from './components/App';
+import Login from './components/Login';
+import MockCAS from './components/MockCAS';
 
 render(
   <MuiThemeProvider>
     <Provider {...stores}>
       <Router history={history}>
         <Route path="/" component={App}>
+          <IndexRoute component={Login} />
           <Route path="test" component={() => <h1> content </h1>} />
+          <Route path="cas" component={MockCAS} />
         </Route>
       </Router>
     </Provider>
