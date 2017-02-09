@@ -25,10 +25,11 @@ const stores = {
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
-
 import App from './components/App';
 import Login from './components/Login';
 import MockCAS from './components/MockCAS';
+import CoursesPage from './components/CoursesPage';
+import { fetchCourses } from './store/courses';
 
 render(
   <MuiThemeProvider>
@@ -36,8 +37,8 @@ render(
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Login} />
-          <Route path="test" component={() => <h1> content </h1>} />
           <Route path="cas" component={MockCAS} />
+          <Route path="courses" onEnter={fetchCourses} component={CoursesPage} />
         </Route>
       </Router>
     </Provider>
