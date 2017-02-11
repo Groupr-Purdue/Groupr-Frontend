@@ -61,5 +61,12 @@ module.exports = {
         },
       },
     ],
+    postLoaders: [
+      {
+        test: /.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'react-hot',
+      },
+    ],
   },
 };
