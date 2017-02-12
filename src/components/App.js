@@ -23,9 +23,6 @@ const App = ({ children, routing, navbar }) =>
       key={'AppBar'}
       title={navbar.title}
       onClick={() => routing.push('/courses')}
-      iconClassNameRight="muidocs-icon-navigation-expand-more" />
-      title='Groupr'
-      onClick={() => routing.push('/test')}
       iconClassNameRight='muidocs-icon-navigation-expand-more' />
     <div key={'children'}>
       {children}

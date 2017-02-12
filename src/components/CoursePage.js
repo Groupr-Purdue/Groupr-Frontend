@@ -25,7 +25,7 @@ const CoursesPage = ({ router }) =>
               secondaryText={user.career_account}
               onClick={handleClick(router)} />);
 
-          else <LinearProgress mode="indeterminate" />;
+          else <LinearProgress mode='indeterminate' />;
         } }
       </List>
     </Paper>

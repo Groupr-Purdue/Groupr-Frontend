@@ -30,8 +30,10 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 
 import App from './components/App';
 import Landing from './components/Landing';
+import Login from './components/Login';
 import CoursesPage from './components/CoursesPage';
 import CoursePage from './components/CoursePage';
+import Signup from './components/Signup';
 
 import { fetchCourses } from './store/courses';
 import { fetchCourse } from './store/course';
@@ -46,19 +48,18 @@ const enterCourse = nextProps => {
   navbarStore.subtitle = 'Loading';
   fetchCourse(nextProps);
 };
-import Login from './components/Login';
+
 
 render(
   <MuiThemeProvider>
     <Provider {...stores}>
       <Router history={history}>
-        <Route path="/" component={App}>
-          <IndexRoute component={Login} />
+        <Route path='/' component={App}>
           <IndexRoute component={Landing} />
-          <Route path="courses" onEnter={enterCourses} component={CoursesPage} />
-          <Route path="courses/:id" onEnter={enterCourse} component={CoursePage} />
-          <IndexRoute component={Landing} />
-          <Route path='cas' component={Login} />
+          <Route path='login' component={Login} />
+          <Route path='signup' component={Signup} />
+          <Route path='courses' onEnter={enterCourses} component={CoursesPage} />
+          <Route path='courses/:id' onEnter={enterCourse} component={CoursePage} />
         </Route>
       </Router>
     </Provider>

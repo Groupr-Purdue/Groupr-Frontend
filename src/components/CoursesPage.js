@@ -18,7 +18,7 @@ const CoursesPage = ({ router }) =>
             primaryText={course.title}
             secondaryText={course.name}
             onClick={handleClick(router)(course)} />);
-        else <LinearProgress mode="indeterminate" />;
+        else <LinearProgress mode='indeterminate' />;
       } }
     </List>
   </Paper>;
