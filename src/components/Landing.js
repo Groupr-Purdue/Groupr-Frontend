@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 export default class Landing extends React.Component {
   render() {
     return (
-      <div className="container">
-        <Link to="cas">
-          <RaisedButton className="login-button" primary={true}>
+      <div className='container'>
+        <Link to='cas'>
+          <RaisedButton className='login-button' primary={true}>
             Login
           </RaisedButton>
         </Link>

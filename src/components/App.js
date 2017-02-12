@@ -14,7 +14,7 @@ const layout : Array<Object> = [
 
 const App = ({ children, routing, navbar }) =>
   <AutoReactGridLayout
-    className="layout"
+    className='layout'
     layout={layout}
     cols={12}
     rowHeight={70}
@@ -24,6 +24,9 @@ const App = ({ children, routing, navbar }) =>
       title={navbar.title}
       onClick={() => routing.push('/courses')}
       iconClassNameRight="muidocs-icon-navigation-expand-more" />
+      title='Groupr'
+      onClick={() => routing.push('/test')}
+      iconClassNameRight='muidocs-icon-navigation-expand-more' />
     <div key={'children'}>
       {children}
     </div>

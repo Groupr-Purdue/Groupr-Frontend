@@ -30,8 +30,6 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 
 import App from './components/App';
 import Landing from './components/Landing';
-<<<<<<< HEAD
-import MockCAS from './components/MockCAS';
 import CoursesPage from './components/CoursesPage';
 import CoursePage from './components/CoursePage';
 
@@ -48,9 +46,7 @@ const enterCourse = nextProps => {
   navbarStore.subtitle = 'Loading';
   fetchCourse(nextProps);
 };
-=======
 import Login from './components/Login';
->>>>>>> add new login component
 
 render(
   <MuiThemeProvider>
@@ -61,6 +57,8 @@ render(
           <IndexRoute component={Landing} />
           <Route path="courses" onEnter={enterCourses} component={CoursesPage} />
           <Route path="courses/:id" onEnter={enterCourse} component={CoursePage} />
+          <IndexRoute component={Landing} />
+          <Route path='cas' component={Login} />
         </Route>
       </Router>
     </Provider>

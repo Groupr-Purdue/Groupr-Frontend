@@ -9,7 +9,7 @@ export default class Login extends React.Component {
         <Col>
           <Row>
             <RaisedButton primary={true}>
-              Sign-up
+              Sign-Up
             </RaisedButton>
           </Row>
           <Row>
