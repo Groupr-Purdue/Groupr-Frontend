@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CoursesPages from '../src/components/CoursesPage';
+import CoursesPage from '../src/components/CoursesPage';
 
-test('jest CoursePages snapshot test', () => {
+test('jest CoursesPages snapshot test', () => {
   const tree = renderer.create(<CoursesPage />).toJSON();
 
   expect(tree).toMatchSnapshot();
