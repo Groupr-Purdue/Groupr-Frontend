@@ -2,23 +2,23 @@
 
 import React, { PropTypes } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Paper, List, ListItem } from 'material-ui';
-import Spinner from './Spinner';
+import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
 import courses from '../store/courses';
 
-const handleClick = router => course => () => router.push(`/course/${course.id}`);
+const handleClick = router => course => () => router.push(`/courses/${course.id}`);
 
 const CoursesPage = ({ router }) =>
   <Paper>
     <List>
+      <Subheader> Your Courses </Subheader>
       { do {
-        if (courses.length) Spinner;
-
-        else courses.list.map((course, idx) =>
+        if (courses.list.length) courses.list.map((course, idx) =>
           <ListItem
             key={idx}
-            primaryText={course.name}
+            primaryText={course.title}
+            secondaryText={course.name}
             onClick={handleClick(router)(course)} />);
+        else <LinearProgress mode="indeterminate" />;
       } }
     </List>
   </Paper>;

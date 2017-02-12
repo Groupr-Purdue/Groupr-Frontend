@@ -19,8 +19,11 @@ import 'react-resizable/css/styles.css';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 const routingStore = new RouterStore();
 
+import navbarStore from './store/navbar';
+
 const stores = {
   routing: routingStore,
+  navbar: navbarStore,
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
@@ -29,7 +32,21 @@ import App from './components/App';
 import Login from './components/Login';
 import MockCAS from './components/MockCAS';
 import CoursesPage from './components/CoursesPage';
+import CoursePage from './components/CoursePage';
+
 import { fetchCourses } from './store/courses';
+import { fetchCourse } from './store/course';
+
+const enterCourses = ({ nextProps }) => {
+  navbarStore.subtitle = 'Course Listing';
+  fetchCourses(nextProps);
+};
+
+
+const enterCourse = nextProps => {
+  navbarStore.subtitle = 'Loading';
+  fetchCourse(nextProps);
+};
 
 render(
   <MuiThemeProvider>
@@ -38,7 +55,8 @@ render(
         <Route path="/" component={App}>
           <IndexRoute component={Login} />
           <Route path="cas" component={MockCAS} />
-          <Route path="courses" onEnter={fetchCourses} component={CoursesPage} />
+          <Route path="courses" onEnter={enterCourses} component={CoursesPage} />
+          <Route path="courses/:id" onEnter={enterCourse} component={CoursePage} />
         </Route>
       </Router>
     </Provider>

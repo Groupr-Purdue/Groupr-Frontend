@@ -5,7 +5,6 @@ import React, { PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import AppBar from 'material-ui/AppBar';
 import ReactGridLayout, { WidthProvider } from 'react-grid-layout';
-
 const AutoReactGridLayout = WidthProvider(ReactGridLayout);
 
 const layout : Array<Object> = [
@@ -13,7 +12,7 @@ const layout : Array<Object> = [
   { i: 'children', x: 0, y: 1, w: 12, h: 5 },
 ];
 
-const App = ({ children, routing }) =>
+const App = ({ children, routing, navbar }) =>
   <AutoReactGridLayout
     className="layout"
     layout={layout}
@@ -22,7 +21,7 @@ const App = ({ children, routing }) =>
     breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }} >
     <AppBar
       key={'AppBar'}
-      title="Groupr"
+      title={navbar.title}
       onClick={() => routing.push('/courses')}
       iconClassNameRight="muidocs-icon-navigation-expand-more" />
     <div key={'children'}>
@@ -33,6 +32,7 @@ const App = ({ children, routing }) =>
 App.propTypes = {
   children: PropTypes.element,
   routing: PropTypes.object,
+  navbar: PropTypes.object,
 };
 
-export default inject('routing')(observer(App));
+export default inject('routing', 'navbar')(observer(App));

@@ -122,7 +122,6 @@
     "no-process-env": 0, // disallow use of process.env
     "no-proto": 2, // disallow usage of __proto__ property
     "no-redeclare": 2, // disallow declaring the same variable more than once (recommended)
-    "no-return-assign": 2, // disallow use of assignment in return statement
     "no-script-url": 2, // disallow use of javascript: urls.
     "no-self-assign": 2, // disallow assignments where both sides are exactly the same (recommended)
     "no-self-compare": 2, // disallow comparisons where both sides are exactly the same
