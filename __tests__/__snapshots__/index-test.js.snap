@@ -1,5 +1,0 @@
-exports[`test jest snapshot test 1`] = `
-<div>
-   goodbye 
-</div>
-`;

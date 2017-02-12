@@ -16,27 +16,29 @@ export const fetchCourse = ({ params }) => {
   course.users = [];
   course.id = params.id;
 
-  fetch(
-    `${BACKEND_URL}/users`,
-    {
-      method: 'GET',
-      // header: { Authorization: user.token },
-    }
-  ).then(async ret => course.users = await ret.json());
+  return Promise.all([
+    fetch(
+      `${BACKEND_URL}/users`,
+      {
+        method: 'GET',
+        // header: { Authorization: user.token },
+      }
+    ).then(async ret => course.users = await ret.json()),
 
-  fetch(
-    `${BACKEND_URL}/courses/${params.id}`,
-    {
-      method: 'GET',
-    }
-  ).then(async ret => {
-    const { name, title, id } = await ret.json();
+    fetch(
+      `${BACKEND_URL}/courses/${params.id}`,
+      {
+        method: 'GET',
+      }
+    ).then(async ret => {
+      const { name, title, id } = await ret.json();
 
-    navbar.subtitle = name;
-    course.name = name;
-    course.title = title;
-    course.id = id;
-  });
+      navbar.subtitle = name;
+      course.name = name;
+      course.title = title;
+      course.id = id;
+    }),
+  ]);
 };
 
 export default course;
