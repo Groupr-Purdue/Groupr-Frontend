@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { TextField, RaisedButton } from 'material-ui';
+import { Link } from 'react-router';
 
 export default class signup extends React.Component {
   render() {
@@ -17,7 +18,9 @@ export default class signup extends React.Component {
           <TextField floatingLabelText='Confirm Password' />
         </Col>
         <Col xs={12}>
-          <RaisedButton primary={true}>Sign Up</RaisedButton>
+          <Link to='login'>
+            <RaisedButton primary={true}>Sign Up</RaisedButton>
+          </Link>
         </Col>
       </Row>
     );
