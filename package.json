@@ -12,7 +12,7 @@
     "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline",
     "flow": "flow",
     "flow:watch": "flow-watch",
-    "jest": "jest --watch",
+    "jest": "jest",
     "test:watch": "scripts/test-watch",
     "dev": "yarn run test:watch; yarn run server"
   },
@@ -34,6 +34,7 @@
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^6.9.0",
     "flexboxgrid": "^6.3.1",
+    "fetch-mock": "^5.9.3",
     "flow-bin": "^0.38.0",
     "flow-watch": "^1.1.0",
     "gulp-4.0.build": "^4.0.0-build.a271520",
@@ -56,5 +57,11 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./jestrc.js"
+    ]
   }
 }

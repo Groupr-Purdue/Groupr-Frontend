@@ -4,16 +4,17 @@ import { BACKEND_URL } from '../config';
 
 const courses = observable({ list: [] });
 
-export const fetchCourses = async () => {
+export const fetchCourses = () => {
   courses.list = [];
 
-  courses.list = await fetch(
+  return fetch(
     `${BACKEND_URL}/courses`,
     {
       method: 'GET',
       // header: { Authorization: user.token },
     }
-  ).then(async ret => await ret.json());
+  ).then(ret => ret.json())
+  .then(json => courses.list = json);
 };
 
 export default courses;
