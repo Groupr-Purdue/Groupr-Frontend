@@ -1,7 +1,7 @@
 import course, { fetchCourse } from '../src/store/course';
 
 
-describe('course store', function(){
+describe('course store', () => {
   fetch
   .get('glob:*/courses/*', JSON.stringify({ name: 'CS 352' }))
   .get('glob:*/users', JSON.stringify([{ id: '1' }]));
@@ -12,7 +12,7 @@ describe('course store', function(){
 
   it('updates the course info', () => {
     expect(course.name).toBe('CS 352');
-  })
+  });
 
   it('updates the users', () => {
     expect(course.users.length).toBeGreaterThan(0);

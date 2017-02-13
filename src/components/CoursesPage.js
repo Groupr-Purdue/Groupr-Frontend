@@ -27,4 +27,6 @@ CoursesPage.propTypes = {
   router: PropTypes.object,
 };
 
+export { CoursesPage as NakedCoursesPage };
+
 export default inject('router')(observer(CoursesPage));

@@ -1,10 +1,10 @@
 import courses, { fetchCourses } from '../src/store/courses';
 
-describe('fetchCourses', function(){
+describe('fetchCourses', () => {
   fetch.get(/^.*\/courses$/, JSON.stringify([{ name: 'CS 352' }]));
 
   beforeEach(done => {
-    fetchCourses().then(done).catch(err => console.log(err));
+    fetchCourses().then(done);
   });
 
   it('has more than one course', () => {

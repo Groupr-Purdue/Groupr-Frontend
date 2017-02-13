@@ -1,9 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import CoursesPage from '../src/components/CoursesPage';
+import Context from '../src/components/Context';
+import { shallow } from 'enzyme';
 
 test('jest CoursesPages snapshot test', () => {
-  const tree = renderer.create(<CoursesPage />).toJSON();
-
-  expect(tree).toMatchSnapshot();
+  expect(shallow(<Context><CoursesPage /></Context>)).toMatchSnapshot();
 });
