@@ -1,7 +1,7 @@
 import courses, { fetchCourses } from '../src/store/courses';
 
-describe('courses store', function(){
-  fetch.mock('*', JSON.stringify([{ name: 'CS 352' }]));
+describe('fetchCourses', function(){
+  fetch.get(/^.*\/courses$/, JSON.stringify([{ name: 'CS 352' }]));
 
   beforeEach(done => {
     fetchCourses().then(done).catch(err => console.log(err));

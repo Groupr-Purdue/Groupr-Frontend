@@ -23,20 +23,24 @@ export const fetchCourse = ({ params }) => {
         method: 'GET',
         // header: { Authorization: user.token },
       }
-    ).then(async ret => course.users = await ret.json()),
+    ).then(ret => ret.json())
+    .then(json => course.users = json),
 
     fetch(
       `${BACKEND_URL}/courses/${params.id}`,
       {
         method: 'GET',
       }
-    ).then(async ret => {
-      const { name, title, id } = await ret.json();
+    ).then(ret => ret.json())
+    .then(json => {
+      const { name, title, id } = json;
 
       navbar.subtitle = name;
       course.name = name;
       course.title = title;
       course.id = id;
+
+      return json;
     }),
   ]);
 };

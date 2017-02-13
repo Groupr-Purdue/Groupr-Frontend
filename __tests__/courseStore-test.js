@@ -1,16 +1,11 @@
 import course, { fetchCourse } from '../src/store/course';
 
-const mockJSON = ret => new Promise(res1 => ({
-  json: () => res1(new Promise(res2 => res2(ret))),
-}));
-
-global.fetch = url => {
-  if (url.indexOf('courses') !== -1) return mockJSON({ name: 'CS 352' });
-  if (url.indexOf('users') !== -1) return mockJSON({ users: [1, 2, 3] });
-  return Promise(resolve => resolve({}));
-};
 
 describe('course store', function(){
+  fetch
+  .get('glob:*/courses/*', JSON.stringify({ name: 'CS 352' }))
+  .get('glob:*/users', JSON.stringify([{ id: '1' }]));
+
   beforeEach(done => {
     fetchCourse({ params: { id: 1 } }).then(done);
   });
