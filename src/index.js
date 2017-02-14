@@ -2,15 +2,11 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
-// required by material-ui at entry
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import { syncHistoryWithStore } from 'mobx-react-router';
 import routingStore from './store/router';
-const history = syncHistoryWithStore(browserHistory, routingStore);
+const history = syncHistoryWithStore(hashHistory, routingStore);
 
 import App from './components/App';
 import Landing from './components/Landing';
@@ -33,7 +29,6 @@ const enterCourse = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Loading';
   fetchCourse(nextProps);
 };
-
 
 render(
   <Context>
