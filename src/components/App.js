@@ -4,6 +4,8 @@ import React, { PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import AppBar from 'material-ui/AppBar';
 import { Row, Col, Grid } from 'react-flexbox-grid';
+import GroupWork from 'material-ui/svg-icons/action/group-work';
+import IconButton from 'material-ui/IconButton';
 
 const App =
   (
@@ -17,7 +19,14 @@ const App =
             key={'AppBar'}
             title={navbar.title}
             onClick={(): Void => routing.push('/courses')}
-            iconClassNameRight='muidocs-icon-navigation-expand-more' />
+            iconElementLeft={
+              <IconButton
+                style={{ padding: 0 }}
+                iconStyle={{ height: 42, width: 42 }}>
+
+                <GroupWork />
+              </IconButton>
+            } />
         </Col>
       </Row>
       <Row>
