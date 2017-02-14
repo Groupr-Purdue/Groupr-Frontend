@@ -1,12 +1,17 @@
 // @flow
+
 import React, { PropTypes } from 'react';
 
 import { RaisedButton } from 'material-ui';
 import { inject, observer } from 'mobx-react';
 
+type MockCASPropType = { routing: Object };
+
 @inject('routing')
 @observer
 export default class MockCAS extends React.Component {
+  props = MockCASPropType;
+
   // send to server for auth
   onLogin() {
     fetch('la;sjdf;lasjkdf;')
@@ -19,7 +24,7 @@ export default class MockCAS extends React.Component {
         console.log(error); // eslint-disable-line no-console
     });
   }
-  render() {
+  render(): React$Element {
     return (
       <RaisedButton
         primary={true}

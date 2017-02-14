@@ -8,11 +8,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-
-// required by react-grid-layout
-import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css';
-
 import { syncHistoryWithStore } from 'mobx-react-router';
 import routingStore from './store/router';
 const history = syncHistoryWithStore(browserHistory, routingStore);
@@ -29,12 +24,12 @@ import navbarStore from './store/navbar';
 import { fetchCourses } from './store/courses';
 import { fetchCourse } from './store/course';
 
-const enterCourses = ({ nextProps }) => {
+const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
   fetchCourses(nextProps);
 };
 
-const enterCourse = nextProps => {
+const enterCourse = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Loading';
   fetchCourse(nextProps);
 };

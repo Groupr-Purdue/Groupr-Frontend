@@ -5,9 +5,12 @@ import { inject, observer } from 'mobx-react';
 import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
 import course from '../store/course';
 
-const handleClick = router => () => router.push(`/users/${course.id}`);
+const handleClick =
+  (router: Object): Function =>
+  (): Void =>
+  router.push(`/users/${course.id}`);
 
-const CoursesPage = ({ router }) =>
+const CoursesPage = ({ router }: { router: object }): React$Element =>
   <div>
     <Paper>
       <h1> {course.name} </h1>
@@ -18,12 +21,14 @@ const CoursesPage = ({ router }) =>
       <List>
         <Subheader> {course.name} Students </Subheader>
         { do {
-          if (course.users.length) course.users.map((user, idx) =>
-            <ListItem
-              key={idx}
-              primaryText={`${user.first_name} ${user.last_name}`}
-              secondaryText={user.career_account}
-              onClick={handleClick(router)} />);
+          if (course.users.length)
+            course.users.map(
+              (user: Object, idx: number): React$Element =>
+                <ListItem
+                  key={idx}
+                  primaryText={`${user.first_name} ${user.last_name}`}
+                  secondaryText={user.career_account}
+                  onClick={handleClick(router)} />);
 
           else <LinearProgress mode='indeterminate' />;
         } }

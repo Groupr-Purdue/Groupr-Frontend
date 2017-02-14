@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Provider } from 'mobx-react';
 
@@ -14,10 +16,10 @@ const stores = {
   navbar: navbarStore,
 };
 
-export default (props: { children : Object }) =>
+export default ({ children }: { children: Array<React$Element> }): React$Element =>
   <MuiThemeProvider>
     <Provider {...stores}>
-      { props.children }
+      { children }
     </Provider>
   </MuiThemeProvider>
 ;

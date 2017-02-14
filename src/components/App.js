@@ -12,22 +12,26 @@ const layout : Array<Object> = [
   { i: 'children', x: 0, y: 1, w: 12, h: 5 },
 ];
 
-const App = ({ children, routing, navbar }) =>
-  <AutoReactGridLayout
-    className='layout'
-    layout={layout}
-    cols={12}
-    rowHeight={70}
-    breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }} >
-    <AppBar
-      key={'AppBar'}
-      title={navbar.title}
-      onClick={() => routing.push('/courses')}
-      iconClassNameRight='muidocs-icon-navigation-expand-more' />
-    <div key={'children'}>
-      {children}
-    </div>
-  </AutoReactGridLayout>;
+const App =
+  (
+    { children, routing, navbar }:
+    { children: Array<React$Element>, routing: Object, navbar: Object }
+  ): React$Element =>
+    <AutoReactGridLayout
+      className='layout'
+      layout={layout}
+      cols={12}
+      rowHeight={70}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }} >
+      <AppBar
+        key={'AppBar'}
+        title={navbar.title}
+        onClick={(): Void => routing.push('/courses')}
+        iconClassNameRight='muidocs-icon-navigation-expand-more' />
+      <div key={'children'}>
+        {children}
+      </div>
+    </AutoReactGridLayout>;
 
 App.propTypes = {
   children: PropTypes.element,
