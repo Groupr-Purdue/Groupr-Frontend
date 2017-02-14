@@ -34,7 +34,13 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
+        loader: 'style!css?modules',
+        include: /flexboxgrid/,
+      },
+      {
+        test: /\.css$/,
         loaders: ['style-loader', 'css-loader'],
+        exclude: /flexboxgrid/,
       },
       {
         test: /\.scss$/,

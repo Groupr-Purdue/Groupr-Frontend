@@ -4,6 +4,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
 import courses from '../store/courses';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 const handleClick =
   (router: Object): Function =>
@@ -12,19 +13,26 @@ const handleClick =
 
 const CoursesPage = ({ router }: { router: Object }): React$Element =>
   <Paper>
-    <List>
-      <Subheader> Your Courses </Subheader>
-      { do {
-        if (courses.list.length)
-          courses.list.map((course: Object, idx: number): React$Element =>
-            <ListItem
-              key={idx}
-              primaryText={course.title}
-              secondaryText={course.name}
-              onClick={handleClick(router)(course)} />);
-        else <LinearProgress mode='indeterminate' />;
-      } }
-    </List>
+    <Grid>
+      <Row center='xs'>
+        <Col xs={10}>
+          <List>
+            <Subheader> Your Courses </Subheader>
+            { do {
+              if (courses.list.length)
+                courses.list.map((course: Object, idx: number): React$Element =>
+                  <ListItem
+                    key={idx}
+                    primaryText={course.title}
+                    secondaryText={course.name}
+                    onClick={handleClick(router)(course)} />);
+
+              else <LinearProgress mode='indeterminate' />;
+            } }
+          </List>
+        </Col>
+      </Row>
+    </Grid>
   </Paper>;
 
 export { CoursesPage as NakedCoursesPage };

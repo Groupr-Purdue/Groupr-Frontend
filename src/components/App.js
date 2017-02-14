@@ -11,7 +11,7 @@ const App =
     { children: Array<React$Element>, routing: Object, navbar: Object }
   ): React$Element =>
     <Grid>
-      <Row>
+      <Row style={{ marginBottom: '15px' }}>
         <Col xs={12}>
           <AppBar
             key={'AppBar'}
