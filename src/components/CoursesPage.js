@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
 import courses from '../store/courses';
@@ -26,10 +26,6 @@ const CoursesPage = ({ router }: { router: Object }): React$Element =>
       } }
     </List>
   </Paper>;
-
-CoursesPage.propTypes = {
-  router: PropTypes.object,
-};
 
 export { CoursesPage as NakedCoursesPage };
 

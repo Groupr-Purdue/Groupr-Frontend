@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
 import course from '../store/course';
@@ -35,9 +35,5 @@ const CoursesPage = ({ router }: { router: object }): React$Element =>
       </List>
     </Paper>
   </div>;
-
-CoursesPage.propTypes = {
-  router: PropTypes.object,
-};
 
 export default inject('router')(observer(CoursesPage));

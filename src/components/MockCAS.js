@@ -1,16 +1,14 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import { RaisedButton } from 'material-ui';
 import { inject, observer } from 'mobx-react';
 
-type MockCASPropType = { routing: Object };
-
 @inject('routing')
 @observer
 export default class MockCAS extends React.Component {
-  props = MockCASPropType;
+  props: { routing: Object };
 
   // send to server for auth
   onLogin() {
@@ -34,7 +32,3 @@ export default class MockCAS extends React.Component {
     );
   }
 }
-
-MockCAS.propTypes = {
-  routing: PropTypes.object,
-};
