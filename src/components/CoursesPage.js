@@ -2,7 +2,14 @@
 
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { Paper, List, ListItem, LinearProgress, Subheader } from 'material-ui';
+import {
+  Paper,
+  List,
+  ListItem,
+  LinearProgress,
+  Subheader,
+  Divider,
+} from 'material-ui';
 import courses from '../store/courses';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -14,10 +21,11 @@ const handleClick =
 const CoursesPage = ({ router }: { router: Object }): React$Element =>
   <Paper>
     <Grid>
-      <Row center='xs'>
-        <Col xs={10}>
+      <Row>
+        <Col xsOffset={1} xs={10}>
           <List>
-            <Subheader> Your Courses </Subheader>
+            <Row center='xs'><Subheader> Your Courses </Subheader></Row>
+            <Divider style={{ marginBottom: '10px' }} />
             { do {
               if (courses.list.length)
                 courses.list.map((course: Object, idx: number): React$Element =>
