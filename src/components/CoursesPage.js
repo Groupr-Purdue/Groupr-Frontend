@@ -6,12 +6,11 @@ import {
   Paper,
   List,
   ListItem,
-  LinearProgress,
-  Subheader,
   Divider,
 } from 'material-ui';
 import courses from '../store/courses';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import Spinner from 'react-spinkit';
 
 const handleClick =
   (router: Object): Function =>
@@ -24,7 +23,7 @@ const CoursesPage = ({ router }: { router: Object }): React$Element =>
       <Row>
         <Col xsOffset={1} xs={10}>
           <List>
-            <Row center='xs'><Subheader> Your Courses </Subheader></Row>
+            <Row center='xs'><h3> Your Courses </h3></Row>
             <Divider style={{ marginBottom: '10px' }} />
             { do {
               if (courses.list.length)
@@ -35,7 +34,12 @@ const CoursesPage = ({ router }: { router: Object }): React$Element =>
                     secondaryText={course.name}
                     onClick={handleClick(router)(course)} />);
 
-              else <LinearProgress mode='indeterminate' />;
+              else
+                <Row center='xs'>
+                  <Spinner style={{ width: 100, height: 100 }} spinnerName='cube-grid' />
+                </Row>;
+                // <LinearProgress mode='indeterminate'
+                //   style={{ marginBottom: 30 }} />;
             } }
           </List>
         </Col>

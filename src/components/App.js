@@ -21,9 +21,9 @@ const App =
             onClick={(): Void => routing.push('/courses')}
             iconElementLeft={
               <IconButton
+                tooltip='Team up!'
                 style={{ padding: 0 }}
                 iconStyle={{ height: 42, width: 42 }}>
-
                 <GroupWork />
               </IconButton>
             } />
