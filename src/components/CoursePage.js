@@ -4,14 +4,14 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import {
   Paper,
-  List, ListItem,
-  LinearProgress,
-  CircularProgress,
+  List,
+  ListItem,
   Subheader,
   Divider,
 } from 'material-ui';
 import course from '../store/course';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import loadingWrapper from '../util/loadingWrapper';
 
 const handleClick =
   (router: Object): Function =>
@@ -24,12 +24,10 @@ const CoursesPage = ({ router }: { router: object }): React$Element =>
       <Grid>
         <Row center='xs'>
           <Col xs={10} style={{ padding: '20px 0 20px 0' }}>
-            {
-              course.name === 'Loading' ? <CircularProgress /> : <div>
-                <h1> {course.name} </h1>
-                <h2> {course.title} </h2>
-              </div>
-            }
+            <div>
+              <h1> {course.name} </h1>
+              <h2> {course.title} </h2>
+            </div>
           </Col>
         </Row>
 
@@ -50,7 +48,7 @@ const CoursesPage = ({ router }: { router: object }): React$Element =>
                         secondaryText={user.career_account}
                         onClick={handleClick(router)} />);
 
-                else <LinearProgress mode='indeterminate' />;
+                else <ListItem primaryText='No studuents in this course.' />;
               } }
             </List>
           </Col>
@@ -59,4 +57,4 @@ const CoursesPage = ({ router }: { router: object }): React$Element =>
     </Paper>
   </div>;
 
-export default inject('router')(observer(CoursesPage));
+export default inject('router')(loadingWrapper(observer(CoursesPage)));

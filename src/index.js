@@ -30,6 +30,8 @@ const enterCourse = (nextProps: Object): Void => {
   fetchCourse(nextProps);
 };
 
+const stopLoading = (): boolean => navbarStore.loading = false;
+
 render(
   <Context>
     <Router history={history}>
@@ -37,8 +39,14 @@ render(
         <IndexRoute component={Landing} />
         <Route path='login' component={Login} />
         <Route path='signup' component={Signup} />
-        <Route path='courses' onEnter={enterCourses} component={CoursesPage} />
-        <Route path='courses/:id' onEnter={enterCourse} component={CoursePage} />
+        <Route path='courses'
+          onLeave={stopLoading}
+          onEnter={enterCourses}
+          component={CoursesPage} />
+        <Route path='courses/:id'
+          onEnter={enterCourse}
+          onLeave={stopLoading}
+          component={CoursePage} />
       </Route>
     </Router>
   </Context>,

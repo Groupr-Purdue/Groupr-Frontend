@@ -15,6 +15,7 @@ export const fetchCourse = ({ params }) => {
   course.title = 'Loading';
   course.users = [];
   course.id = params.id;
+  navbar.loading = true;
 
   return Promise.all([
     fetch(
@@ -24,7 +25,10 @@ export const fetchCourse = ({ params }) => {
         // header: { Authorization: user.token },
       }
     ).then(ret => ret.json())
-    .then(json => course.users = json),
+    .then(json => {
+      navbar.loading = true;
+      return course.users = json;
+    }),
 
     fetch(
       `${BACKEND_URL}/courses/${params.id}`,

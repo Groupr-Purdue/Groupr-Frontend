@@ -7,6 +7,7 @@ class Navbar {
   constructor() {
     this.subtitle = '';
     this.maintitle = 'Groupr';
+    this.loading = true;
   }
 
   @computed

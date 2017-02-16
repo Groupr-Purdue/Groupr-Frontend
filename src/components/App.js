@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import { Row, Col, Grid } from 'react-flexbox-grid';
 import GroupWork from 'material-ui/svg-icons/action/group-work';
 import IconButton from 'material-ui/IconButton';
+import { CubeGrid } from 'better-react-spinkit';
 
 const App =
   (
@@ -19,6 +20,12 @@ const App =
             key={'AppBar'}
             title={navbar.title}
             onClick={(): Void => routing.push('/courses')}
+            iconElementRight={
+              navbar.loading ?
+                <Row style={{ height: 50, marginRight: 10 }} middle='xs'>
+                  <CubeGrid color='white' size={30} />
+                </Row> : null
+              }
             iconElementLeft={
               <IconButton
                 tooltip='Team up!'

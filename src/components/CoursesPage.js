@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import {
   Paper,
   List,
@@ -10,14 +10,14 @@ import {
 } from 'material-ui';
 import courses from '../store/courses';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Spinner from 'react-spinkit';
+import router from '../store/router';
+import loadingWrapper from '../util/loadingWrapper';
 
 const handleClick =
-  (router: Object): Function =>
   (course: Object): Function =>
   (): Void => router.push(`/courses/${course.id}`);
 
-const CoursesPage = ({ router }: { router: Object }): React$Element =>
+const CoursesPage = (): Object =>
   <Paper>
     <Grid>
       <Row>
@@ -32,11 +32,11 @@ const CoursesPage = ({ router }: { router: Object }): React$Element =>
                     key={idx}
                     primaryText={course.title}
                     secondaryText={course.name}
-                    onClick={handleClick(router)(course)} />);
+                    onClick={handleClick(course)} />);
 
               else
                 <Row center='xs'>
-                  <Spinner style={{ width: 100, height: 100 }} spinnerName='cube-grid' />
+                  <h4> No Courses </h4>
                 </Row>;
                 // <LinearProgress mode='indeterminate'
                 //   style={{ marginBottom: 30 }} />;
@@ -49,4 +49,4 @@ const CoursesPage = ({ router }: { router: Object }): React$Element =>
 
 export { CoursesPage as NakedCoursesPage };
 
-export default inject('router')(observer(CoursesPage));
+export default loadingWrapper(observer(CoursesPage));
