@@ -1,9 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Context from '../src/components/Context';
 import Landing from '../src/components/Login';
+import { shallow } from 'enzyme';
 
 test('jest Landing snapshot test', () => {
-  const tree = renderer.create(<Landing />).toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
+  expect(shallow(<Context><Landing/></Context>)).toMatchSnapshot();
+ });
