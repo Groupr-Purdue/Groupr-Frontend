@@ -1,0 +1,199 @@
+exports[`test jest CoursesPages snapshot test 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Paper
+    circle={false}
+    rounded={true}
+    transitionEnabled={true}
+    zDepth={1}>
+    <Grid>
+        <Row>
+            <Col
+                xs={10}
+                xsOffset={1}>
+                <List>
+                    <Row
+                        center="xs">
+                        <h3>
+                             Your Courses 
+                        </h3>
+                    </Row>
+                    <Divider
+                        inset={false}
+                        style={
+                            Object {
+                                "marginBottom": "10px",
+                              }
+                        } />
+                    <Row
+                        center="xs">
+                        <h4>
+                             No Courses 
+                        </h4>
+                    </Row>
+                </List>
+            </Col>
+        </Row>
+    </Grid>
+</Paper>,
+  "nodes": Array [
+    <Paper
+      circle={false}
+      rounded={true}
+      transitionEnabled={true}
+      zDepth={1}>
+      <Grid>
+            <Row>
+                  <Col
+                        xs={10}
+                        xsOffset={1}>
+                        <List>
+                              <Row
+                                    center="xs">
+                                    <h3>
+                                           Your Courses 
+                                    </h3>
+                              </Row>
+                              <Divider
+                                    inset={false}
+                                    style={
+                                          Object {
+                                                "marginBottom": "10px",
+                                              }
+                                    } />
+                              <Row
+                                    center="xs">
+                                    <h4>
+                                           No Courses 
+                                    </h4>
+                              </Row>
+                        </List>
+                  </Col>
+            </Row>
+      </Grid>
+</Paper>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <CoursesPage />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {},
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Paper
+          circle={false}
+          rounded={true}
+          transitionEnabled={true}
+          zDepth={1}>
+          <Grid>
+                    <Row>
+                              <Col
+                                        xs={10}
+                                        xsOffset={1}>
+                                        <List>
+                                                  <Row
+                                                            center="xs">
+                                                            <h3>
+                                                                       Your Courses 
+                                                            </h3>
+                                                  </Row>
+                                                  <Divider
+                                                            inset={false}
+                                                            style={
+                                                                      Object {
+                                                                                "marginBottom": "10px",
+                                                                              }
+                                                            } />
+                                                  <Row
+                                                            center="xs">
+                                                            <h4>
+                                                                       No Courses 
+                                                            </h4>
+                                                  </Row>
+                                        </List>
+                              </Col>
+                    </Row>
+          </Grid>
+</Paper>,
+        "_debugID": 2,
+        "_renderedOutput": <Paper
+          circle={false}
+          rounded={true}
+          transitionEnabled={true}
+          zDepth={1}>
+          <Grid>
+                    <Row>
+                              <Col
+                                        xs={10}
+                                        xsOffset={1}>
+                                        <List>
+                                                  <Row
+                                                            center="xs">
+                                                            <h3>
+                                                                       Your Courses 
+                                                            </h3>
+                                                  </Row>
+                                                  <Divider
+                                                            inset={false}
+                                                            style={
+                                                                      Object {
+                                                                                "marginBottom": "10px",
+                                                                              }
+                                                            } />
+                                                  <Row
+                                                            center="xs">
+                                                            <h4>
+                                                                       No Courses 
+                                                            </h4>
+                                                  </Row>
+                                        </List>
+                              </Col>
+                    </Row>
+          </Grid>
+</Paper>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <CoursesPage />,
+}
+`;

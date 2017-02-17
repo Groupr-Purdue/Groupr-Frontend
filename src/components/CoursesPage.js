@@ -8,10 +8,10 @@ import {
   ListItem,
   Divider,
 } from 'material-ui';
-import courses from '../store/courses';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import router from '../store/router';
-import loadingWrapper from '../util/loadingWrapper';
+import courses from '~/store/courses';
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import router from '~/store/router';
+import loadingWrapper from '~/util/loadingWrapper';
 
 const handleClick =
   (course: Object): Function =>

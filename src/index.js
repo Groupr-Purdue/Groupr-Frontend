@@ -8,17 +8,17 @@ import { syncHistoryWithStore } from 'mobx-react-router';
 import routingStore from './store/router';
 const history = syncHistoryWithStore(hashHistory, routingStore);
 
-import App from './components/App';
-import Landing from './components/Landing';
+import App from '~/components/App';
+import Landing from '~/components/Landing';
 import Login from './components/Login';
-import CoursesPage from './components/CoursesPage';
-import CoursePage from './components/CoursePage';
-import Signup from './components/Signup';
-import Context from './components/Context';
+import CoursesPage from '~/components/CoursesPage';
+import CoursePage from '~/components/CoursePage';
+import Signup from '~/components/Signup';
+import Context from '~/components/Context';
 
-import navbarStore from './store/navbar';
-import { fetchCourses } from './store/courses';
-import { fetchCourse } from './store/course';
+import navbarStore from '~/store/navbar';
+import { fetchCourses } from '~/store/courses';
+import { fetchCourse } from '~/store/course';
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';

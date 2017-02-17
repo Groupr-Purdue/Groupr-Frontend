@@ -1,6 +1,6 @@
 import { observable } from 'mobx';
-import { BACKEND_URL } from '../config';
-import navbar from './navbar';
+import { BACKEND_URL } from '~/config';
+import navbar from '~/store/navbar';
 
 const course = observable({
   name: 'Loading',

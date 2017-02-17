@@ -9,9 +9,9 @@ import {
   Subheader,
   Divider,
 } from 'material-ui';
-import course from '../store/course';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import loadingWrapper from '../util/loadingWrapper';
+import course from '~/store/course';
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import loadingWrapper from '~/util/loadingWrapper';
 
 const handleClick =
   (router: Object): Function =>

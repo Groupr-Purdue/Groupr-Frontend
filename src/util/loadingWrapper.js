@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
-import { Grid, Row } from 'react-flexbox-grid';
+import { Grid, Row } from 'react-flexbox-grid-aphrodite';
 import { Pulse } from 'better-react-spinkit';
-import navbar from '../store/navbar';
+import navbar from '~/store/navbar';
 import { observer } from 'mobx-react';
 
 const loadingWrapper =

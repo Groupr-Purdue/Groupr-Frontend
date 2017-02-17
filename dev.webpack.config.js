@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -8,6 +10,11 @@ module.exports = {
   eslint: {
     failOnWarning: false,
     failOnError: false,
+  },
+  resolve: {
+    alias: {
+      '~': path.resolve('./src'),
+    },
   },
   module: {
 
@@ -34,13 +41,7 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style!css?modules',
-        include: /flexboxgrid/,
-      },
-      {
-        test: /\.css$/,
         loaders: ['style-loader', 'css-loader'],
-        exclude: /flexboxgrid/,
       },
       {
         test: /\.scss$/,

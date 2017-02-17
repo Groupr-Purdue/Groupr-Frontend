@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import AppBar from 'material-ui/AppBar';
-import { Row, Col, Grid } from 'react-flexbox-grid';
+import { Row, Col, Grid } from 'react-flexbox-grid-aphrodite';
 import GroupWork from 'material-ui/svg-icons/action/group-work';
 import IconButton from 'material-ui/IconButton';
 import { CubeGrid } from 'better-react-spinkit';
