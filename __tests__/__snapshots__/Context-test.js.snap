@@ -10,7 +10,7 @@ ShallowWrapper {
     <Provider
         navbar={
             Navbar {
-                "loading": true,
+                "loading": false,
                 "maintitle": "Groupr",
                 "subtitle": "",
               }
@@ -31,7 +31,7 @@ ShallowWrapper {
       <Provider
             navbar={
                   Navbar {
-                        "loading": true,
+                        "loading": false,
                         "maintitle": "Groupr",
                         "subtitle": "",
                       }
@@ -86,7 +86,7 @@ ShallowWrapper {
           <Provider
                     navbar={
                               Navbar {
-                                        "loading": true,
+                                        "loading": false,
                                         "maintitle": "Groupr",
                                         "subtitle": "",
                                       }
@@ -107,7 +107,7 @@ ShallowWrapper {
           <Provider
                     navbar={
                               Navbar {
-                                        "loading": true,
+                                        "loading": false,
                                         "maintitle": "Groupr",
                                         "subtitle": "",
                                       }
