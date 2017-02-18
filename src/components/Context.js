@@ -12,8 +12,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
-import navbarStore from '../store/navbar';
-import routingStore from '../store/router';
+import navbarStore from '~/store/navbar';
+import routingStore from '~/store/router';
 
 const stores = {
   routing: routingStore,

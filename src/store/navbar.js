@@ -3,11 +3,12 @@ import { observable, computed } from 'mobx';
 class Navbar {
   @observable subtitle;
   @observable maintitle;
+  @observable loading;
 
   constructor() {
     this.subtitle = '';
     this.maintitle = 'Groupr';
-    this.loading = true;
+    this.loading = false;
   }
 
   @computed

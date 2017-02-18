@@ -1,5 +1,5 @@
 import React from 'react';
-import CoursePage from '../src/components/CoursePage';
+import { CoursePage } from '../src/components/CoursePage';
 import Context from '../src/components/Context';
 import { shallow } from 'enzyme';
 

@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 // import user from './user';
-import { BACKEND_URL } from '../config';
-import navbar from './navbar';
+import { BACKEND_URL } from '~/config';
+import navbar from '~/store/navbar';
 
 const courses = observable({ list: [] });
 
