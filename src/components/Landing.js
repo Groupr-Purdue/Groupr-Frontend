@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-flexbox-grid-aphrodite';
 import { RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
 
 export default class Landing extends React.Component {
+  props: { routing: Object };
+
   render() {
     return (
       <Row>
@@ -26,7 +28,3 @@ export default class Landing extends React.Component {
     );
   }
 }
-
-Landing.propTypes = {
-  routing: PropTypes.object,
-};

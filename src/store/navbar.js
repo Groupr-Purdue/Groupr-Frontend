@@ -1,18 +1,14 @@
+// @flow
+
 import { observable, computed } from 'mobx';
 
 class Navbar {
-  @observable subtitle;
-  @observable maintitle;
-  @observable loading;
-
-  constructor() {
-    this.subtitle = '';
-    this.maintitle = 'Groupr';
-    this.loading = false;
-  }
+  @observable subtitle: string = '';
+  @observable maintitle: string = 'Groupr';
+  @observable loading: boolean = true;
 
   @computed
-  get title() {
+  get title(): string {
     if (this.subtitle === '') return this.maintitle;
 
     return `${this.maintitle} - ${this.subtitle}`;
