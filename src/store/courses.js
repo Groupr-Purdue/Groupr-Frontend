@@ -5,7 +5,6 @@ import { BACKEND_URL, testUser } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
-// import 'whatwg-fetch';
 
 class Courses {
   @observable list = [];
@@ -66,5 +65,22 @@ class Courses {
     .catch(this.failLoading);
   }
 }
+
+export const fetchCourses = (): Promise => {
+  courses.list = [];
+  navbar.loading = true;
+
+  return fetch(
+    `${BACKEND_URL}/courses`,
+    {
+      method: 'GET',
+      // header: { Authorization: user.token },
+    }
+  ).then((ret: Object): Promise => ret.json())
+  .then((json: Object): Array<Object> => {
+    navbar.loading = false;
+    return courses.list = json;
+  });
+};
 
 export default new Courses();
