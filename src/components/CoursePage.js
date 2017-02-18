@@ -10,15 +10,14 @@ import {
   Divider,
 } from 'material-ui';
 import course from '~/store/course';
+import router from '~/store/router';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
 
 const handleClick =
-  (router: Object): Function =>
-  (): Void =>
-  router.push(`/users/${course.id}`);
+  (): Void => router.push(`/users/${course.id}`);
 
-const CoursePage = ({ router }: { router: object }): React$Element =>
+const CoursePage = (): Element =>
   <div>
     <Paper>
       <Grid>
@@ -46,7 +45,7 @@ const CoursePage = ({ router }: { router: object }): React$Element =>
                         key={idx}
                         primaryText={`${user.first_name} ${user.last_name}`}
                         secondaryText={user.career_account}
-                        onClick={handleClick(router)} />);
+                        onClick={handleClick} />);
 
                 else <ListItem primaryText='No studuents in this course.' />;
               } }
@@ -57,4 +56,4 @@ const CoursePage = ({ router }: { router: object }): React$Element =>
     </Paper>
   </div>;
 
-export default inject('router')(loadingWrapper(observer(CoursePage)));
+export default loadingWrapper(observer(CoursePage));

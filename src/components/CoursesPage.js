@@ -30,6 +30,7 @@ const CoursesPage = (): Object =>
                 courses.list.map((course: Object, idx: number): React$Element =>
                   <ListItem
                     key={idx}
+                    id={`course_${idx}`}
                     primaryText={course.title}
                     secondaryText={course.name}
                     onClick={handleClick(course)} />);
