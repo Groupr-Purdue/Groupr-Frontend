@@ -5,6 +5,7 @@ import { BACKEND_URL, testUser } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
+// import 'whatwg-fetch';
 
 class Courses {
   @observable list = [];
