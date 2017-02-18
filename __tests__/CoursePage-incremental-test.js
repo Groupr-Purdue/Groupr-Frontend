@@ -1,11 +1,11 @@
 import React from 'react';
-import { NakedCoursesPage as CoursePage } from '~/components/CoursesPage';
+import CoursePage from '~/components/CoursePage';
 import { fetchCourse } from '~/store/course';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import Context from '~/components/Context';
 
 test('jest CoursesPages incremental snapshot test', () => {
-  expect(<CoursePage />).toMatchSnapshot();
+  expect(shallow(<CoursePage />)).toMatchSnapshot();
 });
 
 describe('CoursePage after loading course 1', () => {
@@ -15,13 +15,13 @@ describe('CoursePage after loading course 1', () => {
 
   it('should have the course name.', () => {
     expect(
-      render(<Context><CoursePage /></Context>).find('#course_name').text()
+      render(<Context><CoursePage /></Context>).find('#course_name').text().trim()
     ).toEqual('CS 407');
   });
 
   it('should have the course title.', () => {
     expect(
-      render(<Context><CoursePage /></Context>).find('#course_title').text()
+      render(<Context><CoursePage /></Context>).find('#course_title').text().trim()
     ).toEqual('Senior Project');
   });
 });

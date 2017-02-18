@@ -2,6 +2,7 @@ import { observable } from 'mobx';
 // import user from './user';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
+import 'whatwg-fetch';
 
 const courses = observable({ list: [] });
 
