@@ -18,15 +18,15 @@ const handleClick =
   (): Void =>
   router.push(`/users/${course.id}`);
 
-const CoursesPage = ({ router }: { router: object }): React$Element =>
+const CoursePage = ({ router }: { router: object }): React$Element =>
   <div>
     <Paper>
       <Grid>
         <Row center='xs'>
           <Col xs={10} style={{ padding: '20px 0 20px 0' }}>
             <div>
-              <h1> {course.name} </h1>
-              <h2> {course.title} </h2>
+              <h1 id='course_name'> {course.name} </h1>
+              <h2 id='course_title'> {course.title} </h2>
             </div>
           </Col>
         </Row>
@@ -57,4 +57,4 @@ const CoursesPage = ({ router }: { router: object }): React$Element =>
     </Paper>
   </div>;
 
-export default inject('router')(loadingWrapper(observer(CoursesPage)));
+export default inject('router')(loadingWrapper(observer(CoursePage)));

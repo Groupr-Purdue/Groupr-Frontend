@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
+import 'whatwg-fetch';
 
 const course = observable({
   name: 'Loading',
@@ -25,10 +26,7 @@ export const fetchCourse = ({ params }) => {
         // header: { Authorization: user.token },
       }
     ).then(ret => ret.json())
-    .then(json => {
-      navbar.loading = true;
-      return course.users = json;
-    }),
+    .then(json => course.users = json),
 
     fetch(
       `${BACKEND_URL}/courses/${params.id}`,
@@ -46,7 +44,7 @@ export const fetchCourse = ({ params }) => {
 
       return json;
     }),
-  ]);
+  ]).then(() => navbar.loading = false);
 };
 
 export default course;
