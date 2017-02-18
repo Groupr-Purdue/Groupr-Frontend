@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Row, Col } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';

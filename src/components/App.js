@@ -23,7 +23,7 @@ const App =
             iconElementRight={
               navbar.loading ?
                 <Row style={{ height: 50, marginRight: 10 }} middle='xs'>
-                  <CubeGrid color='white' size={30} />
+                  <CubeGrid color='white' row={5} col={5} size={30} />
                 </Row> : null
               }
             iconElementLeft={
