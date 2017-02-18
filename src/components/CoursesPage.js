@@ -27,7 +27,7 @@ const CoursesPage = (): Object =>
             <Divider style={{ marginBottom: '10px' }} />
             { do {
               if (courses.list.length)
-                courses.list.map((course: Object, idx: number): React$Element =>
+                courses.list.map((course: Object, idx: number): Element =>
                   <ListItem
                     key={idx}
                     id={`course_${idx}`}

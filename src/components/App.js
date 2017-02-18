@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { observer, inject } from 'mobx-react';
 import AppBar from 'material-ui/AppBar';
 import { Row, Col, Grid } from 'react-flexbox-grid-aphrodite';
@@ -11,8 +11,8 @@ import { CubeGrid } from 'better-react-spinkit';
 const App =
   (
     { children, routing, navbar }:
-    { children: Array<React$Element>, routing: Object, navbar: Object }
-  ): React$Element =>
+    { children: Array<Element>, routing: Object, navbar: Object }
+  ): Element =>
     <Grid>
       <Row style={{ marginBottom: '15px' }}>
         <Col xs={12}>
@@ -43,10 +43,5 @@ const App =
       </Row>
     </Grid>;
 
-App.propTypes = {
-  children: PropTypes.element,
-  routing: PropTypes.object,
-  navbar: PropTypes.object,
-};
 
 export default inject('routing', 'navbar')(observer(App));

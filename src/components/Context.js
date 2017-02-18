@@ -20,7 +20,7 @@ const stores = {
   navbar: navbarStore,
 };
 
-export default ({ children }: { children: Array<React$Element> }): React$Element =>
+export default ({ children }: { children: Array<Element> }): Element =>
   <MuiThemeProvider>
     <Provider {...stores}>
       { children }

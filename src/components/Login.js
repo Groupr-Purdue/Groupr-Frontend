@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 
 export default class Login extends React.Component {
-  render(): React$Element {
+  render(): Element {
     return (
       <Row >
         <Col xs={12} >
