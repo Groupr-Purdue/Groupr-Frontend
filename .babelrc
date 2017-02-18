@@ -5,7 +5,9 @@
       "flow-react-proptypes",
       "typecheck", { "disable": { "production": true } }
     ],
-    "transform-runtime",
+    ["transform-runtime", {
+      "polyfill": false,
+      }],
     "add-module-exports",
     "transform-decorators-legacy"
   ]

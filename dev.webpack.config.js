@@ -7,6 +7,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  devtool: 'eval-source-map',
   eslint: {
     failOnWarning: false,
     failOnError: false,

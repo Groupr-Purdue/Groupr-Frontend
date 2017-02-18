@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import {
   Paper,
   List,
