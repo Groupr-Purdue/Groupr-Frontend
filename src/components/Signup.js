@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
@@ -18,6 +18,8 @@ class Signup extends React.Component {
       confirmPassword: '',
     };
   }
+
+  props: { router: Object };
 
   onSignup(e) {
     e.preventDefault();
@@ -47,41 +49,39 @@ class Signup extends React.Component {
   }
 
   render() {
+    const { onInputChange, onSignup } = this;
+
     return (
       <Row>
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={this.onInputChange('username')} />
+            onChange={onInputChange('username')} />
         </Col>
 
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
             type='password'
-            onChange={this.onInputChange('password')} />
+            onChange={onInputChange('password')} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Confirm Password'
             type='password'
-            onChange={this.onInputChange('confirmPassword')} />
+            onChange={onInputChange('confirmPassword')} />
         </Col>
         <Col xs={12}>
           <Link to='login'>
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={this.onSignup.bind(this)} />
+              onClick={this::onSignup} />
           </Link>
         </Col>
       </Row>
     );
   }
 }
-
-Signup.propTypes = {
-  router: PropTypes.object,
-};
 
 export default inject('router')(observer(Signup));

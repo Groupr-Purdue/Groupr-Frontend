@@ -40,7 +40,7 @@ const CoursePage = (): Element =>
               { do {
                 if (course.users.length)
                   course.users.map(
-                    (user: Object, idx: number): React$Element =>
+                    (user: Object, idx: number): Element =>
                       <ListItem
                         key={idx}
                         primaryText={`${user.first_name} ${user.last_name}`}

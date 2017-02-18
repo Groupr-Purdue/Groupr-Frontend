@@ -22,7 +22,7 @@ export default class MockCAS extends React.Component {
         console.log(error); // eslint-disable-line no-console
     });
   }
-  render(): React$Element {
+  render(): Element {
     return (
       <RaisedButton
         primary={true}
