@@ -1,11 +1,12 @@
 // @flow
 
 import { observable, computed } from 'mobx';
+import Loading from '~/store/loading';
 
 class Navbar {
   @observable subtitle: string = '';
   @observable maintitle: string = 'Groupr';
-  @observable loading: boolean = true;
+  @observable loading: Loading = new Loading();
 
   @computed
   get title(): string {
@@ -13,7 +14,6 @@ class Navbar {
 
     return `${this.maintitle} - ${this.subtitle}`;
   }
-
 }
 
 export default new Navbar();
