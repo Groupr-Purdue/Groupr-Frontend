@@ -50,4 +50,4 @@ const CoursesPage = (): Object =>
 
 export { CoursesPage as NakedCoursesPage };
 
-export default loadingWrapper(observer(CoursesPage));
+export default loadingWrapper(observer(CoursesPage), courses.loading);

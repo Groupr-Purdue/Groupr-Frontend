@@ -56,4 +56,4 @@ const CoursePage = (): Element =>
     </Paper>
   </div>;
 
-export default loadingWrapper(observer(CoursePage));
+export default loadingWrapper(observer(CoursePage), course.loading);

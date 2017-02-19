@@ -17,20 +17,32 @@ import Signup from '~/components/Signup';
 import Context from '~/components/Context';
 
 import navbarStore from '~/store/navbar';
-import { fetchCourses } from '~/store/courses';
-import { fetchCourse } from '~/store/course';
+import courses from '~/store/courses';
+import course from '~/store/course';
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
-  fetchCourses(nextProps);
+  navbarStore.loading.state = 'loading';
+
+  courses.fetch(nextProps);
 };
 
 const enterCourse = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Loading';
-  fetchCourse(nextProps);
+  navbarStore.loading.state = 'loading';
+
+  course.fetch(nextProps);
 };
 
-const stopLoading = (): boolean => navbarStore.loading = false;
+const stopLoading =
+  ({ loading }: { loading: Loading }): Function =>
+    (): boolean => loading.state = 'loaded';
+
+
+import { spy } from 'mobx';
+spy((event: Object) => {
+  if (event.type === 'action') console.log(event);
+});
 
 render(
   <Context>
@@ -40,12 +52,12 @@ render(
         <Route path='login' component={Login} />
         <Route path='signup' component={Signup} />
         <Route path='courses'
-          onLeave={stopLoading}
+          onLeave={stopLoading(navbarStore)}
           onEnter={enterCourses}
           component={CoursesPage} />
         <Route path='courses/:id'
           onEnter={enterCourse}
-          onLeave={stopLoading}
+          onLeave={stopLoading(navbarStore)}
           component={CoursePage} />
       </Route>
     </Router>
