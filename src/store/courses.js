@@ -1,28 +1,35 @@
 // @flow
 
-import { observable } from 'mobx';
-// import user from './user';
+import { observable, action } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
-// import 'whatwg-fetch';
+import Loading from '~/store/loading';
+import screenResponse from '~/util/screenResponse';
 
-const courses = observable({ list: [] });
+class Courses {
+  @observable list = [];
+  loading: Loading = new Loading({ waitingFor: 'A class list' });
 
-export const fetchCourses = (): Promise => {
-  courses.list = [];
-  navbar.loading = true;
+  @action.bound
+  fetch(): Promise {
+    this.loading.waitingFor = 'A class';
+    this.loading.state = 'loading';
+    navbar.loading.state = 'loading';
 
-  return fetch(
-    `${BACKEND_URL}/courses`,
-    {
-      method: 'GET',
-      // header: { Authorization: user.token },
-    }
-  ).then((ret: Object): Promise => ret.json())
-  .then((json: Object): Array<Object> => {
-    navbar.loading = false;
-    return courses.list = json;
-  });
-};
+    return fetch(
+      `${BACKEND_URL}/courses`,
+      {
+        method: 'GET',
+        // header: { Authorization: user.token },
+      }
+    ).then(screenResponse)
+    .then((ret: Object): Promise => ret.json())
+    .then((json: Object): Array<Object> => {
+      this.loading.state = 'loaded';
+      navbar.loading.state = 'loaded';
+      return this.list = json;
+    });
+  }
+}
 
-export default courses;
+export default new Courses();
