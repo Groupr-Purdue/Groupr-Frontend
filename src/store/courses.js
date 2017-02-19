@@ -32,21 +32,4 @@ class Courses {
   }
 }
 
-export const fetchCourses = (): Promise => {
-  courses.list = [];
-  navbar.loading = true;
-
-  return fetch(
-    `${BACKEND_URL}/courses`,
-    {
-      method: 'GET',
-      // header: { Authorization: user.token },
-    }
-  ).then((ret: Object): Promise => ret.json())
-  .then((json: Object): Array<Object> => {
-    navbar.loading = false;
-    return courses.list = json;
-  });
-};
-
 export default new Courses();
