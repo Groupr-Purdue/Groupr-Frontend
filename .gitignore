@@ -3,3 +3,4 @@
 .defaults
 /typings
 typings.json
+launch.json
