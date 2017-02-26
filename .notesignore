@@ -1,0 +1,5 @@
+**/node_modules/
+**/bundle.js
+**/__snapshots__/
+.git/
+yarn.lock
