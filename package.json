@@ -14,7 +14,8 @@
     "flow:watch": "flow-watch",
     "jest": "jest",
     "test:watch": "scripts/test-watch",
-    "dev": "yarn run test:watch; yarn run server"
+    "dev": "yarn run test:watch; yarn run server",
+    "notes": "notes -g .notesignore -s src -s __tests__"
   },
   "dependencies": {
     "aphrodite": "^1.1.0",
@@ -32,6 +33,7 @@
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "better-react-spinkit": "^2.0.0-4",
+    "code-notes": "^1.0.1",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.14.1",
