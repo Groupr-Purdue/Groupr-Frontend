@@ -2,7 +2,9 @@ import { observable } from 'mobx';
 import { BACKEND_URL } from '../config';
 
 const user = observable({
-  careerAccount: 'Loading',
+  careerId: 'Loading',
+  name: '',
+  username: '',
   id: null,
   token: null,
 });
@@ -17,8 +19,8 @@ export const loginUser = ({ params }) =>
     })
     .then(res => res.json())
     .then(json => {
-      const { name, id, token } = json;
-
+      const { name, id, token, careerId } = json;
+      user.careerId = careerId;
       user.name = name;
       user.id = id;
       user.token = token;
@@ -35,8 +37,8 @@ export const signupUser = ({ params }) =>
       })
       .then(res => res.json())
       .then(json => {
-        const { name, id, token } = json;
-
+        const { name, id, token, careerId } = json;
+        user.careerId = careerId
         user.name = name;
         user.id = id;
         user.token = token;

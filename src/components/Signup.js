@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Row, Col } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
@@ -14,9 +14,13 @@ class Signup extends React.Component {
         other: false,
       },
       username: '',
+      firstName: '',
+      lastName: '',
+      careerId: '',
       password: '',
       confirmPassword: '',
     };
+    this.onSignup.bind(this);
   }
 
   onSignup(e) {
@@ -51,10 +55,24 @@ class Signup extends React.Component {
       <Row>
         <Col xs={12} >
           <TextField
+            floatingLabelText='First Name'
+            onChange={this.onInputChange('firstName')} />
+        </Col>
+        <Col xs={12} >
+          <TextField
+            floatingLabelText='Last Name'
+            onChange={this.onInputChange('lastName')} />
+        </Col>
+        <Col xs={12} >
+          <TextField
             floatingLabelText='Purdue Username'
             onChange={this.onInputChange('username')} />
         </Col>
-
+        <Col xs={12} >
+          <TextField
+            floatingLabelText='Purdue Career Id'
+            onChange={this.onInputChange('careerId')} />
+        </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
@@ -72,7 +90,7 @@ class Signup extends React.Component {
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={this.onSignup.bind(this)} />
+              onClick={this.onSignup} />
           </Link>
         </Col>
       </Row>
