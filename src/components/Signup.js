@@ -14,9 +14,13 @@ class Signup extends React.Component {
         other: false,
       },
       username: '',
+      firstName: '',
+      lastName: '',
+      careerId: '',
       password: '',
       confirmPassword: '',
     };
+    this.onSignup.bind(this);
   }
 
   props: { router: Object };
@@ -55,10 +59,24 @@ class Signup extends React.Component {
       <Row>
         <Col xs={12} >
           <TextField
+            floatingLabelText='First Name'
+            onChange={this.onInputChange('firstName')} />
+        </Col>
+        <Col xs={12} >
+          <TextField
+            floatingLabelText='Last Name'
+            onChange={this.onInputChange('lastName')} />
+        </Col>
+        <Col xs={12} >
+          <TextField
             floatingLabelText='Purdue Username'
             onChange={onInputChange('username')} />
         </Col>
-
+        <Col xs={12} >
+          <TextField
+            floatingLabelText='Purdue Career Id'
+            onChange={this.onInputChange('careerId')} />
+        </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
@@ -76,7 +94,7 @@ class Signup extends React.Component {
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={this::onSignup} />
+              onClick={this.onSignup} />
           </Link>
         </Col>
       </Row>
