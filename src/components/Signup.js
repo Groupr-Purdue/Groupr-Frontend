@@ -94,11 +94,7 @@ class Signup extends React.Component {
             <RaisedButton
               primary={true}
               label='Sign Up'
-<<<<<<< HEAD
-              onClick={this::onSignup} />
-=======
               onClick={this.onSignup} />
->>>>>>> modify user for new data
           </Link>
         </Col>
       </Row>
