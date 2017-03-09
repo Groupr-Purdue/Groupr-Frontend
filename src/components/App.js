@@ -19,7 +19,7 @@ const App =
           <AppBar
             key={'AppBar'}
             title={navbar.title}
-            onClick={(): Void => routing.push('/courses')}
+            onClick={(): Void => routing.push('/create-course')}
             iconElementRight={
               navbar.loading.state === 'loading' ?
                 <Row style={{ height: 50, marginRight: 10 }} middle='xs'>

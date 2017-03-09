@@ -15,6 +15,7 @@ import CoursesPage from '~/components/CoursesPage';
 import CoursePage from '~/components/CoursePage';
 import Signup from '~/components/Signup';
 import Context from '~/components/Context';
+import CreateCourseForm from '~/components/CreateCourseForm';
 
 import navbarStore from '~/store/navbar';
 import courses from '~/store/courses';
@@ -38,12 +39,6 @@ const stopLoading =
   ({ loading }: { loading: Loading }): Function =>
     (): boolean => loading.state = 'loaded';
 
-
-import { spy } from 'mobx';
-spy((event: Object) => {
-  if (event.type === 'action') console.log(event);
-});
-
 render(
   <Context>
     <Router history={history}>
@@ -59,6 +54,8 @@ render(
           onEnter={enterCourse}
           onLeave={stopLoading(navbarStore)}
           component={CoursePage} />
+        <Route path='create-course'
+          component={CreateCourseForm} />
       </Route>
     </Router>
   </Context>,
