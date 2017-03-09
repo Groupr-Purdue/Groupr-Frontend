@@ -19,41 +19,34 @@ const handleClick =
 
 const CoursePage = (): Element =>
   <div>
-    <Paper>
-      <Grid>
-        <Row center='xs'>
-          <Col xs={10} style={{ padding: '20px 0 20px 0' }}>
-            <div>
-              <h1 id='course_name'> {course.name} </h1>
-              <h2 id='course_title'> {course.title} </h2>
-            </div>
-          </Col>
-        </Row>
+    <Row center='xs'>
+      <Col xs={12} sm={6} md={6} lg={6}>
+        <Paper>
+          <Row center='xs'>
+            <h1 id='course_name'> {course.name} </h1>
+          </Row>
+          <Row center='xs'>
+            <h2 id='course_title'> {course.title} </h2>
+          </Row>
+          <Divider />
+          <List>
+            <Subheader> {course.name} Students </Subheader>
+            { do {
+              if (course.users.length)
+                course.users.map(
+                  (user: Object, idx: number): Element =>
+                    <ListItem
+                      key={idx}
+                      primaryText={`${user.first_name} ${user.last_name}`}
+                      secondaryText={user.career_account}
+                      onClick={handleClick} />);
 
-      </Grid>
-      <Divider />
-      <Grid>
-        <Row>
-          <Col xsOffset={1} xs={10}>
-            <List>
-              <Subheader> {course.name} Students </Subheader>
-              { do {
-                if (course.users.length)
-                  course.users.map(
-                    (user: Object, idx: number): Element =>
-                      <ListItem
-                        key={idx}
-                        primaryText={`${user.first_name} ${user.last_name}`}
-                        secondaryText={user.career_account}
-                        onClick={handleClick} />);
-
-                else <ListItem primaryText='No studuents in this course.' />;
-              } }
-            </List>
-          </Col>
-        </Row>
-      </Grid>
-    </Paper>
+              else <ListItem primaryText='No studuents in this course.' />;
+            } }
+          </List>
+        </Paper>
+      </Col>
+    </Row>
   </div>;
 
 export default loadingWrapper(observer(CoursePage), course.loading);

@@ -4,6 +4,7 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import isCareerAccount from '~/util/isCareerAccount';
+import pass from '~/util/passthrough';
 
 class CourseForm {
   @observable name = '';
@@ -63,9 +64,9 @@ class CourseForm {
     })
       .then(screenResponse)
       .then(res => res.json())
-      .then(console.log)
-      .then(this.succeedLoading)
-      .catch(this.failLoading);
+      .then(pass(console.log))
+      .then(pass(this.succeedLoading))
+      .catch(pass(this.failLoading));
   }
 }
 

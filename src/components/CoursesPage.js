@@ -18,35 +18,33 @@ const handleClick =
   (): Void => router.push(`/courses/${course.id}`);
 
 const CoursesPage = (): Object =>
-  <Paper>
-    <Grid>
-      <Row>
-        <Col xsOffset={1} xs={10}>
-          <List>
-            <Row center='xs'><h3> Your Courses </h3></Row>
-            <Divider style={{ marginBottom: '10px' }} />
-            { do {
-              if (courses.list.length)
-                courses.list.map((course: Object, idx: number): Element =>
-                  <ListItem
-                    key={idx}
-                    id={`course_${idx}`}
-                    primaryText={course.title}
-                    secondaryText={course.name}
-                    onClick={handleClick(course)} />);
+  <Row center='xs'>
+    <Col xs={12} sm={6} md={6} lg={6}>
+      <Paper>
+        <List>
+          <Row center='xs'><h3> Your Courses </h3></Row>
+          <Divider style={{ marginBottom: '10px' }} />
+          { do {
+            if (courses.list.length)
+              courses.list.map((course: Object, idx: number): Element =>
+                <ListItem
+                  key={idx}
+                  id={`course_${idx}`}
+                  primaryText={course.title}
+                  secondaryText={course.name}
+                  onClick={handleClick(course)} />);
 
-              else
-                <Row center='xs'>
-                  <h4> No Courses </h4>
-                </Row>;
-                // <LinearProgress mode='indeterminate'
-                //   style={{ marginBottom: 30 }} />;
-            } }
-          </List>
-        </Col>
-      </Row>
-    </Grid>
-  </Paper>;
+            else
+              <Row center='xs'>
+                <h4> No Courses </h4>
+              </Row>;
+              // <LinearProgress mode='indeterminate'
+              //   style={{ marginBottom: 30 }} />;
+          } }
+        </List>
+      </Paper>
+    </Col>
+  </Row>;
 
 export { CoursesPage as NakedCoursesPage };
 

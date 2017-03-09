@@ -13,13 +13,13 @@ import course from '~/store/courseForm';
 import loadingWrapper from '~/util/loadingWrapper';
 
 const handleSubmit = () => {
-  course.submit();
+  course.submit().then(({ id }) => router.push(`/courses/${id}`));
 };
 
 const CreateCourseForm = (): Element =>
   <div>
     <Row center='xs'>
-      <Col md={6} sm={6} lg={6} xl={6} xs={12}>
+      <Col xs={12} sm={6} md={6} lg={6} >
         <Paper>
           <Row center='xs'>
             <Col xs={10} style={{ padding: '20px 0 20px 0' }}>
