@@ -35,6 +35,11 @@ const enterCourse = (nextProps: Object): Void => {
   course.fetch(nextProps);
 };
 
+const enterCourseForm = (): Void => {
+  navbarStore.subtitle = 'Create a Course';
+  navbarStore.loading.state = 'loaded';
+};
+
 const stopLoading =
   ({ loading }: { loading: Loading }): Function =>
     (): boolean => loading.state = 'loaded';
@@ -55,6 +60,7 @@ render(
           onLeave={stopLoading(navbarStore)}
           component={CoursePage} />
         <Route path='create-course'
+          onEnter={enterCourseForm}
           component={CreateCourseForm} />
       </Route>
     </Router>
