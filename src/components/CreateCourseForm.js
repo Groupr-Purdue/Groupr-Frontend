@@ -1,5 +1,4 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import {
   Paper,
   Divider,
@@ -12,9 +11,8 @@ import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import course from '~/store/courseForm';
 import loadingWrapper from '~/util/loadingWrapper';
 
-const handleSubmit = () => {
+export const handleSubmit = () =>
   course.submit().then(({ id }) => router.push(`/courses/${id}`));
-};
 
 const CreateCourseForm = (): Element =>
   <div>
