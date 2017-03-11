@@ -8,17 +8,14 @@ import {
   ListItem,
   Divider,
 } from 'material-ui';
-import courses from '~/store/courses';
+import courses from '~/store/myCourses';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import router from '~/store/router';
 import loadingWrapper from '~/util/loadingWrapper';
 
 const handleClick =
   (course: Object): Function =>
-    async (): Void => {
-      await courses.register(course.id);
-      router.push(`/courses/${course.id}`);
-    };
+  (): Void => router.push(`/courses/${course.id}`);
 
 const CoursesPage = (): Object =>
   <Row center='xs'>

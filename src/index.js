@@ -16,10 +16,11 @@ import CoursePage from '~/components/CoursePage';
 import Signup from '~/components/Signup';
 import Context from '~/components/Context';
 import CreateCourseForm from '~/components/CreateCourseForm';
-
+import MyCoursesPage from '~/components/MyCoursesPage';
 import navbarStore from '~/store/navbar';
 import courses from '~/store/courses';
 import course from '~/store/course';
+import myCourses from '~/store/myCourses';
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
@@ -40,6 +41,13 @@ const enterCourseForm = (): Void => {
   navbarStore.loading.state = 'loaded';
 };
 
+const enterMyCourses = (): Void => {
+  navbarStore.subtitle = 'Loading your courses';
+  navbarStore.loading.state = 'loading';
+
+  myCourses.fetch();
+};
+
 const stopLoading =
   ({ loading }: { loading: Loading }): Function =>
     (): boolean => loading.state = 'loaded';
@@ -51,14 +59,19 @@ render(
         <IndexRoute component={Landing} />
         <Route path='login' component={Login} />
         <Route path='signup' component={Signup} />
-        <Route path='courses'
-          onLeave={stopLoading(navbarStore)}
-          onEnter={enterCourses}
-          component={CoursesPage} />
-        <Route path='courses/:id'
-          onEnter={enterCourse}
-          onLeave={stopLoading(navbarStore)}
-          component={CoursePage} />
+        <Route path='courses'>
+          <IndexRoute
+            onLeave={stopLoading(navbarStore)}
+            onEnter={enterCourses}
+            component={CoursesPage} />
+          <Route path='me'
+            component={MyCoursesPage}
+            onEnter={enterMyCourses} />
+          <Route path=':id'
+            onEnter={enterCourse}
+            onLeave={stopLoading(navbarStore)}
+            component={CoursePage} />
+        </Route>
         <Route path='create-course'
           onEnter={enterCourseForm}
           component={CreateCourseForm} />
