@@ -3,7 +3,7 @@ import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
-import { signupUser } from '../store/user';
+import { registerUser } from '../store/user';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -30,25 +30,23 @@ class Signup extends React.Component {
     e.preventDefault();
     if (this.passwordsMatch(this.state.password, this.state.confirmPassword)) {
       this.setState(prevState => prevState.errors.match = false);
-      const params = {
+      const userData = {
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         career_account: this.state.username,
         password: this.state.password,
       };
 
-      signupUser({ params: { body: params } })
+      registerUser({ params: { body: userData } })
         .then(newUser => {
-          console.log(newUser);
           this.props.router.push(`/courses/${newUser.id}`);
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.err(err));
     } else
       this.setState(prevState => prevState.errors.match = true);
   }
 
   onInputChange(e): void {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -82,11 +80,6 @@ class Signup extends React.Component {
             floatingLabelText='Purdue Career Id'
             name='careerId'
             onChange={this.onInputChange} />
-        </Col>
-        <Col xs={12} >
-          <TextField
-            floatingLabelText='Purdue Career Id'
-            onChange={this.onInputChange('careerId')} />
         </Col>
         <Col xs={12} >
           <TextField
