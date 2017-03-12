@@ -12,7 +12,9 @@ import course from '~/store/courseForm';
 import loadingWrapper from '~/util/loadingWrapper';
 
 export const handleSubmit = () =>
-  course.submit().then(({ id }) => router.push(`/courses/${id}`));
+  course.submit()
+  .then(({ id }) => router.push(`/courses/${id}`))
+  .catch(() => course.failLoading());
 
 const CreateCourseForm = (): Element =>
   <div>

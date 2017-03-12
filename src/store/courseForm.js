@@ -64,8 +64,7 @@ class CourseForm {
     })
       .then(screenResponse)
       .then(res => res.json())
-      .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading));
+      .then(pass(this.succeedLoading));
   }
 }
 
