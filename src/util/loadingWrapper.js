@@ -24,17 +24,27 @@ const loadingWrapper =
         return (
           <Grid>
             <Row center='xs' middle='xs' style={{ height: '50%' }}>
-              <h3>
+              <h3 style={{ color: 'deeppink' }}>
                 {loading.waitingFor} has failed to load.
               </h3>
             </Row>
-            <Row center='xs' middle='xs'>
-              <RaisedButton
-                primary={true}
-                onClick={action((): string => loading.state = 'loaded')} >
-                  Go back?
-              </RaisedButton>
-            </Row>
+            {
+              loading.recoverable ?
+                <Row center='xs' middle='xs'>
+                  <RaisedButton
+                    label='Go Back?'
+                    secondary={true}
+                    onClick={action((): string => loading.state = 'loaded')} />
+                </Row>
+              :
+                <Row center='xs' middle='xs'>
+                  <RaisedButton
+                    label='Go Back?'
+                    disabled={true}
+                    onClick={action((): string => loading.state = 'loaded')} />
+                </Row>
+            }
+
           </Grid>
         );
 

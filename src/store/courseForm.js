@@ -18,6 +18,7 @@ class CourseForm {
     this.loading = new Loading({
       waitingFor: 'server response',
       state: 'loaded',
+      recoverable: true,
     });
   }
 
