@@ -62,22 +62,14 @@ class Signup extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='First Name'
-<<<<<<< HEAD
             name='firstName'
             onChange={this.onInputChange} />
-=======
-            onChange={this.onInputChange('firstName')} />
->>>>>>> 78f34da9adb81676166869cebaa12810fe0c9602
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Last Name'
-<<<<<<< HEAD
             name='lastName'
             onChange={this.onInputChange} />
-=======
-            onChange={this.onInputChange('lastName')} />
->>>>>>> 78f34da9adb81676166869cebaa12810fe0c9602
         </Col>
         <Col xs={12} >
           <TextField
