@@ -40,7 +40,8 @@ class Courses {
         method: 'GET',
         headers: { Authorization: testUser.token },
       }
-    ).then(screenResponse)
+    )
+    .then(screenResponse)
     .then((ret: Object): Promise => ret.json())
     .then((json: Object): Array<Object> => {
       this.succeedLoading();
