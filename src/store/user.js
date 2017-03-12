@@ -28,17 +28,20 @@ export const loginUser = ({ params }) =>
       return json;
     });
 
-export const signupUser = ({ params }) =>
-  console.log(params);
+export const registerUser = ({ params }) =>
   new Promise((resolve, reject) => {
     fetch(
-      `${BACKEND_URL}/users`,
+      `${BACKEND_URL}/register`,
       {
         method: 'POST',
-        body: params.body,
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+        body: JSON.stringify(params.body),
       })
       .then(res => res.json())
       .then(json => {
+        console.log(json);
         const { name, id, token, careerId } = json;
 
         user.careerId = careerId;

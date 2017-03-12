@@ -6,4 +6,4 @@ test('jest Signup incremental snapshot test', () => {
   expect(<Signup />).toMatchSnapshot();
 });
 
-// TODO Test signupUser from  user store
+// TODO Test registerUser from  user store
