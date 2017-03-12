@@ -4,7 +4,11 @@ import { observable } from 'mobx';
 
 class Loading {
   @observable state;
+
+  // used in user feedback
   waitingFor: string;
+
+  // used by wrapper to determine if go back button works
   recoverable: boolean;
 
   constructor(
