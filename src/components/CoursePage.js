@@ -11,7 +11,7 @@ import {
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
 
 const handleClick =

@@ -33,6 +33,7 @@ const enterCourse = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Loading';
   navbarStore.loading.state = 'loading';
 
+  course.id = nextProps.params.id;
   course.fetch(nextProps);
 };
 

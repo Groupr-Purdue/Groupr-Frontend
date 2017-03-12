@@ -3,6 +3,7 @@ import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
+import { testUser } from '~/config';
 
 class Course {
   @observable name = 'Loading';
@@ -27,10 +28,10 @@ class Course {
 
     return Promise.all([
       fetch(
-        `${BACKEND_URL}/users`,
+        `${BACKEND_URL}/courses/${this.id}/users`,
         {
           method: 'GET',
-          // header: { Authorization: user.token },
+          headers: { Authorization: testUser.token },
         }
       ).then(screenResponse)
       .then(ret => ret.json())
@@ -62,22 +63,5 @@ class Course {
     });
   }
 }
-
-// const course = observable({
-//   name: 'Loading',
-//   title: 'Loading',
-//   users: [],
-//   id: null,
-//
-//   fetchCourse: action(({ params }) => {
-//     course.name = 'Loading';
-//     course.title = 'Loading';
-//     course.users = [];
-//     course.id = params.id;
-//     navbar.loading = true;
-//   }),
-// });
-//
-// export const { fetchCourse } = course;
 
 export default new Course(navbar);
