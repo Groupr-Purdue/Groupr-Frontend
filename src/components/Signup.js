@@ -20,7 +20,8 @@ class Signup extends React.Component {
       password: '',
       confirmPassword: '',
     };
-    this.onSignup.bind(this);
+    this.onSignup = this.onSignup.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   props: { router: Object };
@@ -29,23 +30,26 @@ class Signup extends React.Component {
     e.preventDefault();
     if (this.passwordsMatch(this.state.password, this.state.confirmPassword)) {
       this.setState(prevState => prevState.errors.match = false);
-      signupUser({ params: { body: this.state } })
+      const params = {
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        career_account: this.state.username,
+        password: this.state.password,
+      };
+
+      signupUser({ params: { body: params } })
         .then(newUser => {
+          console.log(newUser);
           this.props.router.push(`/courses/${newUser.id}`);
         })
-        .catch(() => this.setState(prevState => prevState.errors.other = true));
+        .catch((err) => console.log(err));
     } else
       this.setState(prevState => prevState.errors.match = true);
   }
 
-  onInputChange(name): void {
-    return event => {
-      event.preventDefault();
-      const change = {};
-
-      change[name] = event.target.value;
-      this.setState(change);
-    };
+  onInputChange(e): void {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   passwordsMatch(password: String, confirmPassword: String): Boolean {
@@ -53,41 +57,45 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { onInputChange, onSignup } = this;
-
     return (
       <Row>
         <Col xs={12} >
           <TextField
             floatingLabelText='First Name'
-            onChange={this.onInputChange('firstName')} />
+            name='firstName'
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Last Name'
-            onChange={this.onInputChange('lastName')} />
+            name='lastName'
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={onInputChange('username')} />
+            name='username'
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Career Id'
-            onChange={this.onInputChange('careerId')} />
+            name='careerId'
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
+            name='password'
             type='password'
-            onChange={onInputChange('password')} />
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Confirm Password'
+            name='confirmPassword'
             type='password'
-            onChange={onInputChange('confirmPassword')} />
+            onChange={this.onInputChange} />
         </Col>
         <Col xs={12}>
           <Link to='login'>
