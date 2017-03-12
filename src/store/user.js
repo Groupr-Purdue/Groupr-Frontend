@@ -20,7 +20,6 @@ export const loginUser = ({ params }) =>
     .then(res => res.json())
     .then(json => {
       const { name, id, token, careerId } = json;
-
       user.careerId = careerId;
       user.name = name;
       user.id = id;
@@ -40,8 +39,7 @@ export const signupUser = ({ params }) =>
       .then(res => res.json())
       .then(json => {
         const { name, id, token, careerId } = json;
-
-        user.careerId = careerId;
+        user.careerId = careerId
         user.name = name;
         user.id = id;
         user.token = token;

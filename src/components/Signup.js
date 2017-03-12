@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
@@ -62,14 +62,22 @@ class Signup extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='First Name'
+<<<<<<< HEAD
             name='firstName'
             onChange={this.onInputChange} />
+=======
+            onChange={this.onInputChange('firstName')} />
+>>>>>>> 78f34da9adb81676166869cebaa12810fe0c9602
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Last Name'
+<<<<<<< HEAD
             name='lastName'
             onChange={this.onInputChange} />
+=======
+            onChange={this.onInputChange('lastName')} />
+>>>>>>> 78f34da9adb81676166869cebaa12810fe0c9602
         </Col>
         <Col xs={12} >
           <TextField
@@ -82,6 +90,11 @@ class Signup extends React.Component {
             floatingLabelText='Purdue Career Id'
             name='careerId'
             onChange={this.onInputChange} />
+        </Col>
+        <Col xs={12} >
+          <TextField
+            floatingLabelText='Purdue Career Id'
+            onChange={this.onInputChange('careerId')} />
         </Col>
         <Col xs={12} >
           <TextField
