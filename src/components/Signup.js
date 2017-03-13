@@ -4,12 +4,12 @@ import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
 import signup from '~/store/signupForm';
+import route from '~/store/router';
 
 export const handleSubmit = () =>
   signup.submit().then(({ id }) => router.push(`/courses/${id}`)); 
 
 class Signup extends React.Component {
-  props: { router: Object };
   render() {
     return (
       <Row>
@@ -50,7 +50,7 @@ class Signup extends React.Component {
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={this.handleSubmit}
+              onClick={handleSubmit}
             />
           </Link>
         </Col>

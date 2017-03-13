@@ -16,7 +16,7 @@ class SignupForm {
   loading: Loading;
   navbar;
 
-  constructor(navbarStore: Element) {
+  constructor(navbarStore: navbar) {
     this.navbar = navbarStore;
     this.loading = new Loading({
       waitingFor: 'server response',
@@ -110,6 +110,7 @@ class SignupForm {
       career_account: this.careerAccount,
       password: this.password,
     };
+    console.log(payload);
 
     return fetch(`${BACKEND_URL}/register`, {
       method: 'POST',

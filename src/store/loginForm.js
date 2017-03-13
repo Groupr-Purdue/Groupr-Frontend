@@ -13,7 +13,7 @@ class LoginForm {
   loading: Loading;
   navbar;
 
-  constructor(navbarStore: Element) {
+  constructor(navbarStore: navbar) {
     this.navbar = navbarStore;
     this.loading = new Loading({
       waitingFor: 'server response',
