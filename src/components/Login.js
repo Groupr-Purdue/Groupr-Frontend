@@ -3,21 +3,36 @@ import React from 'react';
 import { RaisedButton, TextField } from 'material-ui';
 import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
+import login from '~/store/loginForm';
+import router from '~/store/router';
+
+export const handleSubmit = () =>
+  login.submit().then(({ id }) => router.push(`/courses/${id}`));
 
 export default class Login extends React.Component {
   render(): Element {
     return (
       <Row >
         <Col xs={12} >
-          <TextField floatingLabelText='Purdue Username' />
+          <TextField
+            floatingLabelText='Purdue Username'
+            onChange={(ev, value) => login.careerAccount = value}
+          />
         </Col>
         <Col xs={12} >
-          <TextField floatingLabelText='Password' />
+          <TextField
+            floatingLabelText='Password'
+            type='password'
+            onChange={(ev, value) => login.password = value}
+          />
         </Col>
         <Col xs={12}>
-          <Link to='courses'>
-            <RaisedButton primary={true}>Sign-In</RaisedButton>
-          </Link>
+          <RaisedButton
+            primary={true}
+            onClick={handleSubmit}
+          >
+            Sign-In
+            </RaisedButton>
         </Col>
       </Row>
     );
