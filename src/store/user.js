@@ -3,7 +3,7 @@ import { observable, computed } from 'mobx';
 class User {
   @observable firstName = '';
   @observable lastName = '';
-  @observable username = '';
+  @observable careerAccount = '';
   @observable token = '';
   @observable loggedIn = false;
 
@@ -13,4 +13,4 @@ class User {
   }
 }
 
-export default User();
+export default User;

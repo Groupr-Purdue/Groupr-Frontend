@@ -77,13 +77,12 @@ class SignupForm {
 
   @action.bound
   isPasswordValid(): boolean {
-    if (!this.passwordsMatch)
+    if (!this.passwordsMatch())
       return false;
-    else if (this.password.length > 0) {
-      this.errors.push('Password cannot be blank');
-      return false;
-    }
-    return true;
+    else if (this.password.length > 0)
+      return true;
+    this.errors.push('Password cannot be blank');
+    return false;
   }
 
   @action.bound
@@ -97,8 +96,10 @@ class SignupForm {
   @action.bound
   submit(): mixed {
     this.errors = [];
-    if (!this.isFormValid())
+    if (!this.isFormValid()) {
+      this.errors.forEach(err => console.log(err));
       return;
+    }
 
     this.startLoading();
 
@@ -112,7 +113,7 @@ class SignupForm {
     return fetch(`${BACKEND_URL}/register`, { // eslint-disable-line consistent-return
       method: 'POST',
       body: JSON.stringify(payload),
-      header: new Headers({
+      headers: new Headers({
         'Content-Type': 'application/json',
       }),
     })

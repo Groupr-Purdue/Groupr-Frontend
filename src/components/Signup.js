@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { inject, observer } from 'mobx-react';
@@ -9,12 +10,15 @@ import router from '~/store/router';
 
 export const handleSubmit = () =>
   signup.submit().then(user => {
-    currentUser.name = user.name;
-    currentUser.username = user.username;
+    console.log(user);
+    currentUser.firstName = user.firstName;
+    currentUser.lastName = user.lastName;
+    currentUser.careerAccount = user.careerAccount;
     currentUser.token = user.token;
     currentUser.loggedIn = true;
     router.push(`/courses/${user.id}`);
-  });
+  })
+    .catch((err) => console.error(err));
 
 class Signup extends React.Component {
   render() {
@@ -32,8 +36,8 @@ class Signup extends React.Component {
         </Col>
         <Col xs={12} >
           <TextField
-            floatingLabelText='Purdue Username'
-            onChange={(ev, value) => signup.username = value} />
+            floatingLabelText='Purdue Career Account'
+            onChange={(ev, value) => signup.careerAccount = value} />
         </Col>
         <Col xs={12} >
           <TextField

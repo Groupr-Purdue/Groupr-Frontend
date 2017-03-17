@@ -9,8 +9,9 @@ import router from '~/store/router';
 export const handleSubmit = (): void =>
   login.submit().then((user: Object): Object => {
     console.log(user); // eslint-disable-line no-console
-    currentUser.name = user.name;
-    currentUser.username = user.username;
+    currentUser.firstName = user.firstName;
+    currentUser.lastName = user.lastName;
+    currentUser.careerAccount = user.careerAccount;
     currentUser.token = user.token;
     currentUser.loggedIn = true;
     router.push(`/courses/${user.id}`);
@@ -22,7 +23,7 @@ export default class Login extends React.Component {
       <Row >
         <Col xs={12} >
           <TextField
-            floatingLabelText='Purdue Username'
+            floatingLabelText='Purdue Career Account'
             onChange={(ev: Object, value: string): void => login.careerAccount = value} />
         </Col>
         <Col xs={12} >
