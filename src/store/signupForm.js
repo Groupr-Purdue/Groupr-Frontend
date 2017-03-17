@@ -1,4 +1,5 @@
 // @flow
+/* eslint camelcase: "off" */
 import { observable, action } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
@@ -63,42 +64,42 @@ class SignupForm {
     if (this.lastName.length > 0)
       return true;
     this.errors.push('Last Name cannot be blank');
-    return false
+    return false;
   }
 
   @action.bound
   isCareerAccountValid(): boolean {
     if (this.careerAccount.length > 0)
       return true;
-    this.errors.push('Career account cannot be blank')
+    this.errors.push('Career account cannot be blank');
     return false;
   }
 
   @action.bound
-  isPasswordValid() {
-    if (!this.passwordsMatch) {
+  isPasswordValid(): boolean {
+    if (!this.passwordsMatch)
       return false;
-    } else if (this.password.length > 0) {
-      this.errors.push('Password cannot be blank')
+    else if (this.password.length > 0) {
+      this.errors.push('Password cannot be blank');
       return false;
     }
     return true;
   }
 
   @action.bound
-  isFormValid() {
-    return (this.isFirstNameValid() &&
+  isFormValid(): boolean {
+    return this.isFirstNameValid() &&
       this.isLastNameValid() &&
       this.isCareerAccountValid() &&
-      this.isPasswordValid());
+      this.isPasswordValid();
   }
 
   @action.bound
-  submit() {
+  submit(): Promise {
     this.errors = [];
-    if (!this.isFormValid()) {
-      return;
-    }
+    if (!this.isFormValid())
+      return Promise();
+
     this.startLoading();
 
     const payload = {
@@ -107,7 +108,6 @@ class SignupForm {
       career_account: this.careerAccount,
       password: this.password,
     };
-    console.log(payload);
 
     return fetch(`${BACKEND_URL}/register`, {
       method: 'POST',
@@ -117,11 +117,10 @@ class SignupForm {
       }),
     })
       .then(screenResponse)
-      .then(res => res.json())
-      .then(pass(console.log))
+      .then((res: object): object => res.json())
+      .then(pass(console.log)) // eslint-disable-line no-console
       .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading))
-
+      .catch(pass(this.failLoading));
   }
 }
 
