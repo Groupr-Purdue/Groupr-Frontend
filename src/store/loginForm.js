@@ -1,4 +1,5 @@
 // @flow
+/* eslint camelcase: "off" */
 import { observable, action } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
@@ -39,15 +40,15 @@ class LoginForm {
     this.navbar.loading.state = 'failed';
   }
 
-  
   @action.bound
-  submit() {
+  submit(): Promise {
     this.startLoading();
 
     const payload = {
       career_account: this.careerAccount,
       password: this.password,
     };
+
     return fetch(`${BACKEND_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -56,11 +57,10 @@ class LoginForm {
       }),
     })
       .then(screenResponse)
-      .then(res => res.json())
-      .then(pass(console.log))
+      .then((res: Object): Object => res.json())
+      .then(pass(console.log)) // eslint-disable-line no-console
       .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading))
-
+      .catch(pass(this.failLoading));
   }
 }
 

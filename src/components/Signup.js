@@ -13,7 +13,7 @@ export const handleSubmit = () =>
     currentUser.username = user.username;
     currentUser.token = user.token;
     currentUser.loggedIn = true;
-    router.push(`/courses/${user.id}`); 
+    router.push(`/courses/${user.id}`);
   });
 
 class Signup extends React.Component {
@@ -23,42 +23,36 @@ class Signup extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='First Name'
-            onChange={(ev, value) => signup.firstName = value}
-          />
+            onChange={(ev, value) => signup.firstName = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Last Name'
-            onChange={(ev, value) => signup.lastName = value}
-          />
+            onChange={(ev, value) => signup.lastName = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={(ev, value) => signup.username = value}
-          />
+            onChange={(ev, value) => signup.username = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
             type='password'
-            onChange={(ev, value) => signup.password = value}
-          />
+            onChange={(ev, value) => signup.password = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Confirm Password'
             type='password'
-            onChange={(ev, value) => signup.confirmPassword = value}
-          />
+            onChange={(ev, value) => signup.confirmPassword = value} />
         </Col>
         <Col xs={12}>
           <Link to='login'>
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={handleSubmit}
-            />
+              onClick={handleSubmit} />
           </Link>
         </Col>
       </Row>

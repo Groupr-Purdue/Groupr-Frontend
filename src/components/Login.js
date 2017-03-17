@@ -6,14 +6,14 @@ import login from '~/store/loginForm';
 import currentUser from '~/store/user';
 import router from '~/store/router';
 
-export const handleSubmit = () =>
-  login.submit().then((user) => {
-    console.log(user);
+export const handleSubmit = (): void =>
+  login.submit().then((user: Object): Object => {
+    console.log(user); // eslint-disable-line no-console
     currentUser.name = user.name;
     currentUser.username = user.username;
     currentUser.token = user.token;
     currentUser.loggedIn = true;
-    router.push(`/courses/${user.id}`); 
+    router.push(`/courses/${user.id}`);
   });
 
 export default class Login extends React.Component {
@@ -23,21 +23,18 @@ export default class Login extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={(ev, value) => login.careerAccount = value}
-          />
+            onChange={(ev: Object, value: string): void => login.careerAccount = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
             type='password'
-            onChange={(ev, value) => login.password = value}
-          />
+            onChange={(ev: Object, value: string): void => login.password = value} />
         </Col>
         <Col xs={12}>
           <RaisedButton
             primary={true}
-            onClick={handleSubmit}
-          >
+            onClick={handleSubmit} >
             Sign-In
             </RaisedButton>
         </Col>

@@ -7,7 +7,7 @@ class User {
   @observable token = '';
   @observable loggedIn = false;
 
-  @computed 
+  @computed
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }

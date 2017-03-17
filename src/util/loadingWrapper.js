@@ -35,8 +35,7 @@ const loadingWrapper =
                     label='Go Back?'
                     secondary={true}
                     onClick={action((): string => loading.state = 'loaded')} />
-                </Row>
-              :
+                </Row> :
                 <Row center='xs' middle='xs'>
                   <RaisedButton
                     label='Go Back?'

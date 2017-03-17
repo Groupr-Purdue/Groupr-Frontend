@@ -95,10 +95,10 @@ class SignupForm {
   }
 
   @action.bound
-  submit(): Promise {
+  submit(): mixed {
     this.errors = [];
     if (!this.isFormValid())
-      return Promise();
+      return;
 
     this.startLoading();
 
@@ -109,7 +109,7 @@ class SignupForm {
       password: this.password,
     };
 
-    return fetch(`${BACKEND_URL}/register`, {
+    return fetch(`${BACKEND_URL}/register`, { // eslint-disable-line consistent-return
       method: 'POST',
       body: JSON.stringify(payload),
       header: new Headers({
@@ -117,7 +117,7 @@ class SignupForm {
       }),
     })
       .then(screenResponse)
-      .then((res: object): object => res.json())
+      .then((res: Object): Object => res.json())
       .then(pass(console.log)) // eslint-disable-line no-console
       .then(pass(this.succeedLoading))
       .catch(pass(this.failLoading));
