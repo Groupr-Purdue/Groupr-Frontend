@@ -1,13 +1,20 @@
 // @flow
 import React from 'react';
 import { RaisedButton, TextField } from 'material-ui';
-import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import login from '~/store/loginForm';
+import currentUser from '~/store/user';
 import router from '~/store/router';
 
 export const handleSubmit = () =>
-  login.submit().then(({ id }) => router.push(`/courses/${id}`));
+  login.submit().then((user) => {
+    console.log(user);
+    currentUser.name = user.name;
+    currentUser.username = user.username;
+    currentUser.token = user.token;
+    currentUser.loggedIn = true;
+    router.push(`/courses/${user.id}`); 
+  });
 
 export default class Login extends React.Component {
   render(): Element {

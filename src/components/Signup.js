@@ -4,10 +4,17 @@ import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
 import signup from '~/store/signupForm';
-import route from '~/store/router';
+import currentUser from '~/store/user';
+import router from '~/store/router';
 
 export const handleSubmit = () =>
-  signup.submit().then(({ id }) => router.push(`/courses/${id}`)); 
+  signup.submit().then(user => {
+    currentUser.name = user.name;
+    currentUser.username = user.username;
+    currentUser.token = user.token;
+    currentUser.loggedIn = true;
+    router.push(`/courses/${user.id}`); 
+  });
 
 class Signup extends React.Component {
   render() {

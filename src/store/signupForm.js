@@ -23,6 +23,7 @@ class SignupForm {
       state: 'loaded',
     });
   }
+
   @action.bound
   startLoading() {
     this.loading.state = 'loading';
@@ -42,37 +43,33 @@ class SignupForm {
   }
 
   @action.bound
-  passwordsMatch(): bool {
-    if (this.password !== this.confirmPassword) {
-      this.errors.push('Passwords must match');
-      return false;
-    } else {
+  passwordsMatch(): boolean {
+    if (this.password === this.confirmPassword)
       return true;
-    }
+    this.errors.push('Passwords must match');
+    return false;
   }
+
   @action.bound
-  isFirstNameValid() {
-    if (this.firstName.length > 0) {
+  isFirstNameValid(): boolean {
+    if (this.firstName.length > 0)
       return true;
-    }
     this.errors.push('First Name cannot be blank');
     return false;
   }
 
   @action.bound
-  isLastNameValid() {
-    if (this.lastName.length > 0) {
+  isLastNameValid(): boolean {
+    if (this.lastName.length > 0)
       return true;
-    }
     this.errors.push('Last Name cannot be blank');
     return false
   }
 
   @action.bound
-  isCareerAccountValid() {
-    if (this.careerAccount.length > 0) {
+  isCareerAccountValid(): boolean {
+    if (this.careerAccount.length > 0)
       return true;
-    }
     this.errors.push('Career account cannot be blank')
     return false;
   }

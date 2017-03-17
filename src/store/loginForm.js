@@ -48,7 +48,6 @@ class LoginForm {
       career_account: this.careerAccount,
       password: this.password,
     };
-    console.log(payload);
     return fetch(`${BACKEND_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(payload),
