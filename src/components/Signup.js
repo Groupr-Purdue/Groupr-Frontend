@@ -7,15 +7,17 @@ import { Link } from 'react-router';
 import signup from '~/store/signupForm';
 import currentUser from '~/store/user';
 import router from '~/store/router';
+import navbar from '~/store/navbar';
 
 export const handleSubmit = () =>
   signup.submit().then(user => {
     console.log(user);
-    currentUser.firstName = user.firstName;
-    currentUser.lastName = user.lastName;
-    currentUser.careerAccount = user.careerAccount;
+    currentUser.firstName = user.first_name;
+    currentUser.lastName = user.last_name;
+    currentUser.careerAccount = user.career_account;
     currentUser.token = user.token;
     currentUser.loggedIn = true;
+    navbar.subtitle = currentUser.name; 
     router.push(`/courses/${user.id}`);
   })
     .catch((err) => console.error(err));

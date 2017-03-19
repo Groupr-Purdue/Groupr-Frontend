@@ -3,17 +3,21 @@ import React from 'react';
 import { RaisedButton, TextField } from 'material-ui';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import login from '~/store/loginForm';
-import currentUser from '~/store/user';
+import userStore from '~/store/user';
 import router from '~/store/router';
+import navbar from '~/store/navbar';
 
 export const handleSubmit = (): void =>
   login.submit().then((user: Object): Object => {
     console.log(user); // eslint-disable-line no-console
-    currentUser.firstName = user.firstName;
-    currentUser.lastName = user.lastName;
-    currentUser.careerAccount = user.careerAccount;
-    currentUser.token = user.token;
-    currentUser.loggedIn = true;
+    const currentUser = {
+      firstName: user.first_name,
+      lastName: user.last_name,
+      careerAccount: user.career_account,
+      token: user.token,
+      loggedIn: true,
+    }
+    userStore.storeUser(currentUser);
     router.push(`/courses/${user.id}`);
   });
 

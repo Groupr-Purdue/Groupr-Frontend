@@ -2,6 +2,7 @@
 
 import { observable, computed } from 'mobx';
 import Loading from '~/store/loading';
+import user from '~/store/user';
 
 class Navbar {
   @observable subtitle: string = '';
@@ -11,7 +12,6 @@ class Navbar {
   @computed
   get title(): string {
     if (this.subtitle === '') return this.maintitle;
-
     return `${this.maintitle} - ${this.subtitle}`;
   }
 }
