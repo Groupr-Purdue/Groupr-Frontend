@@ -6,6 +6,7 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import { testUser } from '~/config';
+import reThrow from '~/util/reThrow';
 
 class Courses {
   @observable list = [];
@@ -47,7 +48,7 @@ class Courses {
       this.succeedLoading();
       return this.list = json;
     })
-    .catch(this.failLoading);
+    .catch(reThrow(this.failLoading));
   }
 }
 

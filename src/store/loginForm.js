@@ -4,6 +4,7 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import pass from '~/util/passthrough';
+import reThrow from '~/util/reThrow';
 
 class LoginForm {
   @observable careerAccount: string = '';
@@ -55,10 +56,10 @@ class LoginForm {
         'Content-Type': 'application/json',
       }),
     })
-      .then(screenResponse)
-      .then(res => res.json())
-      .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading));
+    .then(screenResponse)
+    .then(res => res.json())
+    .then(pass(this.succeedLoading))
+    .catch(reThrow(this.failLoading));
   }
 }
 

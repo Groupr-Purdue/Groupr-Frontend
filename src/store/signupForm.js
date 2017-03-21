@@ -4,6 +4,7 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import pass from '~/util/passthrough';
+import reThrow from '~/util/reThrow';
 
 class SignupForm {
   @observable firstName: string = '';
@@ -111,14 +112,14 @@ class SignupForm {
     return fetch(`${BACKEND_URL}/register`, {
       method: 'POST',
       body: JSON.stringify(payload),
-      header: new Headers({
+      headers: new Headers({
         'Content-Type': 'application/json',
       }),
     })
-      .then(screenResponse)
-      .then(res => res.json())
-      .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading));
+    .then(screenResponse)
+    .then(res => res.json())
+    .then(pass(this.succeedLoading))
+    .catch(reThrow(this.failLoading));
   }
 }
 
