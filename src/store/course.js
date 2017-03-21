@@ -4,6 +4,7 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import { testUser } from '~/config';
+import mapOn from '~/util/mapOn';
 
 class Course {
   @observable name = 'Loading';
@@ -45,12 +46,13 @@ class Course {
       ).then(screenResponse)
       .then(ret => ret.json())
       .then(json => {
-        const { name, title, id } = json;
+        this.navbar.subtitle = json.name;
 
-        this.navbar.subtitle = name;
-        this.name = name;
-        this.title = title;
-        this.id = id;
+        [
+          'name',
+          'title',
+          'id',
+        ].forEach(mapOn(this)(json));
 
         return json;
       }),

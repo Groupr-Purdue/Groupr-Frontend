@@ -4,10 +4,10 @@ import { inject, observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
 import signup from '~/store/signupForm';
-import route from '~/store/router';
+import router from '~/store/router';
 
 export const handleSubmit = () =>
-  signup.submit().then(({ id }) => router.push(`/courses/${id}`)); 
+  signup.submit().then(({ id }) => router.push(`/courses/${id}`));
 
 class Signup extends React.Component {
   render() {
@@ -16,42 +16,36 @@ class Signup extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='First Name'
-            onChange={(ev, value) => signup.firstName = value}
-          />
+            onChange={(ev, value) => signup.firstName = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Last Name'
-            onChange={(ev, value) => signup.lastName = value}
-          />
+            onChange={(ev, value) => signup.lastName = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={(ev, value) => signup.username = value}
-          />
+            onChange={(ev, value) => signup.username = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
             type='password'
-            onChange={(ev, value) => signup.password = value}
-          />
+            onChange={(ev, value) => signup.password = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Confirm Password'
             type='password'
-            onChange={(ev, value) => signup.confirmPassword = value}
-          />
+            onChange={(ev, value) => signup.confirmPassword = value} />
         </Col>
         <Col xs={12}>
           <Link to='login'>
             <RaisedButton
               primary={true}
               label='Sign Up'
-              onClick={handleSubmit}
-            />
+              onClick={handleSubmit} />
           </Link>
         </Col>
       </Row>

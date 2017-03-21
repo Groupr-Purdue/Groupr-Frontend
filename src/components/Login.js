@@ -1,7 +1,5 @@
-// @flow
 import React from 'react';
 import { RaisedButton, TextField } from 'material-ui';
-import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import login from '~/store/loginForm';
 import router from '~/store/router';
@@ -16,21 +14,18 @@ export default class Login extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={(ev, value) => login.careerAccount = value}
-          />
+            onChange={(ev, value) => login.careerAccount = value} />
         </Col>
         <Col xs={12} >
           <TextField
             floatingLabelText='Password'
             type='password'
-            onChange={(ev, value) => login.password = value}
-          />
+            onChange={(ev, value) => login.password = value} />
         </Col>
         <Col xs={12}>
           <RaisedButton
             primary={true}
-            onClick={handleSubmit}
-          >
+            onClick={handleSubmit}>
             Sign-In
             </RaisedButton>
         </Col>

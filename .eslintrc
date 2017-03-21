@@ -263,7 +263,7 @@
     "array-bracket-spacing": [2, "never"], // enforce spacing inside array brackets (fixable)
     "block-spacing": [2, "always"], // disallow or enforce spaces inside of single line blocks (fixable)
     "brace-style": 2, // enforce one true brace style
-    "camelcase": 2, // require camel case names
+    "camelcase": 0, // require camel case names
     "comma-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after comma (fixable)
     "comma-style": [2, "last"], // enforce one true comma style
     "computed-property-spacing": [2, "never"], // require or disallow padding inside computed properties (fixable)

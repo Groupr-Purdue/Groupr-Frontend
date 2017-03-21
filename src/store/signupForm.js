@@ -1,4 +1,3 @@
-// @flow
 import { observable, action } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
@@ -46,43 +45,41 @@ class SignupForm {
     if (this.password !== this.confirmPassword) {
       this.errors.push('Passwords must match');
       return false;
-    } else {
-      return true;
-    }
+    } return true;
   }
   @action.bound
   isFirstNameValid() {
-    if (this.firstName.length > 0) {
+    if (this.firstName.length > 0)
       return true;
-    }
+
     this.errors.push('First Name cannot be blank');
     return false;
   }
 
   @action.bound
   isLastNameValid() {
-    if (this.lastName.length > 0) {
+    if (this.lastName.length > 0)
       return true;
-    }
+
     this.errors.push('Last Name cannot be blank');
-    return false
+    return false;
   }
 
   @action.bound
   isCareerAccountValid() {
-    if (this.careerAccount.length > 0) {
+    if (this.careerAccount.length > 0)
       return true;
-    }
-    this.errors.push('Career account cannot be blank')
+
+    this.errors.push('Career account cannot be blank');
     return false;
   }
 
   @action.bound
   isPasswordValid() {
-    if (!this.passwordsMatch) {
+    if (!this.passwordsMatch)
       return false;
-    } else if (this.password.length > 0) {
-      this.errors.push('Password cannot be blank')
+    else if (this.password.length > 0) {
+      this.errors.push('Password cannot be blank');
       return false;
     }
     return true;
@@ -90,18 +87,18 @@ class SignupForm {
 
   @action.bound
   isFormValid() {
-    return (this.isFirstNameValid() &&
+    return this.isFirstNameValid() &&
       this.isLastNameValid() &&
       this.isCareerAccountValid() &&
-      this.isPasswordValid());
+      this.isPasswordValid();
   }
 
   @action.bound
   submit() {
     this.errors = [];
-    if (!this.isFormValid()) {
-      return;
-    }
+    if (!this.isFormValid())
+      return false;
+
     this.startLoading();
 
     const payload = {
@@ -110,7 +107,6 @@ class SignupForm {
       career_account: this.careerAccount,
       password: this.password,
     };
-    console.log(payload);
 
     return fetch(`${BACKEND_URL}/register`, {
       method: 'POST',
@@ -121,10 +117,8 @@ class SignupForm {
     })
       .then(screenResponse)
       .then(res => res.json())
-      .then(pass(console.log))
       .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading))
-
+      .catch(pass(this.failLoading));
   }
 }
 

@@ -7,6 +7,7 @@ import { Pulse } from 'better-react-spinkit';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import Loading from '~/store/loading';
+import router from '~/store/router';
 
 const loadingWrapper =
   (Naked: Component, loading: Loading): Component =>
@@ -28,23 +29,16 @@ const loadingWrapper =
                 {loading.waitingFor} has failed to load.
               </h3>
             </Row>
-            {
-              loading.recoverable ?
-                <Row center='xs' middle='xs'>
-                  <RaisedButton
-                    label='Go Back?'
-                    secondary={true}
-                    onClick={action((): string => loading.state = 'loaded')} />
-                </Row>
-              :
-                <Row center='xs' middle='xs'>
-                  <RaisedButton
-                    label='Go Back?'
-                    disabled={true}
-                    onClick={action((): string => loading.state = 'loaded')} />
-                </Row>
-            }
 
+            <Row center='xs' middle='xs'>
+              <RaisedButton
+                label='Go Back?'
+                secondary={true}
+                onClick={
+                  action((): string => loading.recoverable ?
+                    loading.state = 'loaded' : router.push('/'))
+                } />
+            </Row>
           </Grid>
         );
 

@@ -1,11 +1,13 @@
 import { observable } from 'mobx';
 import { BACKEND_URL } from '../config';
+import mapOn from 'util/mapOn';
+import pass from 'util/passthrough';
 
 const user = observable({
   name: '',
   username: '',
   token: '',
-  loggedIn: false
+  loggedIn: false,
 });
 
 
@@ -18,15 +20,15 @@ export const loginUser = ({ params }) =>
         body: params.body,
       })
       .then(res => res.json())
-      .then(json => {
-        const { career_account, id, token, username, careerId } = json;
-
-        user.careerId = careerId;
-        user.name = name;
-        user.id = id;
-        user.token = token;
-        resolve(json);
-      })
+      .then(pass(json =>
+        [
+          'career_account',
+          'id',
+          'token',
+          'username',
+          'careerId',
+        ].forEach(mapOn(user)(json))))
+      .then(resolve)
       .catch(err => reject(err));
   });
 
@@ -42,15 +44,14 @@ export const registerUser = ({ params }) =>
         body: JSON.stringify(params.body),
       })
       .then(res => res.json())
-      .then(json => {
-        console.log(json);
-        const { name, id, token, careerId, token } = json;
-        user.token = token;
-        user.careerId = careerId;
-        user.name = name;
-        user.id = id;
-        resolve(json);
-      })
+      .then(pass(json =>
+        [
+          'careerId',
+          'id',
+          'token',
+          'name',
+        ].forEach(mapOn(user)(json))))
+      .then(resolve)
       .catch(err => reject(err));
   });
 

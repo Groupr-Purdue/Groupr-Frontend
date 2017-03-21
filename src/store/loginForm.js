@@ -1,4 +1,3 @@
-// @flow
 import { observable, action } from 'mobx';
 import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
@@ -39,7 +38,7 @@ class LoginForm {
     this.navbar.loading.state = 'failed';
   }
 
-  
+
   @action.bound
   submit() {
     this.startLoading();
@@ -48,7 +47,7 @@ class LoginForm {
       career_account: this.careerAccount,
       password: this.password,
     };
-    console.log(payload);
+
     return fetch(`${BACKEND_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -58,10 +57,8 @@ class LoginForm {
     })
       .then(screenResponse)
       .then(res => res.json())
-      .then(pass(console.log))
       .then(pass(this.succeedLoading))
-      .catch(pass(this.failLoading))
-
+      .catch(pass(this.failLoading));
   }
 }
 
