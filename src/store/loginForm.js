@@ -1,10 +1,7 @@
 import { observable, action } from 'mobx';
-import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
-import screenResponse from '~/util/screenResponse';
-import pass from '~/util/passthrough';
-import reThrow from '~/util/reThrow';
+import { loginUser } from '~/store/user';
 
 class LoginForm {
   @observable careerAccount: string = '';
@@ -49,17 +46,7 @@ class LoginForm {
       password: this.password,
     };
 
-    return fetch(`${BACKEND_URL}/login`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-    })
-    .then(screenResponse)
-    .then(res => res.json())
-    .then(pass(this.succeedLoading))
-    .catch(reThrow(this.failLoading));
+    return loginUser(payload);
   }
 }
 

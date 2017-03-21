@@ -5,7 +5,7 @@ import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
-import { testUser } from '~/config';
+import user from '~/store/user';
 import reThrow from '~/util/reThrow';
 
 class Courses {
@@ -36,10 +36,10 @@ class Courses {
     this.startLoading();
 
     return fetch(
-      `${BACKEND_URL}/users/${testUser.id}/courses`,
+      `${BACKEND_URL}/users/${user.id}/courses`,
       {
         method: 'GET',
-        headers: { Authorization: testUser.token },
+        headers: { Authorization: user.token },
       }
     )
     .then(screenResponse)

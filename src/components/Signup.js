@@ -1,13 +1,17 @@
 import React from 'react';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { Link } from 'react-router';
 import signup from '~/store/signupForm';
 import router from '~/store/router';
 
-export const handleSubmit = () =>
-  signup.submit().then(({ id }) => router.push(`/courses/${id}`));
+export const handleSubmit = () => {
+  const ret = signup.submit();
+
+  if(ret instanceof Promise) ret.then(() => router.push(`/courses/me`));
+  else console.log(ret);
+}
 
 class Signup extends React.Component {
   render() {
@@ -26,7 +30,7 @@ class Signup extends React.Component {
         <Col xs={12} >
           <TextField
             floatingLabelText='Purdue Username'
-            onChange={(ev, value) => signup.username = value} />
+            onChange={(ev, value) => signup.careerAccount = value} />
         </Col>
         <Col xs={12} >
           <TextField
@@ -53,4 +57,4 @@ class Signup extends React.Component {
   }
 }
 
-export default inject('router')(observer(Signup));
+export default observer(Signup);

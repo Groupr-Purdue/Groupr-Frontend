@@ -5,6 +5,7 @@ import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import pass from '~/util/passthrough';
 import reThrow from '~/util/reThrow';
+import { registerUser } from '~/store/user';
 
 class SignupForm {
   @observable firstName: string = '';
@@ -79,7 +80,7 @@ class SignupForm {
   isPasswordValid() {
     if (!this.passwordsMatch)
       return false;
-    else if (this.password.length > 0) {
+    else if (this.password.length === 0) {
       this.errors.push('Password cannot be blank');
       return false;
     }
@@ -97,8 +98,8 @@ class SignupForm {
   @action.bound
   submit() {
     this.errors = [];
-    if (!this.isFormValid())
-      return false;
+
+    if (!this.isFormValid()) return this.errors;
 
     this.startLoading();
 
@@ -109,17 +110,7 @@ class SignupForm {
       password: this.password,
     };
 
-    return fetch(`${BACKEND_URL}/register`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-    })
-    .then(screenResponse)
-    .then(res => res.json())
-    .then(pass(this.succeedLoading))
-    .catch(reThrow(this.failLoading));
+    return registerUser(payload);
   }
 }
 
