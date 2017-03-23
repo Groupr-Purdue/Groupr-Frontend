@@ -13,6 +13,7 @@ import course from '~/store/course';
 import router from '~/store/router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
+import GroupCard from '~/components/GroupCard';
 
 const handleClick =
   (): Void => router.push(`/users/${course.id}`);
@@ -46,6 +47,16 @@ const CoursePage = (): Element =>
           </List>
         </Paper>
       </Col>
+    </Row>
+    <Row around='xs'>
+      {
+        course.groups.map(
+          (group: Object, idx: number): Element =>
+            <Col xs={12} sm={6} md={4} lg={4} key={idx} >
+              <GroupCard group={group} style={{ margin: '10px 0 10px 0' }} />
+            </Col>
+        )
+      }
     </Row>
   </div>;
 

@@ -56,6 +56,17 @@ class Course {
 
         return json;
       }),
+
+      fetch(
+        `${BACKEND_URL}/courses/${this.id}/groups`,
+        {
+          method: 'GET',
+          headers: { Authorization: user.token },
+        }
+      ).then(screenResponse)
+      .then(ret => ret.json())
+      .then(json => this.groups = json)
+      .then(console.log),
     ]).then(() => {
       this.loading.state = 'loaded';
       navbar.loading.state = 'loaded';
