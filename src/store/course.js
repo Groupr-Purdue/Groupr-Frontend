@@ -3,7 +3,7 @@ import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
-import { testUser } from '~/config';
+import user from '~/store/user';
 import mapOn from '~/util/mapOn';
 
 class Course {
@@ -32,7 +32,7 @@ class Course {
         `${BACKEND_URL}/courses/${this.id}/users`,
         {
           method: 'GET',
-          headers: { Authorization: testUser.token },
+          headers: { Authorization: user.token },
         }
       ).then(screenResponse)
       .then(ret => ret.json())

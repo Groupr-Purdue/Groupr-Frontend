@@ -1,7 +1,8 @@
 // @flow
 
 import { observable, action } from 'mobx';
-import { BACKEND_URL, testUser } from '~/config';
+import { BACKEND_URL } from '~/config';
+import user from '~/store/user';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
@@ -38,7 +39,7 @@ class Courses {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: testUser.token,
+          Authorization: user.token,
         },
       }
     )
