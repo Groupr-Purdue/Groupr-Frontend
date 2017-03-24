@@ -1,8 +1,9 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui';
 import router from '~/store/router';
+import { observer } from 'mobx-react';
 
-const GroupList = ({ users }: { users: Array<Object>}): Element =>
+const UserList = ({ users }: { users: Array<Object>}): Element =>
   <List>
     { do {
       if (users.length)
@@ -15,8 +16,8 @@ const GroupList = ({ users }: { users: Array<Object>}): Element =>
               onClick={() => router.push(`/users/${user.id}`)} />
         );
 
-      else <ListItem primaryText='No studuents in this group.' />;
+      else <ListItem primaryText='No members' />;
     } }
   </List>;
 
-export default GroupList;
+export default observer(UserList);

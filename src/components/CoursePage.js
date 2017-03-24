@@ -8,15 +8,15 @@ import {
   ListItem,
   Subheader,
   Divider,
+  RaisedButton,
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
 import GroupCard from '~/components/GroupCard';
-
-const handleClick =
-  (): Void => router.push(`/users/${course.id}`);
+import UserList from '~/components/UserList';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const CoursePage = (): Element =>
   <div>
@@ -30,23 +30,16 @@ const CoursePage = (): Element =>
             <h2 id='course_title'> {course.title} </h2>
           </Row>
           <Divider />
-          <List>
-            <Subheader> {course.name} Students </Subheader>
-            { do {
-              if (course.users.length)
-                course.users.map(
-                  (user: Object, idx: number): Element =>
-                    <ListItem
-                      key={idx}
-                      primaryText={`${user.first_name} ${user.last_name}`}
-                      secondaryText={user.career_account}
-                      onClick={handleClick} />);
-
-              else <ListItem primaryText='No studuents in this course.' />;
-            } }
-          </List>
+          <UserList users={course.users} />
         </Paper>
       </Col>
+    </Row>
+    <Row center='xs'>
+      <RaisedButton
+        primary={true}
+        style={{ margin: '15px 0 15px 0' }}
+        label='Create New Group!'
+        onClick={(): void => router.push(`/create-group/${course.id}`)} />
     </Row>
     <Row around='xs'>
       {

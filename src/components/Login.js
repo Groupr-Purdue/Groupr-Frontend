@@ -5,7 +5,7 @@ import login from '~/store/loginForm';
 import router from '~/store/router';
 
 export const handleSubmit = () =>
-  login.submit().then(({ id }) => router.push(`/courses/${id}`));
+  login.submit().then(() => router.push('/courses/me'));
 
 export default class Login extends React.Component {
   render(): Element {

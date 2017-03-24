@@ -16,11 +16,13 @@ import CoursePage from '~/components/CoursePage';
 import Signup from '~/components/Signup';
 import Context from '~/components/Context';
 import CreateCourseForm from '~/components/CreateCourseForm';
+import CreateGroupForm from '~/components/CreateGroupForm';
 import MyCoursesPage from '~/components/MyCoursesPage';
 import navbarStore from '~/store/navbar';
 import courses from '~/store/courses';
 import course from '~/store/course';
 import myCourses from '~/store/myCourses';
+import groupForm from '~/store/groupForm';
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
@@ -40,6 +42,13 @@ const enterCourse = (nextProps: Object): Void => {
 const enterCourseForm = (): Void => {
   navbarStore.subtitle = 'Create a Course';
   navbarStore.loading.state = 'loaded';
+};
+
+const enterGroupForm = (nextProps: Object): Void => {
+  navbarStore.subtitle = 'Create a Group';
+  navbarStore.loading.state = 'loaded';
+  console.log(nextProps);
+  groupForm.courseId = nextProps.id;
 };
 
 const enterMyCourses = (): Void => {
@@ -76,6 +85,9 @@ render(
         <Route path='create-course'
           onEnter={enterCourseForm}
           component={CreateCourseForm} />
+        <Route path='create-group/:id'
+          onEnter={enterGroupForm}
+          component={CreateGroupForm} />
       </Route>
     </Router>
   </Context>,

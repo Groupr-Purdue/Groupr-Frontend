@@ -4,6 +4,11 @@ import mapOn from '~/util/mapOn';
 import pass from '~/util/passthrough';
 
 const user = observable({
+  email: '',
+  career_account: '',
+  first_name: '',
+  last_name: '',
+  id: null,
   name: '',
   username: '',
   token: '',
@@ -20,8 +25,6 @@ export const loginUser = payload =>
       'password',
     ].forEach(mapOn(cleanPayload)(payload));
 
-    console.log(cleanPayload);
-
     fetch(
       `${BACKEND_URL}/login`,
       {
@@ -37,8 +40,10 @@ export const loginUser = payload =>
           'career_account',
           'id',
           'token',
-          'username',
-          'careerId',
+          'career_account',
+          'last_name',
+          'first_name',
+          'email',
         ].forEach(mapOn(user)(json))))
       .then(resolve)
       .catch(err => reject(err));

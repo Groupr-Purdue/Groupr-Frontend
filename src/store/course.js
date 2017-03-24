@@ -5,11 +5,13 @@ import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import user from '~/store/user';
 import mapOn from '~/util/mapOn';
+import pass from '~/util/passthrough';
 
 class Course {
   @observable name = 'Loading';
   @observable title = 'Loading';
   @observable users = [];
+  @observable groups;
   @observable id;
   loading: Loading;
   navbar;
@@ -20,6 +22,34 @@ class Course {
       waitingFor: 'A course',
       state: 'loading',
     });
+  }
+
+  @action.bound
+  joinGroup(groupId) {
+    return fetch(
+      `${BACKEND_URL}/groups/${groupId}/users`,
+      {
+        method: 'POST',
+        headers: { Authorization: user.token },
+      }
+    )
+    .then(screenResponse)
+    .then(res => res.json())
+    .then(
+      () => this.groups.find(
+        group => group.id === groupId
+      ).members.push({
+        career_account: user.career_account,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        id: user.id,
+      })
+    )
+    .then(pass(
+      () => console.log(this.groups.find(
+        group => group.id === groupId
+      ).members)
+    ));
   }
 
   @action.bound
@@ -65,8 +95,7 @@ class Course {
         }
       ).then(screenResponse)
       .then(ret => ret.json())
-      .then(json => this.groups = json)
-      .then(console.log),
+      .then(json => this.groups = json),
     ]).then(() => {
       this.loading.state = 'loaded';
       navbar.loading.state = 'loaded';
