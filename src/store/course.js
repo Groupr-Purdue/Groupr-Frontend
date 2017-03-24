@@ -5,7 +5,7 @@ import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import user from '~/store/user';
 import mapOn from '~/util/mapOn';
-import pass from '~/util/passthrough';
+import pipe from '~/util/passthrough';
 
 class Course {
   @observable name = 'Loading';
@@ -35,7 +35,7 @@ class Course {
     )
     .then(screenResponse)
     .then(res => res.json())
-    .then(pass(
+    .then(pipe(
       () => this.groups.find(
         group => group.id === groupId
       ).members.push({
@@ -62,7 +62,7 @@ class Course {
     )
     .then(screenResponse)
     .then(res => res.json())
-    .then(pass(
+    .then(pipe(
       () =>
         group.members.splice(
           group.members.findIndex(member => member.id === user.id),
@@ -104,6 +104,7 @@ class Course {
         }
       ).then(screenResponse)
       .then(ret => ret.json())
+      .then(json => json.error ? do { throw json; } : json)
       .then(json => this.users = json),
 
       fetch(

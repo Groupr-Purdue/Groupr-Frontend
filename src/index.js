@@ -51,7 +51,6 @@ const enterCourseForm = (): Void => {
 const enterGroupForm = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Create a Group';
   navbarStore.loading.state = 'loaded';
-  console.log(nextProps);
   groupForm.courseId = nextProps.id;
 };
 
