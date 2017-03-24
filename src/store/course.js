@@ -72,6 +72,25 @@ class Course {
   }
 
   @action.bound
+  leaveCourse() {
+    this.loading.waitingFor = 'Leaving a Course';
+
+    return fetch(
+      `${BACKEND_URL}/courses/${this.id}/users`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: user.token,
+        },
+      }
+    )
+    .then(screenResponse)
+    .then((res: Object): Promise => res.json())
+    .catch(this.failLoading);
+  }
+
+  @action.bound
   fetch({ params }) {
     this.loading.state = 'loading';
     this.loading.waitingFor = `Course ${params.id}`;

@@ -7,6 +7,7 @@ import {
 } from 'material-ui';
 import UserList from '~/components/UserList';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/remove';
 import course from '~/store/course';
 import user from '~/store/user';
 import { observer } from 'mobx-react';
@@ -42,7 +43,7 @@ const GroupCard = ({ group, style = {} }: propType): Element =>
           <FlatButton
             secondary={true}
             label='Leave Group'
-            icon={<ContentAdd />}
+            icon={<ContentRemove />}
             onClick={handleLeaveGroup(group.id)} />;
       } }
     </CardText>

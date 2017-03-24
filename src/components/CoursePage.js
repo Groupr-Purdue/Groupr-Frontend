@@ -1,39 +1,29 @@
-// @flow
-
 import React from 'react';
 import { observer } from 'mobx-react';
 import {
-  Paper,
-  List,
-  ListItem,
-  Subheader,
-  Divider,
   RaisedButton,
+  Card,
+  CardText,
+  CardHeader,
+  FlatButton,
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
+import user from '~/store/user';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
 import GroupCard from '~/components/GroupCard';
 import UserList from '~/components/UserList';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/remove';
+
+const handleLeaveCourse =
+  () => course.leaveCourse().then(router.push('/courses'));
+
+const handleJoinCourse = null;
 
 const CoursePage = (): Element =>
   <div>
-    <Row center='xs'>
-      <Col xs={12} sm={6} md={6} lg={6}>
-        <Paper>
-          <Row center='xs'>
-            <h1 id='course_name'> {course.name} </h1>
-          </Row>
-          <Row center='xs'>
-            <h2 id='course_title'> {course.title} </h2>
-          </Row>
-          <Divider />
-          <UserList users={course.users} />
-        </Paper>
-      </Col>
-    </Row>
     <Row center='xs'>
       <RaisedButton
         primary={true}
@@ -50,6 +40,33 @@ const CoursePage = (): Element =>
             </Col>
         )
       }
+    </Row>
+    <Row center='xs'>
+      <Col xs={12} sm={10} md={10} lg={10}>
+        <Card>
+          <CardHeader
+            title={course.name}
+            actAsExpander={true}
+            showExpandableButton={true} />
+          <CardText expandable={true}>
+            <UserList users={course.users} />
+            { do {
+              if (user.loggedIn && !course.users.find(u => u.id === user.id))
+                <FlatButton
+                  primary={true}
+                  label='Join Course'
+                  icon={<ContentAdd />}
+                  onClick={handleJoinCourse} />;
+              else if (user.loggedIn)
+                <FlatButton
+                  secondary={true}
+                  label='Leave Course'
+                  icon={<ContentRemove />}
+                  onClick={handleLeaveCourse} />;
+            } }
+          </CardText>
+        </Card>
+      </Col>
     </Row>
   </div>;
 
