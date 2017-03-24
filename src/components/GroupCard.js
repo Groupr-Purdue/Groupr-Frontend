@@ -8,6 +8,8 @@ import {
 import UserList from '~/components/UserList';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import course from '~/store/course';
+import user from '~/store/user';
+import { observer } from 'mobx-react';
 
 type propType = { group: Object, style: Object };
 
@@ -25,12 +27,15 @@ const GroupCard = ({ group, style = {} }: propType): Element =>
       showExpandableButton={true} />
     <CardText expandable={true}>
       <UserList users={group.members} />
-      <FlatButton
-        primary={true}
-        label='Join Group'
-        icon={<ContentAdd />}
-        onClick={handleJoinGroup(group.id)} />
+      { do {
+        if (user.loggedIn && !group.members.find(member => member.id === user.id))
+          <FlatButton
+            primary={true}
+            label='Join Group'
+            icon={<ContentAdd />}
+            onClick={handleJoinGroup(group.id)} />;
+      } }
     </CardText>
   </Card>;
 
-export default GroupCard;
+export default observer(GroupCard);

@@ -45,6 +45,7 @@ export const loginUser = payload =>
           'first_name',
           'email',
         ].forEach(mapOn(user)(json))))
+      .then(pass(() => user.loggedIn = true))
       .then(resolve)
       .catch(err => reject(err));
   });
