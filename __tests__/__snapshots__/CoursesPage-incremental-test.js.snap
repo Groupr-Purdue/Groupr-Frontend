@@ -1,6 +1,8 @@
-exports[`CoursesPage after loading course 1 should have the correct course 1 name and title. 1`] = `"Senior ProjectCS 407"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test jest CoursesPages incremental snapshot test 1`] = `
+exports[`CoursesPage after loading course 1 should have the correct course 1 name and title. 1`] = `""`;
+
+exports[`jest CoursesPages incremental snapshot test 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,13 +10,43 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <CoursesPage
-    0={Object {}}
-    1={Object {}} />,
+  "node": <Grid>
+    <Row
+        center="xs"
+        middle="xs"
+        style={
+            Object {
+                "height": "50%",
+              }
+        }
+    >
+        <Pulse
+            duration="1s"
+            scaleEnd={1}
+            scaleStart={0}
+            size={100}
+        />
+    </Row>
+</Grid>,
   "nodes": Array [
-    <CoursesPage
-      0={Object {}}
-      1={Object {}} />,
+    <Grid>
+      <Row
+            center="xs"
+            middle="xs"
+            style={
+                  Object {
+                        "height": "50%",
+                      }
+            }
+      >
+            <Pulse
+                  duration="1s"
+                  scaleEnd={1}
+                  scaleStart={0}
+                  size={100}
+            />
+      </Row>
+</Grid>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -51,13 +83,43 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <CoursesPage
-          0={Object {}}
-          1={Object {}} />,
+        "_currentElement": <Grid>
+          <Row
+                    center="xs"
+                    middle="xs"
+                    style={
+                              Object {
+                                        "height": "50%",
+                                      }
+                    }
+          >
+                    <Pulse
+                              duration="1s"
+                              scaleEnd={1}
+                              scaleStart={0}
+                              size={100}
+                    />
+          </Row>
+</Grid>,
         "_debugID": 2,
-        "_renderedOutput": <CoursesPage
-          0={Object {}}
-          1={Object {}} />,
+        "_renderedOutput": <Grid>
+          <Row
+                    center="xs"
+                    middle="xs"
+                    style={
+                              Object {
+                                        "height": "50%",
+                                      }
+                    }
+          >
+                    <Pulse
+                              duration="1s"
+                              scaleEnd={1}
+                              scaleStart={0}
+                              size={100}
+                    />
+          </Row>
+</Grid>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,

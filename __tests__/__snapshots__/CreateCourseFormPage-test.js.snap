@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`jest Login snapshot test 1`] = `
+exports[`jest CreateCourseForm snapshot test 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -22,7 +22,7 @@ ShallowWrapper {
               }
         }
     >
-        <Login />
+        <Unknown />
     </Provider>
 </MuiThemeProvider>,
   "nodes": Array [
@@ -40,7 +40,7 @@ ShallowWrapper {
                       }
             }
       >
-            <Login />
+            <Unknown />
       </Provider>
 </MuiThemeProvider>,
   ],
@@ -51,7 +51,7 @@ ShallowWrapper {
       "_compositeType": 2,
       "_context": Object {},
       "_currentElement": <Unknown>
-        <Login />
+        <Unknown />
 </Unknown>,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -60,7 +60,7 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "children": <Login />,
+          "children": <Unknown />,
         },
         "refs": Object {},
         "state": null,
@@ -96,7 +96,7 @@ ShallowWrapper {
                                       }
                     }
           >
-                    <Login />
+                    <Unknown />
           </Provider>
 </MuiThemeProvider>,
         "_debugID": 2,
@@ -114,7 +114,7 @@ ShallowWrapper {
                                       }
                     }
           >
-                    <Login />
+                    <Unknown />
           </Provider>
 </MuiThemeProvider>,
       },
@@ -129,7 +129,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Unknown>
-    <Login />
+    <Unknown />
 </Unknown>,
 }
 `;

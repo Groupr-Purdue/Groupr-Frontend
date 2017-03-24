@@ -16,14 +16,44 @@ import { observer } from 'mobx-react';
 type propType = { group: Object, style: Object };
 
 const handleJoinGroup =
-  id =>
+  group =>
     () =>
-      course.joinGroup(id).then(snackbar.open);
+      course
+        .joinGroup(group.id)
+        .then(
+          () => snackbar.open({
+            actionLabel: 'Undo',
+            message: `You have successfully joined ${group.name}.`,
+            onAction: handleLeaveGroup(group),
+          }
+        ))
+        .catch(
+          () => snackbar.open({
+            actionLabel: 'Try Again?',
+            message: `You failed to joined ${group.name}.`,
+            onAction: handleJoinGroup(group),
+          })
+        );
 
 const handleLeaveGroup =
-  id =>
+  group =>
     () =>
-      course.leaveGroup(id);
+      course
+        .leaveGroup(group.id)
+        .then(
+          () => snackbar.open({
+            actionLabel: 'Undo',
+            message: `You have successfully left ${group.name}.`,
+            onAction: handleJoinGroup(group),
+          }
+        ))
+        .catch(
+          () => snackbar.open({
+            actionLabel: 'Try Again?',
+            message: `You failed to leave ${group.name}.`,
+            onAction: handleLeaveGroup(group),
+          })
+        );
 
 const GroupCard = ({ group, style = {} }: propType): Element =>
   <Card style={style}>
@@ -39,13 +69,13 @@ const GroupCard = ({ group, style = {} }: propType): Element =>
             primary={true}
             label='Join Group'
             icon={<ContentAdd />}
-            onClick={handleJoinGroup(group.id)} />;
+            onClick={handleJoinGroup(group)} />;
         else if (user.loggedIn)
           <FlatButton
             secondary={true}
             label='Leave Group'
             icon={<ContentRemove />}
-            onClick={handleLeaveGroup(group.id)} />;
+            onClick={handleLeaveGroup(group)} />;
       } }
     </CardText>
   </Card>;

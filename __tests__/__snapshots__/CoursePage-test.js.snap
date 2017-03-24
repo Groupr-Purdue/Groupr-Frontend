@@ -1,4 +1,6 @@
-exports[`test jest CoursesPages snapshot test 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jest CoursesPages snapshot test 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,12 +10,7 @@ ShallowWrapper {
   "length": 1,
   "node": <MuiThemeProvider>
     <Provider
-        navbar={
-            Navbar {
-                "maintitle": "Groupr",
-                "subtitle": "",
-              }
-        }
+        navbar={Navbar {}}
         routing={
             RouterStore {
                 "go": [Function],
@@ -23,19 +20,15 @@ ShallowWrapper {
                 "push": [Function],
                 "replace": [Function],
               }
-        }>
-        <inject-CoursesPage-with-router />
+        }
+    >
+        <Unknown />
     </Provider>
 </MuiThemeProvider>,
   "nodes": Array [
     <MuiThemeProvider>
       <Provider
-            navbar={
-                  Navbar {
-                        "maintitle": "Groupr",
-                        "subtitle": "",
-                      }
-            }
+            navbar={Navbar {}}
             routing={
                   RouterStore {
                         "go": [Function],
@@ -45,8 +38,9 @@ ShallowWrapper {
                         "push": [Function],
                         "replace": [Function],
                       }
-            }>
-            <inject-CoursesPage-with-router />
+            }
+      >
+            <Unknown />
       </Provider>
 </MuiThemeProvider>,
   ],
@@ -57,7 +51,7 @@ ShallowWrapper {
       "_compositeType": 2,
       "_context": Object {},
       "_currentElement": <Unknown>
-        <inject-CoursesPage-with-router />
+        <Unknown />
 </Unknown>,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -66,7 +60,7 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "children": <inject-CoursesPage-with-router />,
+          "children": <Unknown />,
         },
         "refs": Object {},
         "state": null,
@@ -90,12 +84,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <MuiThemeProvider>
           <Provider
-                    navbar={
-                              Navbar {
-                                        "maintitle": "Groupr",
-                                        "subtitle": "",
-                                      }
-                    }
+                    navbar={Navbar {}}
                     routing={
                               RouterStore {
                                         "go": [Function],
@@ -105,19 +94,15 @@ ShallowWrapper {
                                         "push": [Function],
                                         "replace": [Function],
                                       }
-                    }>
-                    <inject-CoursesPage-with-router />
+                    }
+          >
+                    <Unknown />
           </Provider>
 </MuiThemeProvider>,
         "_debugID": 2,
         "_renderedOutput": <MuiThemeProvider>
           <Provider
-                    navbar={
-                              Navbar {
-                                        "maintitle": "Groupr",
-                                        "subtitle": "",
-                                      }
-                    }
+                    navbar={Navbar {}}
                     routing={
                               RouterStore {
                                         "go": [Function],
@@ -127,8 +112,9 @@ ShallowWrapper {
                                         "push": [Function],
                                         "replace": [Function],
                                       }
-                    }>
-                    <inject-CoursesPage-with-router />
+                    }
+          >
+                    <Unknown />
           </Provider>
 </MuiThemeProvider>,
       },
@@ -143,7 +129,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Unknown>
-    <inject-CoursesPage-with-router />
+    <Unknown />
 </Unknown>,
 }
 `;

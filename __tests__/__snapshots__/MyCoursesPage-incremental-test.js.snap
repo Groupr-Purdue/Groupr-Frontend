@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`jest CoursesPages incremental snapshot test 1`] = `
+exports[`MyCoursesPage after loading course 1 with test user should have the correct course 1 name and title. 1`] = `""`;
+
+exports[`jest MyCoursesPages incremental snapshot test 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],

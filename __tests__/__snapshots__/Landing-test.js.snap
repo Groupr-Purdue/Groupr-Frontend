@@ -1,4 +1,6 @@
-exports[`test jest Landing snapshot test 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jest Landing snapshot test 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,13 +10,7 @@ ShallowWrapper {
   "length": 1,
   "node": <MuiThemeProvider>
     <Provider
-        navbar={
-            Navbar {
-                "loading": false,
-                "maintitle": "Groupr",
-                "subtitle": "",
-              }
-        }
+        navbar={Navbar {}}
         routing={
             RouterStore {
                 "go": [Function],
@@ -24,20 +20,15 @@ ShallowWrapper {
                 "push": [Function],
                 "replace": [Function],
               }
-        }>
+        }
+    >
         <Login />
     </Provider>
 </MuiThemeProvider>,
   "nodes": Array [
     <MuiThemeProvider>
       <Provider
-            navbar={
-                  Navbar {
-                        "loading": false,
-                        "maintitle": "Groupr",
-                        "subtitle": "",
-                      }
-            }
+            navbar={Navbar {}}
             routing={
                   RouterStore {
                         "go": [Function],
@@ -47,7 +38,8 @@ ShallowWrapper {
                         "push": [Function],
                         "replace": [Function],
                       }
-            }>
+            }
+      >
             <Login />
       </Provider>
 </MuiThemeProvider>,
@@ -92,13 +84,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <MuiThemeProvider>
           <Provider
-                    navbar={
-                              Navbar {
-                                        "loading": false,
-                                        "maintitle": "Groupr",
-                                        "subtitle": "",
-                                      }
-                    }
+                    navbar={Navbar {}}
                     routing={
                               RouterStore {
                                         "go": [Function],
@@ -108,20 +94,15 @@ ShallowWrapper {
                                         "push": [Function],
                                         "replace": [Function],
                                       }
-                    }>
+                    }
+          >
                     <Login />
           </Provider>
 </MuiThemeProvider>,
         "_debugID": 2,
         "_renderedOutput": <MuiThemeProvider>
           <Provider
-                    navbar={
-                              Navbar {
-                                        "loading": false,
-                                        "maintitle": "Groupr",
-                                        "subtitle": "",
-                                      }
-                    }
+                    navbar={Navbar {}}
                     routing={
                               RouterStore {
                                         "go": [Function],
@@ -131,7 +112,8 @@ ShallowWrapper {
                                         "push": [Function],
                                         "replace": [Function],
                                       }
-                    }>
+                    }
+          >
                     <Login />
           </Provider>
 </MuiThemeProvider>,

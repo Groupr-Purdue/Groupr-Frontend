@@ -22,7 +22,7 @@ ShallowWrapper {
               }
         }
     >
-        <inject-Signup-with-router />
+        <Signup />
     </Provider>
 </MuiThemeProvider>,
   "nodes": Array [
@@ -40,7 +40,7 @@ ShallowWrapper {
                       }
             }
       >
-            <inject-Signup-with-router />
+            <Signup />
       </Provider>
 </MuiThemeProvider>,
   ],
@@ -51,7 +51,7 @@ ShallowWrapper {
       "_compositeType": 2,
       "_context": Object {},
       "_currentElement": <Unknown>
-        <inject-Signup-with-router />
+        <Signup />
 </Unknown>,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -60,7 +60,7 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "children": <inject-Signup-with-router />,
+          "children": <Signup />,
         },
         "refs": Object {},
         "state": null,
@@ -96,7 +96,7 @@ ShallowWrapper {
                                       }
                     }
           >
-                    <inject-Signup-with-router />
+                    <Signup />
           </Provider>
 </MuiThemeProvider>,
         "_debugID": 2,
@@ -114,7 +114,7 @@ ShallowWrapper {
                                       }
                     }
           >
-                    <inject-Signup-with-router />
+                    <Signup />
           </Provider>
 </MuiThemeProvider>,
       },
@@ -129,7 +129,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Unknown>
-    <inject-Signup-with-router />
+    <Signup />
 </Unknown>,
 }
 `;
