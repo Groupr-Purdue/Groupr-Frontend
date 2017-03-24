@@ -7,7 +7,6 @@ import {
   Card,
   CardText,
   CardHeader,
-  FlatButton,
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
@@ -32,6 +31,22 @@ const CoursePage = (): Element =>
         style={{ margin: '15px 0 15px 0' }}
         label='Create New Group!'
         onClick={(): void => router.push(`/create-group/${course.id}`)} />
+      { do {
+        if (user.loggedIn && !course.users.find(u => u.id === user.id))
+          <RaisedButton
+            style={{ margin: '15px 0 15px 0' }}
+            primary={true}
+            label='Join Course'
+            icon={<ContentAdd />}
+            onClick={handleJoinCourse} />;
+        else if (user.loggedIn)
+          <RaisedButton
+            style={{ margin: '15px 0 15px 0' }}
+            secondary={true}
+            label='Leave Course'
+            icon={<ContentRemove />}
+            onClick={handleLeaveCourse} />;
+      } }
     </Row>
     <Row around='xs'>
       {
@@ -43,6 +58,7 @@ const CoursePage = (): Element =>
         )
       }
     </Row>
+    <Divider style={{ margin: '30px 0 15px 0' }} />
     <Row center='xs'>
       <Col xs={12} sm={10} md={10} lg={10}>
         <Card>
