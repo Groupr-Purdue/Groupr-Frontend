@@ -35,7 +35,7 @@ class Course {
     )
     .then(screenResponse)
     .then(res => res.json())
-    .then(
+    .then(pass(
       () => this.groups.find(
         group => group.id === groupId
       ).members.push({
@@ -44,11 +44,30 @@ class Course {
         last_name: user.last_name,
         id: user.id,
       })
+    ));
+  }
+
+  @action.bound
+  leaveGroup(groupId) {
+    const group = this.groups.find(
+      g => g.id === groupId
+    );
+
+    return fetch(
+      `${BACKEND_URL}/groups/${groupId}/users`,
+      {
+        method: 'DELETE',
+        headers: { Authorization: user.token },
+      }
     )
+    .then(screenResponse)
+    .then(res => res.json())
     .then(pass(
-      () => console.log(this.groups.find(
-        group => group.id === groupId
-      ).members)
+      () =>
+        group.members.splice(
+          group.members.findIndex(member => member.id === user.id),
+          1,
+        )
     ));
   }
 

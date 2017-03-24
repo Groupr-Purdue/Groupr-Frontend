@@ -16,8 +16,12 @@ type propType = { group: Object, style: Object };
 const handleJoinGroup =
   id =>
     () =>
-      course.joinGroup(id)
-      .then(console.log);
+      course.joinGroup(id);
+
+const handleLeaveGroup =
+  id =>
+    () =>
+      course.leaveGroup(id);
 
 const GroupCard = ({ group, style = {} }: propType): Element =>
   <Card style={style}>
@@ -34,6 +38,12 @@ const GroupCard = ({ group, style = {} }: propType): Element =>
             label='Join Group'
             icon={<ContentAdd />}
             onClick={handleJoinGroup(group.id)} />;
+        else if (user.loggedIn)
+          <FlatButton
+            secondary={true}
+            label='Leave Group'
+            icon={<ContentAdd />}
+            onClick={handleLeaveGroup(group.id)} />;
       } }
     </CardText>
   </Card>;
