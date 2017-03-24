@@ -8,6 +8,7 @@ import { syncHistoryWithStore } from 'mobx-react-router';
 import routingStore from './store/router';
 const history = syncHistoryWithStore(hashHistory, routingStore);
 
+// components
 import App from '~/components/App';
 import Landing from '~/components/Landing';
 import Login from './components/Login';
@@ -18,6 +19,9 @@ import Context from '~/components/Context';
 import CreateCourseForm from '~/components/CreateCourseForm';
 import CreateGroupForm from '~/components/CreateGroupForm';
 import MyCoursesPage from '~/components/MyCoursesPage';
+import AppSnackbar from '~/components/AppSnackbar';
+
+// stores
 import navbarStore from '~/store/navbar';
 import courses from '~/store/courses';
 import course from '~/store/course';
@@ -64,32 +68,35 @@ const stopLoading =
 
 render(
   <Context>
-    <Router history={history}>
-      <Route path='/' component={App}>
-        <IndexRoute component={Landing} />
-        <Route path='login' component={Login} />
-        <Route path='signup' component={Signup} />
-        <Route path='courses'>
-          <IndexRoute
-            onLeave={stopLoading(navbarStore)}
-            onEnter={enterCourses}
-            component={CoursesPage} />
-          <Route path='me'
-            component={MyCoursesPage}
-            onEnter={enterMyCourses} />
-          <Route path=':id'
-            onEnter={enterCourse}
-            onLeave={stopLoading(navbarStore)}
-            component={CoursePage} />
+    <div>
+      <Router history={history}>
+        <Route path='/' component={App}>
+          <IndexRoute component={Landing} />
+          <Route path='login' component={Login} />
+          <Route path='signup' component={Signup} />
+          <Route path='courses'>
+            <IndexRoute
+              onLeave={stopLoading(navbarStore)}
+              onEnter={enterCourses}
+              component={CoursesPage} />
+            <Route path='me'
+              component={MyCoursesPage}
+              onEnter={enterMyCourses} />
+            <Route path=':id'
+              onEnter={enterCourse}
+              onLeave={stopLoading(navbarStore)}
+              component={CoursePage} />
+          </Route>
+          <Route path='create-course'
+            onEnter={enterCourseForm}
+            component={CreateCourseForm} />
+          <Route path='create-group/:id'
+            onEnter={enterGroupForm}
+            component={CreateGroupForm} />
         </Route>
-        <Route path='create-course'
-          onEnter={enterCourseForm}
-          component={CreateCourseForm} />
-        <Route path='create-group/:id'
-          onEnter={enterGroupForm}
-          component={CreateGroupForm} />
-      </Route>
-    </Router>
+      </Router>
+      <AppSnackbar />
+    </div>
   </Context>,
   document.getElementById('app')
 );

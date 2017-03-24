@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import {
+  Paper,
+  Divider,
   RaisedButton,
   Card,
   CardText,

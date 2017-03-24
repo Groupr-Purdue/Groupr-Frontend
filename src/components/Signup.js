@@ -9,9 +9,8 @@ import router from '~/store/router';
 export const handleSubmit = () => {
   const ret = signup.submit();
 
-  if(ret instanceof Promise) ret.then(() => router.push(`/courses/me`));
-  else console.log(ret);
-}
+  if (ret instanceof Promise) ret.then(() => router.push('courses/me'));
+};
 
 class Signup extends React.Component {
   render() {

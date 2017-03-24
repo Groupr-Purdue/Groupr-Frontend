@@ -10,6 +10,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import course from '~/store/course';
 import user from '~/store/user';
+import snackbar from '~/store/snackbar';
 import { observer } from 'mobx-react';
 
 type propType = { group: Object, style: Object };
@@ -17,7 +18,7 @@ type propType = { group: Object, style: Object };
 const handleJoinGroup =
   id =>
     () =>
-      course.joinGroup(id);
+      course.joinGroup(id).then(snackbar.open);
 
 const handleLeaveGroup =
   id =>

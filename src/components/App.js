@@ -1,17 +1,20 @@
 // @flow
 
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import AppBar from 'material-ui/AppBar';
 import { Row, Col, Grid } from 'react-flexbox-grid-aphrodite';
 import GroupWork from 'material-ui/svg-icons/action/group-work';
 import IconButton from 'material-ui/IconButton';
 import { CubeGrid } from 'better-react-spinkit';
+import snackbar from '~/store/snackbar';
+import router from '~/store/router';
+import navbar from '~/store/navbar';
 
 const App =
   (
-    { children, routing, navbar }:
-    { children: Array<Element>, routing: Object, navbar: Object }
+    { children }:
+    { children: Array<Element> }
   ): Element =>
     <Grid>
       <Row style={{ marginBottom: '15px' }}>
@@ -19,7 +22,7 @@ const App =
           <AppBar
             key={'AppBar'}
             title={navbar.title}
-            onClick={(): Void => routing.push('/create-course')}
+            onClick={snackbar.open}
             iconElementRight={
               navbar.loading.state === 'loading' ?
                 <Row style={{ height: 50, marginRight: 10 }} middle='xs'>
@@ -44,4 +47,4 @@ const App =
     </Grid>;
 
 
-export default inject('routing', 'navbar')(observer(App));
+export default observer(App);

@@ -1,10 +1,6 @@
 import { observable, action } from 'mobx';
-import { BACKEND_URL } from '~/config';
 import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
-import screenResponse from '~/util/screenResponse';
-import pass from '~/util/passthrough';
-import reThrow from '~/util/reThrow';
 import { registerUser } from '~/store/user';
 
 class SignupForm {
