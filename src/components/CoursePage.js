@@ -34,14 +34,14 @@ const CoursePage = (): Element =>
       { do {
         if (user.loggedIn && !course.users.find(u => u.id === user.id))
           <RaisedButton
-            style={{ margin: '15px 0 15px 0' }}
+            style={{ margin: '15px 0 15px 15px' }}
             primary={true}
             label='Join Course'
             icon={<ContentAdd />}
             onClick={handleJoinCourse} />;
         else if (user.loggedIn)
           <RaisedButton
-            style={{ margin: '15px 0 15px 0' }}
+            style={{ margin: '15px 0 15px 15px' }}
             secondary={true}
             label='Leave Course'
             icon={<ContentRemove />}
