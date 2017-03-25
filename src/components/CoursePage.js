@@ -1,12 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import {
-  Paper,
   Divider,
   RaisedButton,
   Card,
   CardText,
   CardHeader,
+  FlatButton,
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
@@ -34,14 +34,14 @@ const CoursePage = (): Element =>
       { do {
         if (user.loggedIn && !course.users.find(u => u.id === user.id))
           <RaisedButton
-            style={{ margin: '15px 0 15px 0' }}
+            style={{ margin: '15px 0 15px 15px' }}
             primary={true}
             label='Join Course'
             icon={<ContentAdd />}
             onClick={handleJoinCourse} />;
         else if (user.loggedIn)
           <RaisedButton
-            style={{ margin: '15px 0 15px 0' }}
+            style={{ margin: '15px 0 15px 15px' }}
             secondary={true}
             label='Leave Course'
             icon={<ContentRemove />}
