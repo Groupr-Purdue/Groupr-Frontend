@@ -42,7 +42,7 @@ class GroupForm {
   submit(courseId) {
     this.startLoading();
     const payload = {
-      name: this.name,
+      name: this.name + ' => OH LOOK A BUG <=',
     };
 
     return fetch(`${BACKEND_URL}/courses/${courseId}/groups`, {
