@@ -1,12 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import {
-  Paper,
   Divider,
   RaisedButton,
   Card,
   CardText,
   CardHeader,
+  FlatButton,
 } from 'material-ui';
 import course from '~/store/course';
 import router from '~/store/router';
