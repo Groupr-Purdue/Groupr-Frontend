@@ -36,7 +36,7 @@ const loadingWrapper =
                 secondary={true}
                 onClick={
                   action((): string => loading.recoverable ?
-                    loading.state = 'loaded' : router.push('/'))
+                    loading.state = 'loaded' : router.push('/wrongURL'))
                 } />
             </Row>
           </Grid>
