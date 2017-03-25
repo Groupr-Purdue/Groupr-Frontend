@@ -61,14 +61,7 @@ class Course {
       }
     )
     .then(screenResponse)
-    .then(res => res.json())
-    .then(pipe(
-      () =>
-        group.members.splice(
-          group.members.findIndex(member => member.id === user.id),
-          1,
-        )
-    ));
+    .then(res => res.json());
   }
 
   @action.bound
