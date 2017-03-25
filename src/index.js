@@ -27,6 +27,12 @@ import courses from '~/store/courses';
 import course from '~/store/course';
 import myCourses from '~/store/myCourses';
 import groupForm from '~/store/groupForm';
+import menubar from '~/store/menubar';
+
+const handleRouteChange = (pState, nState) => {
+  console.log(nState);
+  menubar.value = nState.location.pathname;
+}
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
@@ -69,7 +75,7 @@ render(
   <Context>
     <div>
       <Router history={history}>
-        <Route path='/' component={App}>
+        <Route path='/' component={App} onChange={handleRouteChange}>
           <IndexRoute component={Landing} />
           <Route path='login' component={Login} />
           <Route path='signup' component={Signup} />
