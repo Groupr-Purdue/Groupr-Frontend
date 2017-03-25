@@ -14,7 +14,10 @@ const handleChange = value => {
 
 const Menubar =
 (): Element =>
-  <Tabs style={{ marginTop: 10 }} value={menubar.value} onChange={handleChange}>
+  <Tabs
+    style={{ marginTop: 10 }}
+    value={menubar.value}
+    onChange={handleChange}>
     <Tab label='All Courses' value='/courses' />
     {
       user.loggedIn ?

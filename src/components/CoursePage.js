@@ -63,7 +63,7 @@ const CoursePage = (): Element =>
       <Col xs={12} sm={10} md={10} lg={10}>
         <Card>
           <CardHeader
-            title={course.name}
+            title={`All Students in ${course.name}`}
             actAsExpander={true}
             showExpandableButton={true} />
           <CardText expandable={true}>
