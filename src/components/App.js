@@ -10,6 +10,7 @@ import { CubeGrid } from 'better-react-spinkit';
 import snackbar from '~/store/snackbar';
 import router from '~/store/router';
 import navbar from '~/store/navbar';
+import Menubar from '~/components/Menubar';
 
 const App =
   (
@@ -37,6 +38,7 @@ const App =
                 <GroupWork />
               </IconButton>
             } />
+          <Menubar />
         </Col>
       </Row>
       <Row>
