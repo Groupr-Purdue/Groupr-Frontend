@@ -25,7 +25,7 @@ const CoursesPage = (): Object =>
     <Col xs={12} sm={6} md={6} lg={6}>
       <Paper>
         <List>
-          <Row center='xs'><h3> Your Courses </h3></Row>
+          <Row center='xs'><h3> Your Courses: Select a course to join. </h3></Row>
           <Divider style={{ marginBottom: '10px' }} />
           { do {
             if (courses.list.length)

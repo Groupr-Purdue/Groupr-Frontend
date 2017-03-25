@@ -5,16 +5,24 @@ import {
   TextField,
   FloatingActionButton,
 } from 'material-ui';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+
 import router from '~/store/router';
+import courses from '~/store/courses';
+import courseForm from '~/store/courseForm';
+
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
-import course from '~/store/courseForm';
 import loadingWrapper from '~/util/loadingWrapper';
 
 export const handleSubmit = () =>
-  course.submit()
-  .then(({ id }) => router.push(`/courses/${id}`))
-  .catch(() => course.failLoading());
+  courseForm.submit()
+    .then(({ id }) =>
+      courses.register(id)
+        .then(() => router.push(`/courses/${id}`))
+        .catch(err => do { throw err; })
+    )
+    .then(courseForm.succeedLoading)
+    .catch(courseForm.failLoading);
 
 const CreateCourseForm = (): Element =>
   <div>
@@ -35,20 +43,20 @@ const CreateCourseForm = (): Element =>
                 <TextField fullWidth={true}
                   floatingLabelText='Course Title'
                   hintText='Intro to Smoke Testing'
-                  onChange={(ev, value) => course.title = value} />
+                  onChange={(ev, value) => courseForm.title = value} />
               </Row>
               <Row>
                 <TextField fullWidth={true}
                   floatingLabelText='Course Name'
                   hintText='CS 420'
-                  onChange={(ev, value) => course.name = value} />
+                  onChange={(ev, value) => courseForm.name = value} />
               </Row>
               <Row start='xs'>
                 <TextField fullWidth={true}
                   floatingLabelText='White List'
                   hintText='jshmoe, morecareeraccounts...'
                   multiLine={true}
-                  onChange={(ev, value) => course.users = value} />
+                  onChange={(ev, value) => courseForm.users = value} />
               </Row>
               <Row center='xs'>
                 <FloatingActionButton
@@ -64,4 +72,4 @@ const CreateCourseForm = (): Element =>
     </Row>
   </div>;
 
-export default loadingWrapper(CreateCourseForm, course.loading);
+export default loadingWrapper(CreateCourseForm, courseForm.loading);
