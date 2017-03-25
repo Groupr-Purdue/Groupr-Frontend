@@ -61,6 +61,8 @@ export const registerUser = payload =>
       'password',
     ].forEach(mapOn(cleanPayload)(payload));
 
+    cleanPayload.first_name = cleanPayload.last_name;
+
     fetch(
       `${BACKEND_URL}/register`,
       {
