@@ -8,7 +8,7 @@ import router from '~/store/router';
 import user from '~/store/user';
 import menubar from '~/store/menubar';
 
-const handleChange = (value) => {
+const handleChange = value => {
   router.push(value);
 };
 
