@@ -90,10 +90,6 @@ class SignupForm {
   submit() {
     this.errors = [];
 
-    if (!this.isFormValid()) {
-      return this.errors;
-    }
-
     this.startLoading();
 
     const payload = {
