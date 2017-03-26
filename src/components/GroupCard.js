@@ -24,7 +24,7 @@ const handleJoinGroup =
           () => snackbar.open({
             actionLabel: 'Undo',
             message: `You have successfully joined ${group.name}.`,
-            onAction: handleLeaveGroup(group),
+            onAction: () => 1,
           }
         ))
         .catch(
