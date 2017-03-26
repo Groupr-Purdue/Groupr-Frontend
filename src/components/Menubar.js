@@ -31,6 +31,24 @@ const Menubar =
           label='Create Course'
           value='/create-course' /> : null
     }
+    {
+      !user.loggedIn ?
+        <Tab
+          label='Login'
+          value='/login' /> : null
+    }
+    {
+      !user.loggedIn ?
+        <Tab
+          label='Signup'
+          value='/signup' /> : null
+    }
+    {
+      user.loggedIn ?
+        <Tab
+          label={`${user.first_name} ${user.last_name}`}
+          value='/profile' /> : null
+    }
   </Tabs>;
 
 export default observer(Menubar);

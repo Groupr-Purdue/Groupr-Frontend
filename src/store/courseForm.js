@@ -4,7 +4,6 @@ import navbar from '~/store/navbar';
 import Loading from '~/store/loading';
 import screenResponse from '~/util/screenResponse';
 import isCareerAccount from '~/util/isCareerAccount';
-import pass from '~/util/passthrough';
 
 class CourseForm {
   @observable name = '';
