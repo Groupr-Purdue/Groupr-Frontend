@@ -10,7 +10,7 @@
   "author": "Alex Aralis <alex.aralis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run build; node_modules/.bin/http-server -p $PORT -i false --cors public",
+    "start": "npm run build; http-server -i false -p $PORT",
     "post-install": "echo PROJECT_DIR=$(pwd)  >> .defaults",
     "build": "webpack --config dev.webpack.config.js",
     "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline",
