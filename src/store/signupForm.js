@@ -40,14 +40,6 @@ class SignupForm {
   }
 
   @action.bound
-  passwordsMatch(): bool {
-    if (this.password !== this.confirmPassword) {
-      this.errorMap.confirmPassword = 'Passwords must match';
-      return false;
-    } return true;
-  }
-
-  @action.bound
   isFirstNameValid() {
     if (this.firstName.length > 0)
       return true;
@@ -91,8 +83,7 @@ class SignupForm {
     return this.isFirstNameValid() &&
       this.isLastNameValid() &&
       this.isCareerAccountValid() &&
-      this.isPasswordValid() &&
-      this.passwordsMatch();
+      this.isPasswordValid();
   }
 
   @action.bound
