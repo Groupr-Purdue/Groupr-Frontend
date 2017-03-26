@@ -1,1 +1,1 @@
-export const BACKEND_URL = 'http://groupr-purdue.herokuapp.com';
+export const BACKEND_URL = 'https://groupr-purdue.herokuapp.com';
