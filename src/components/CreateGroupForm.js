@@ -18,6 +18,7 @@ export const handleSubmit =
       .then(() => router.push(`/courses/${id}`))
       .catch(() => groupForm.failLoading());
 
+
 const CreateGroupForm = (props: Array<Object>): Element =>
   <div>
     <Row center='xs'>

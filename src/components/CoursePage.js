@@ -45,7 +45,7 @@ const CoursePage = (): Element =>
             secondary={true}
             label='Leave Course'
             icon={<ContentRemove />}
-            onClick={handleLeaveCourse} />;
+            onClick={() => 1} />;
       } }
     </Row>
     <Row around='xs'>

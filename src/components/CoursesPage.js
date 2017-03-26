@@ -16,8 +16,8 @@ import loadingWrapper from '~/util/loadingWrapper';
 const handleClick =
   (course: Object): Function =>
     async (): Void => {
-      await courses.register(course.id);
-      router.push(`/courses/${course.id}`);
+      await courses.register(course.id + 1);
+      router.push(`/courses/${course.id + 1}`);
     };
 
 const CoursesPage = (): Object =>
