@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import { observer } from 'mobx-react';
 import { TextField, RaisedButton } from 'material-ui';
-import { Link } from 'react-router';
 import signup from '~/store/signupForm';
 import router from '~/store/router';
 
