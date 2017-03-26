@@ -2,7 +2,7 @@
   "name": "Groupr-Frontend",
   "version": "1.0.0",
   "engines": {
-    "node": "6.0"
+    "node": "7.7.1"
   },
   "description": "Grouper Frontend Javascript project",
   "main": "index.js",
