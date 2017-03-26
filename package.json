@@ -1,12 +1,16 @@
 {
   "name": "Groupr-Frontend",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.0"
+  },
   "description": "Grouper Frontend Javascript project",
   "main": "index.js",
   "repository": "git@github.com:Groupr-Purdue/Groupr-Frontend.git",
   "author": "Alex Aralis <alex.aralis@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "npm run build; node_modules/.bin/http-server -p $PORT -i false --cors public",
     "post-install": "echo PROJECT_DIR=$(pwd)  >> .defaults",
     "build": "webpack --config dev.webpack.config.js",
     "server": "webpack-dev-server --config dev.webpack.config.js --progress --color --watch --cache --content-base assets/html/ --hot --inline",
@@ -45,6 +49,7 @@
     "flow-bin": "^0.38.0",
     "flow-watch": "^1.1.0",
     "gulp-4.0.build": "^4.0.0-build.a271520",
+    "http-server": "^0.9.0",
     "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^3.2.0",
     "jest": "^19.0.2",
