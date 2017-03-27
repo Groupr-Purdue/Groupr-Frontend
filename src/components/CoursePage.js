@@ -30,7 +30,7 @@ const CoursePage = (): Element =>
         primary={true}
         style={{ margin: '15px 0 15px 0' }}
         label='Create New Group!'
-        onClick={(): void => router.push(`/create-group/${course.id}`)} />
+        onClick={(): void => router.push(`/create-group/${course.id + 1}`)} />
       { do {
         if (user.loggedIn && !course.users.find(u => u.id === user.id))
           <RaisedButton
