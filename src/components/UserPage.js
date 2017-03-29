@@ -8,47 +8,44 @@ import {
   ListItem,
   Divider,
 } from 'material-ui';
-import courses from '~/store/courses';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
-import router from '~/store/router';
 import loadingWrapper from '~/util/loadingWrapper';
+import userPage, { loading } from '~/store/userPage';
+import { Link } from 'react-router';
 
-const handleClick =
-  (course: Object): Function =>
-    async (): Void => {
-      await courses.register(course.id);
-      router.push(`/courses/${course.id}`);
-    };
+// const handleClick =
+//   (u: Object): Function =>
+//     async (): Void => {
+//       await courses.register(u.id);
+//       router.push(`/courses/${u.id}`);
+//     };
 
-const CoursesPage = (): Object =>
+const UserPage = (): Object =>
   <Row center='xs'>
     <Col xs={12} sm={6} md={6} lg={6}>
       <Paper>
         <List>
-          <Row center='xs'><h3> Your Courses: Select a course to join. </h3></Row>
+          <Row center='xs'><h3> User Info </h3></Row>
           <Divider style={{ marginBottom: '10px' }} />
-          { do {
-            if (courses.list.length)
-              courses.list.map((course: Object, idx: number): Element =>
-                <ListItem
-                  key={idx}
-                  id={`course_${idx}`}
-                  primaryText={course.title}
-                  secondaryText={course.name}
-                  onClick={handleClick(course)} />);
-
-            else
-              <Row center='xs'>
-                <h4> No Courses </h4>
-              </Row>;
-              // <LinearProgress mode='indeterminate'
-              //   style={{ marginBottom: 30 }} />;
-          } }
+          <ListItem
+            primaryText={userPage.first_name}
+            secondaryText={'First Name'} />
+          <ListItem
+            primaryText={userPage.last_name}
+            secondaryText={'Last Name'} />
+          <ListItem
+            primaryText={userPage.career_account}
+            secondaryText={'Career Account'} />
+          <a
+            href={`mailto:${userPage.career_account}@purdue.edu`}
+            target='_blank'>
+            <ListItem
+              primaryText={`${userPage.career_account}@purdue.edu`}
+              secondaryText={'Email Address'} />
+          </a>
         </List>
       </Paper>
     </Col>
   </Row>;
 
-export { CoursesPage as NakedCoursesPage };
-
-export default loadingWrapper(observer(CoursesPage), courses.loading);
+export default loadingWrapper(observer(UserPage), loading);

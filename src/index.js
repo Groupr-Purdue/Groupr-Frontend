@@ -8,6 +8,8 @@ import { syncHistoryWithStore } from 'mobx-react-router';
 import routingStore from './store/router';
 const history = syncHistoryWithStore(hashHistory, routingStore);
 
+import pipe from '~/util/passthrough';
+
 // components
 import App from '~/components/App';
 import Landing from '~/components/Landing';
@@ -20,6 +22,7 @@ import CreateCourseForm from '~/components/CreateCourseForm';
 import CreateGroupForm from '~/components/CreateGroupForm';
 import MyCoursesPage from '~/components/MyCoursesPage';
 import AppSnackbar from '~/components/AppSnackbar';
+import UserPage from '~/components/UserPage';
 
 // stores
 import navbarStore from '~/store/navbar';
@@ -28,6 +31,7 @@ import course from '~/store/course';
 import myCourses from '~/store/myCourses';
 import groupForm from '~/store/groupForm';
 import menubar from '~/store/menubar';
+import { loading as userPageLoading, fetchUser } from '~/store/userPage';
 
 const handleRouteChange = (pState: Object, nState: Object) => {
   menubar.value = nState.location.pathname;
@@ -66,6 +70,16 @@ const enterMyCourses = (): Void => {
   myCourses.fetch();
 };
 
+const enterUserPage = (nextProps: Object): Void => {
+  userPageLoading.state = 'loading';
+
+  console.log(nextProps.params)
+
+  fetchUser(nextProps.params.id)
+  .then(pipe((): string => userPageLoading.state = 'loaded'))
+  .catch(pipe((): string => userPageLoading.state = 'failed'));
+};
+
 const stopLoading =
   ({ loading }: { loading: Loading }): Function =>
     (): boolean => loading.state = 'loaded';
@@ -78,6 +92,10 @@ render(
           <IndexRoute component={Landing} />
           <Route path='login' component={Login} />
           <Route path='signup' component={Signup} />
+          <Route
+            path='users/:id'
+            component={UserPage}
+            onEnter={enterUserPage} />
           <Route path='courses'>
             <IndexRoute
               onLeave={stopLoading(navbarStore)}
