@@ -47,7 +47,7 @@ const Menubar =
       user.loggedIn ?
         <Tab
           label={`${user.first_name} ${user.last_name}`}
-          value='/profile' /> : null
+          value={`users/${user.id}`} /> : null
     }
   </Tabs>;
 
