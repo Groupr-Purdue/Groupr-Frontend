@@ -8,7 +8,6 @@ import GroupWork from 'material-ui/svg-icons/action/group-work';
 import IconButton from 'material-ui/IconButton';
 import { CubeGrid } from 'better-react-spinkit';
 import snackbar from '~/store/snackbar';
-import router from '~/store/router';
 import navbar from '~/store/navbar';
 import Menubar from '~/components/Menubar';
 
@@ -23,7 +22,7 @@ const App =
           <AppBar
             key={'AppBar'}
             title={navbar.title}
-            onClick={(): Void => router.push('/')}
+            onClick={snackbar.open}
             iconElementRight={
               navbar.loading.state === 'loading' ?
                 <Row style={{ height: 50, marginRight: 10 }} middle='xs'>
