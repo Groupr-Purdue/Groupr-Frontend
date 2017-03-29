@@ -17,7 +17,6 @@ import router from '~/store/router';
 
 const handleClick =
   () => {
-    logout();
     router.push('/');
   };
 
