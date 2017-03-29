@@ -44,7 +44,8 @@ class SignupForm {
     if (this.password !== this.confirmPassword) {
       this.errorMap.confirmPassword = 'Passwords must match';
       return false;
-    } return true;
+    } 
+    return true;
   }
 
   @action.bound
@@ -76,7 +77,7 @@ class SignupForm {
 
   @action.bound
   isPasswordValid() {
-    if (!this.passwordsMatch)
+    if (!this.passwordsMatch())
       return false;
     else if (this.password.length === 0) {
       this.errorMap.password = 'Password cannot be blank';
@@ -88,17 +89,15 @@ class SignupForm {
   @action.bound
   isFormValid() {
     this.errorMap = {};
-    return this.isFirstNameValid() &&
+    return (this.isFirstNameValid() &&
       this.isLastNameValid() &&
       this.isCareerAccountValid() &&
-      this.isPasswordValid() &&
-      this.passwordsMatch();
+      this.isPasswordValid());
   }
 
   @action.bound
   submit() {
     this.errors = [];
-
     if (!this.isFormValid()) {
       return this.errors;
     }
