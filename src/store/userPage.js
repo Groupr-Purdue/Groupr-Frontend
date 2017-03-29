@@ -35,6 +35,7 @@ export const fetchUser = id =>
       'first_name',
       'last_name',
       'id',
+      'email',
     ].forEach(mapOn(userPage)(json))
   );
 

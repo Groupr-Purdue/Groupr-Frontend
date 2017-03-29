@@ -38,10 +38,10 @@ const UserPage = (): Object =>
             primaryText={userPage.career_account}
             secondaryText={'Career Account'} />
           <a
-            href={`mailto:${userPage.career_account}@purdue.edu`}
+            href={`mailto:${userPage.email}`}
             target='_blank'>
             <ListItem
-              primaryText={`${userPage.career_account}@purdue.edu`}
+              primaryText={userPage.email}
               secondaryText={'Email Address'} />
           </a>
         </List>
