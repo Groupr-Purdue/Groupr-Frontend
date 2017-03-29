@@ -6,7 +6,7 @@ import { loginUser } from '~/store/user';
 class LoginForm {
   @observable careerAccount: string = '';
   @observable password: string = '';
-  @observable errors: Array<string> = [];
+  @observable errors: Object = {};
   loading: Loading;
   navbar;
 
@@ -36,6 +36,27 @@ class LoginForm {
     this.navbar.loading.state = 'failed';
   }
 
+  @action.bound
+  isCareerAccountValid() {
+    if (this.careerAccount.length) return true;
+
+    this.errors.account = 'Career Account is required';
+    return false;
+  }
+
+  @action.bound
+  isPasswordValid() {
+    if (this.password.length) return true;
+
+    this.errors.password = 'Password is required';
+    return false;
+  }
+
+  @action.bound
+  isValid() {
+    this.errors = {};
+    return this.isCareerAccountValid() && this.isPasswordValid();
+  }
 
   @action.bound
   submit() {
