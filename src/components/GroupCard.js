@@ -63,20 +63,16 @@ const GroupCard = ({ group, style = {} }: propType): Element =>
       showExpandableButton={true} />
     <CardText expandable={true}>
       <UserList users={group.members} />
-      { do {
-        if (user.loggedIn && !group.members.find(member => member.id === user.id))
-          <FlatButton
-            primary={true}
-            label='Join Group'
-            icon={<ContentAdd />}
-            onClick={handleJoinGroup(group)} />;
-        else if (user.loggedIn)
-          <FlatButton
-            secondary={true}
-            label='Leave Group'
-            icon={<ContentRemove />}
-            onClick={handleLeaveGroup(group)} />;
-      } }
+      <FlatButton
+        primary={true}
+        label='Join Group'
+        icon={<ContentAdd />}
+        onClick={handleJoinGroup(group)} />
+      <FlatButton
+        secondary={true}
+        label='Leave Group'
+        icon={<ContentRemove />}
+        onClick={handleLeaveGroup(group)} />
     </CardText>
   </Card>;
 
