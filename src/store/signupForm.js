@@ -9,6 +9,7 @@ class SignupForm {
   @observable careerAccount: string = '';
   @observable password: string = '';
   @observable confirmPassword: string = '';
+  @observable errorMap: Object = {};
   @observable errors: Array<string> = [];
   loading: Loading;
   navbar;
@@ -41,16 +42,17 @@ class SignupForm {
   @action.bound
   passwordsMatch(): bool {
     if (this.password !== this.confirmPassword) {
-      this.errors.push('Passwords must match');
+      this.errorMap.confirmPassword = 'Passwords must match';
       return false;
     } return true;
   }
+
   @action.bound
   isFirstNameValid() {
     if (this.firstName.length > 0)
       return true;
 
-    this.errors.push('First Name cannot be blank');
+    this.errorMap.firstName = 'First Name cannot be blank';
     return false;
   }
 
@@ -59,7 +61,7 @@ class SignupForm {
     if (this.lastName.length > 0)
       return true;
 
-    this.errors.push('Last Name cannot be blank');
+    this.errorMap.lastName = 'Last Name cannot be blank';
     return false;
   }
 
@@ -68,7 +70,7 @@ class SignupForm {
     if (this.careerAccount.length > 0)
       return true;
 
-    this.errors.push('Career account cannot be blank');
+    this.errorMap.account = 'Career account cannot be blank';
     return false;
   }
 
@@ -77,7 +79,7 @@ class SignupForm {
     if (!this.passwordsMatch)
       return false;
     else if (this.password.length === 0) {
-      this.errors.push('Password cannot be blank');
+      this.errorMap.password = 'Password cannot be blank';
       return false;
     }
     return true;
@@ -85,17 +87,21 @@ class SignupForm {
 
   @action.bound
   isFormValid() {
+    this.errorMap = {};
     return this.isFirstNameValid() &&
       this.isLastNameValid() &&
       this.isCareerAccountValid() &&
-      this.isPasswordValid();
+      this.isPasswordValid() &&
+      this.passwordsMatch();
   }
 
   @action.bound
   submit() {
     this.errors = [];
 
-    if (!this.isFormValid()) return this.errors;
+    if (!this.isFormValid()) {
+      return this.errors;
+    }
 
     this.startLoading();
 

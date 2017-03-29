@@ -10,14 +10,14 @@ export default class Landing extends React.Component {
     return (
       <Row>
         <Col xs={12}>
-          <Link to='signup'>
+          <Link to='/signup'>
             <RaisedButton primary={true}>
               Sign-Up
             </RaisedButton>
           </Link>
         </Col>
         <Col xs={12}>
-          <Link to='login'>
+          <Link to='/login'>
             <RaisedButton primary={true}>
               Sign-in
             </RaisedButton>

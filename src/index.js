@@ -29,10 +29,9 @@ import myCourses from '~/store/myCourses';
 import groupForm from '~/store/groupForm';
 import menubar from '~/store/menubar';
 
-const handleRouteChange = (pState, nState) => {
-  console.log(nState);
+const handleRouteChange = (pState: Object, nState: Object) => {
   menubar.value = nState.location.pathname;
-}
+};
 
 const enterCourses = ({ nextProps }: { nextProps: Object }): Void => {
   navbarStore.subtitle = 'Course Listing';
