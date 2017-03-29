@@ -23,7 +23,7 @@ const App =
           <AppBar
             key={'AppBar'}
             title={navbar.title}
-            onClick={snackbar.open}
+            onClick={(): Void => router.push('/')}
             iconElementRight={
               navbar.loading.state === 'loading' ?
                 <Row style={{ height: 50, marginRight: 10 }} middle='xs'>
