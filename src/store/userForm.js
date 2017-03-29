@@ -8,6 +8,8 @@ import user from '~/store/user';
 
 // utils
 import screenResponse from '~/util/screenResponse';
+import pipe from '~/util/passthrough';
+import mapOn from '~/util/mapOn';
 
 class UserForm {
   @observable firstName = user.first_name;
@@ -92,7 +94,17 @@ class UserForm {
       },
     })
       .then(screenResponse)
-      .then(res => res.json());
+      .then(res => res.json())
+      .then(pipe(json =>
+        [
+          'career_account',
+          'id',
+          'token',
+          'career_account',
+          'last_name',
+          'first_name',
+          'email',
+        ].forEach(mapOn(user)(json))));
   }
 }
 
