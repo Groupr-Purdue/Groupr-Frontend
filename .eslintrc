@@ -310,7 +310,7 @@
     "one-var": [2, "never"], // require or disallow one variable declaration per function
     "one-var-declaration-per-line": 2, // require or disallow an newline around variable declarations
     "operator-assignment": [2, "never"], // require assignment operator shorthand where possible or prohibit it entirely
-    "operator-linebreak": [2, "after"], // enforce operators to be placed before or after line breaks
+    "operator-linebreak": [0, "after"], // DONT enforce operators to be placed before or after line breaks
     "padded-blocks": [2, "never"], // enforce padding within blocks
     "quote-props": [2, "as-needed"], // require quotes around object literal property names
     "quotes": [2, "single"], // specify whether backticks, double or single quotes should be used (fixable)

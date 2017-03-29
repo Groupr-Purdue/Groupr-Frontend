@@ -7,18 +7,19 @@ import {
   List,
   ListItem,
   Divider,
+  RaisedButton,
 } from 'material-ui';
 import { Row, Col } from 'react-flexbox-grid-aphrodite';
 import loadingWrapper from '~/util/loadingWrapper';
 import userPage, { loading } from '~/store/userPage';
-import { Link } from 'react-router';
+import user, { logout } from '~/store/user';
+import router from '~/store/router';
 
-// const handleClick =
-//   (u: Object): Function =>
-//     async (): Void => {
-//       await courses.register(u.id);
-//       router.push(`/courses/${u.id}`);
-//     };
+const handleClick =
+  () => {
+    logout();
+    router.push('/');
+  };
 
 const UserPage = (): Object =>
   <Row center='xs'>
@@ -44,6 +45,15 @@ const UserPage = (): Object =>
               secondaryText={'Email Address'} />
           </a>
         </List>
+        {
+          user.id === userPage.id
+            ? <RaisedButton
+              label='Logout'
+              secondary={true}
+              style={{ marginBottom: 10 }}
+              onClick={handleClick} />
+            : null
+        }
       </Paper>
     </Col>
   </Row>;

@@ -15,6 +15,18 @@ const user = observable({
   loggedIn: false,
 });
 
+export const logout =
+  () => {
+    user.email = '';
+    user.career_account = '';
+    user.first_name = '';
+    user.last_name = '';
+    user.id = null;
+    user.name = '';
+    user.username = '';
+    user.token = '';
+    user.loggedIn = false;
+  };
 
 export const loginUser = payload =>
   new Promise((resolve, reject) => {
