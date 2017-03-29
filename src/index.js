@@ -92,6 +92,7 @@ render(
           <IndexRoute component={Landing} />
           <Route path='login' component={Login} />
           <Route path='signup' component={Signup} />
+          <Route path='user/:id' component={enterUserPage} />
           <Route
             path='users/:id'
             component={UserPage}
