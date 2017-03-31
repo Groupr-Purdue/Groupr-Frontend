@@ -23,6 +23,7 @@ import CreateGroupForm from '~/components/CreateGroupForm';
 import MyCoursesPage from '~/components/MyCoursesPage';
 import AppSnackbar from '~/components/AppSnackbar';
 import UserPage from '~/components/UserPage';
+import UpdateUserForm from '~/components/UpdateUserForm';
 
 // stores
 import navbarStore from '~/store/navbar';
@@ -32,6 +33,8 @@ import myCourses from '~/store/myCourses';
 import groupForm from '~/store/groupForm';
 import menubar from '~/store/menubar';
 import { loading as userPageLoading, fetchUser } from '~/store/userPage';
+import userFormStore from '~/store/userForm';
+import user from '~/store/user';
 
 const handleRouteChange = (pState: Object, nState: Object) => {
   menubar.value = nState.location.pathname;
@@ -57,6 +60,15 @@ const enterCourseForm = (): Void => {
   navbarStore.loading.state = 'loaded';
 };
 
+const enterUpdateUserForm = (): Void => {
+  navbarStore.subtitle = 'User Info Update';
+  navbarStore.loading.state = 'loaded';
+
+  userFormStore.firstName = user.first_name;
+  userFormStore.lastName = user.last_name;
+  userFormStore.careerAccount = user.career_account;
+};
+
 const enterGroupForm = (nextProps: Object): Void => {
   navbarStore.subtitle = 'Create a Group';
   navbarStore.loading.state = 'loaded';
@@ -72,8 +84,6 @@ const enterMyCourses = (): Void => {
 
 const enterUserPage = (nextProps: Object): Void => {
   userPageLoading.state = 'loading';
-
-  console.log(nextProps.params)
 
   fetchUser(nextProps.params.id)
   .then(pipe((): string => userPageLoading.state = 'loaded'))
@@ -113,6 +123,9 @@ render(
           <Route path='create-course'
             onEnter={enterCourseForm}
             component={CreateCourseForm} />
+          <Route path='update-user'
+            onEnter={enterUpdateUserForm}
+            component={UpdateUserForm} />
           <Route path='create-group/:id'
             onEnter={enterGroupForm}
             component={CreateGroupForm} />

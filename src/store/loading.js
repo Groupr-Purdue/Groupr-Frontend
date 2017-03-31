@@ -12,7 +12,7 @@ class Loading {
   recoverable: boolean;
 
   constructor(
-    { state = 'loading', waitingFor = 'Something', recoverable = false }:
+    { state = 'loaded', waitingFor = 'Something', recoverable = false }:
     { state: string, waitingFor: string, recoverable: boolean } = {}
   ) {
     this.state = state;

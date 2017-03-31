@@ -53,6 +53,15 @@ const UserPage = (): Object =>
               onClick={handleClick} />
             : null
         }
+        {
+          user.id === userPage.id
+            ? <RaisedButton
+              label='Edit'
+              secondary={true}
+              style={{ margin: '0 0 10px 10px' }}
+              onClick={(): Void => router.push('/update-user')} />
+            : null
+        }
       </Paper>
     </Col>
   </Row>;

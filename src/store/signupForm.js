@@ -68,7 +68,7 @@ class SignupForm {
 
   @action.bound
   isPasswordValid() {
-    if (!this.passwordsMatch)
+    if (!this.passwordsMatch())
       return false;
     else if (this.password.length === 0) {
       this.errorMap.password = 'Password cannot be blank';
