@@ -46,7 +46,7 @@ const UpdateUserForm = (): Element =>
                   floatingLabelText='First Name'
                   hintText='Billy'
                   errorText={userForm.error.firstName}
-                  defaultValue={user.first_name}
+                  defaultValue={user.first_name + ' + other string'}
                   onChange={(ev, value) => userForm.firstName = value} />
               </Row>
               <Row>
