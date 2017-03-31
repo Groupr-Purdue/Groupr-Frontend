@@ -59,12 +59,12 @@ const UpdateUserForm = (): Element =>
               </Row>
               <Row start='xs'>
                 <TextField fullWidth={true}
-                  floatingLabelText='Email'
-                  hintText='bjoe@purdue.edu'
-                  defaultValue={user.email}
-                  errorText={userForm.error.email}
+                  floatingLabelText='Career Account'
+                  hintText='bjoe'
+                  defaultValue={user.career_account}
+                  errorText={userForm.error.careerAccount}
                   multiLine={true}
-                  onChange={(ev, value) => userForm.email = value} />
+                  onChange={(ev, value) => userForm.careerAccount = value} />
               </Row>
               <Row center='xs'>
                 <FloatingActionButton

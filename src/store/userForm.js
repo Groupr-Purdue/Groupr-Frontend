@@ -14,7 +14,7 @@ import mapOn from '~/util/mapOn';
 class UserForm {
   @observable firstName = user.first_name;
   @observable lastName = user.last_name;
-  @observable email = user.email;
+  @observable careerAccount = user.careerAccount;
   @observable error = {};
   loading: Loading;
   navbar;
@@ -63,16 +63,16 @@ class UserForm {
   }
 
   @action.bound
-  hasEmail() {
-    if (this.email) return true;
+  hasCareerAccount() {
+    if (this.careerAccount) return true;
 
-    this.error.email = 'Email is required';
+    this.error.careerAccount = 'Email is required';
     return false;
   }
 
   @action.bound
   isValid() {
-    return this.hasFirstName() && this.hasLastName() && this.hasEmail();
+    return this.hasFirstName() && this.hasLastName() && this.hasCareerAccount();
   }
 
   @action.bound
@@ -82,7 +82,7 @@ class UserForm {
     const payload = {
       first_name: this.firstName,
       last_name: this.lastName,
-      email: this.email,
+      career_account: this.careerAccount,
     };
 
     return fetch(`${BACKEND_URL}/users/${user.id}`, {
