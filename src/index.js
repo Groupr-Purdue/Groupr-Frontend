@@ -33,6 +33,8 @@ import myCourses from '~/store/myCourses';
 import groupForm from '~/store/groupForm';
 import menubar from '~/store/menubar';
 import { loading as userPageLoading, fetchUser } from '~/store/userPage';
+import userFormStore from '~/store/userForm';
+import user from '~/store/user';
 
 const handleRouteChange = (pState: Object, nState: Object) => {
   menubar.value = nState.location.pathname;
@@ -61,6 +63,10 @@ const enterCourseForm = (): Void => {
 const enterUpdateUserForm = (): Void => {
   navbarStore.subtitle = 'User Info Update';
   navbarStore.loading.state = 'loaded';
+
+  userFormStore.firstName = user.first_name;
+  userFormStore.lastName = user.last_name;
+  userFormStore.careerAccount = user.career_account;
 };
 
 const enterGroupForm = (nextProps: Object): Void => {

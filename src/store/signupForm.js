@@ -44,7 +44,7 @@ class SignupForm {
     if (this.password !== this.confirmPassword) {
       this.errorMap.confirmPassword = 'Passwords must match';
       return false;
-    } 
+    }
     return true;
   }
 
